@@ -9,6 +9,23 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
+#import "SoundManager.h"
+
+#define INTRO 151
+#define MENU 152
+
 @interface GameViewController : UIViewController
+
+@property int screenToggle;
+
+@property SKVideoNode *video;
+
+@property AVQueuePlayer *player;
+@property AVPlayerItem *item;
+
+- (void) replaceTheScene;
+
+- (void) resetVideo: (NSString*) aName;
+- (void) killVideo;
 
 @end

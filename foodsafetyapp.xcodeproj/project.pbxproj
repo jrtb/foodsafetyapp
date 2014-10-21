@@ -7,15 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */; };
+		E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */ = {isa = PBXBuildFile; fileRef = E7457A0E19F6BC1900EFF7AC /* click2.caf */; };
+		E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */; };
+		E7457A1619F6C03800EFF7AC /* main_menu_button_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1219F6C03800EFF7AC /* main_menu_button_04@2x.png */; };
+		E7457A1719F6C03800EFF7AC /* main_menu_button_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1319F6C03800EFF7AC /* main_menu_button_03@2x.png */; };
+		E7457A1819F6C03800EFF7AC /* main_menu_button_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1419F6C03800EFF7AC /* main_menu_button_02@2x.png */; };
+		E7457A1919F6C03800EFF7AC /* main_menu_button_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1519F6C03800EFF7AC /* main_menu_button_01@2x.png */; };
 		E7EC06C419F6A52800BE3351 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06C319F6A52800BE3351 /* main.m */; };
 		E7EC06C719F6A52800BE3351 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06C619F6A52800BE3351 /* AppDelegate.m */; };
-		E7EC06CA19F6A52800BE3351 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06C919F6A52800BE3351 /* GameScene.m */; };
-		E7EC06CC19F6A52800BE3351 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E7EC06CB19F6A52800BE3351 /* GameScene.sks */; };
 		E7EC06CF19F6A52800BE3351 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06CE19F6A52800BE3351 /* GameViewController.m */; };
 		E7EC06D219F6A52800BE3351 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7EC06D019F6A52800BE3351 /* Main.storyboard */; };
 		E7EC06D419F6A52800BE3351 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7EC06D319F6A52800BE3351 /* Images.xcassets */; };
 		E7EC06D719F6A52800BE3351 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7EC06D519F6A52800BE3351 /* LaunchScreen.xib */; };
 		E7EC06E319F6A52900BE3351 /* foodsafetyappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06E219F6A52900BE3351 /* foodsafetyappTests.m */; };
+		E7EC06EF19F6AA7B00BE3351 /* iphoneIntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06EE19F6AA7B00BE3351 /* iphoneIntroScene.m */; };
+		E7EC06F519F6AAB100BE3351 /* SKButtonNodeJRTB.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06F219F6AAB100BE3351 /* SKButtonNodeJRTB.m */; };
+		E7EC06F619F6AAB100BE3351 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06F419F6AAB100BE3351 /* NSMutableArray+Shuffling.m */; };
+		E7EC06F919F6AABC00BE3351 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06F819F6AABC00BE3351 /* SoundManager.m */; };
+		E7EC06FD19F6AECB00BE3351 /* intro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7EC06FC19F6AECB00BE3351 /* intro@2x.png */; };
+		E7EC06FF19F6AF9E00BE3351 /* introBlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7EC06FE19F6AF9E00BE3351 /* introBlock@2x.png */; };
+		E7EC070619F6B49F00BE3351 /* iphoneMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC070519F6B49F00BE3351 /* iphoneMenuScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,14 +41,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Cn.otf"; sourceTree = "<group>"; };
+		E7457A0E19F6BC1900EFF7AC /* click2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = click2.caf; path = sounds/click2.caf; sourceTree = SOURCE_ROOT; };
+		E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu_button@2x.png"; path = "images/menu_button@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7457A1219F6C03800EFF7AC /* main_menu_button_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main_menu_button_04@2x.png"; path = "images/main_menu_button_04@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7457A1319F6C03800EFF7AC /* main_menu_button_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main_menu_button_03@2x.png"; path = "images/main_menu_button_03@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7457A1419F6C03800EFF7AC /* main_menu_button_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main_menu_button_02@2x.png"; path = "images/main_menu_button_02@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7457A1519F6C03800EFF7AC /* main_menu_button_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main_menu_button_01@2x.png"; path = "images/main_menu_button_01@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7EC06BE19F6A52800BE3351 /* foodsafetyapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foodsafetyapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EC06C219F6A52800BE3351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7EC06C319F6A52800BE3351 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E7EC06C519F6A52800BE3351 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7EC06C619F6A52800BE3351 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E7EC06C819F6A52800BE3351 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		E7EC06C919F6A52800BE3351 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		E7EC06CB19F6A52800BE3351 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		E7EC06CD19F6A52800BE3351 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		E7EC06CE19F6A52800BE3351 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		E7EC06D119F6A52800BE3351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +61,18 @@
 		E7EC06DC19F6A52900BE3351 /* foodsafetyappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = foodsafetyappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EC06E119F6A52900BE3351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7EC06E219F6A52900BE3351 /* foodsafetyappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = foodsafetyappTests.m; sourceTree = "<group>"; };
+		E7EC06ED19F6AA7B00BE3351 /* iphoneIntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneIntroScene.h; sourceTree = "<group>"; };
+		E7EC06EE19F6AA7B00BE3351 /* iphoneIntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneIntroScene.m; sourceTree = "<group>"; };
+		E7EC06F119F6AAB100BE3351 /* SKButtonNodeJRTB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKButtonNodeJRTB.h; sourceTree = "<group>"; };
+		E7EC06F219F6AAB100BE3351 /* SKButtonNodeJRTB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKButtonNodeJRTB.m; sourceTree = "<group>"; };
+		E7EC06F319F6AAB100BE3351 /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
+		E7EC06F419F6AAB100BE3351 /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
+		E7EC06F719F6AABC00BE3351 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		E7EC06F819F6AABC00BE3351 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		E7EC06FC19F6AECB00BE3351 /* intro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "intro@2x.png"; path = "images/intro@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7EC06FE19F6AF9E00BE3351 /* introBlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "introBlock@2x.png"; path = "images/introBlock@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7EC070419F6B49F00BE3351 /* iphoneMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneMenuScene.h; sourceTree = "<group>"; };
+		E7EC070519F6B49F00BE3351 /* iphoneMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneMenuScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +93,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7457A0C19F6B92D00EFF7AC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		E7457A0D19F6BBF000EFF7AC /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E7457A0E19F6BC1900EFF7AC /* click2.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		E7457A1A19F6CC0500EFF7AC /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Movies;
+			sourceTree = "<group>";
+		};
 		E7EC06B519F6A52800BE3351 = {
 			isa = PBXGroup;
 			children = (
@@ -86,11 +137,11 @@
 		E7EC06C019F6A52800BE3351 /* foodsafetyapp */ = {
 			isa = PBXGroup;
 			children = (
+				E7EC06FA19F6AEB700BE3351 /* Assets */,
+				E7EC06F019F6AA9E00BE3351 /* Support classes */,
+				E7EC06EC19F6AA1200BE3351 /* iPhone scenes */,
 				E7EC06C519F6A52800BE3351 /* AppDelegate.h */,
 				E7EC06C619F6A52800BE3351 /* AppDelegate.m */,
-				E7EC06C819F6A52800BE3351 /* GameScene.h */,
-				E7EC06C919F6A52800BE3351 /* GameScene.m */,
-				E7EC06CB19F6A52800BE3351 /* GameScene.sks */,
 				E7EC06CD19F6A52800BE3351 /* GameViewController.h */,
 				E7EC06CE19F6A52800BE3351 /* GameViewController.m */,
 				E7EC06D019F6A52800BE3351 /* Main.storyboard */,
@@ -125,6 +176,55 @@
 				E7EC06E119F6A52900BE3351 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E7EC06EC19F6AA1200BE3351 /* iPhone scenes */ = {
+			isa = PBXGroup;
+			children = (
+				E7EC06ED19F6AA7B00BE3351 /* iphoneIntroScene.h */,
+				E7EC06EE19F6AA7B00BE3351 /* iphoneIntroScene.m */,
+				E7EC070419F6B49F00BE3351 /* iphoneMenuScene.h */,
+				E7EC070519F6B49F00BE3351 /* iphoneMenuScene.m */,
+			);
+			name = "iPhone scenes";
+			sourceTree = "<group>";
+		};
+		E7EC06F019F6AA9E00BE3351 /* Support classes */ = {
+			isa = PBXGroup;
+			children = (
+				E7EC06F719F6AABC00BE3351 /* SoundManager.h */,
+				E7EC06F819F6AABC00BE3351 /* SoundManager.m */,
+				E7EC06F119F6AAB100BE3351 /* SKButtonNodeJRTB.h */,
+				E7EC06F219F6AAB100BE3351 /* SKButtonNodeJRTB.m */,
+				E7EC06F319F6AAB100BE3351 /* NSMutableArray+Shuffling.h */,
+				E7EC06F419F6AAB100BE3351 /* NSMutableArray+Shuffling.m */,
+			);
+			name = "Support classes";
+			sourceTree = "<group>";
+		};
+		E7EC06FA19F6AEB700BE3351 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E7457A1A19F6CC0500EFF7AC /* Movies */,
+				E7457A0D19F6BBF000EFF7AC /* Sounds */,
+				E7457A0C19F6B92D00EFF7AC /* Fonts */,
+				E7EC06FB19F6AEBD00BE3351 /* Images */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		E7EC06FB19F6AEBD00BE3351 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E7457A1219F6C03800EFF7AC /* main_menu_button_04@2x.png */,
+				E7457A1319F6C03800EFF7AC /* main_menu_button_03@2x.png */,
+				E7457A1419F6C03800EFF7AC /* main_menu_button_02@2x.png */,
+				E7457A1519F6C03800EFF7AC /* main_menu_button_01@2x.png */,
+				E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */,
+				E7EC06FE19F6AF9E00BE3351 /* introBlock@2x.png */,
+				E7EC06FC19F6AECB00BE3351 /* intro@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,9 +308,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7EC06D719F6A52800BE3351 /* LaunchScreen.xib in Resources */,
+				E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */,
+				E7EC06FD19F6AECB00BE3351 /* intro@2x.png in Resources */,
+				E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */,
 				E7EC06D419F6A52800BE3351 /* Images.xcassets in Resources */,
-				E7EC06CC19F6A52800BE3351 /* GameScene.sks in Resources */,
+				E7EC06FF19F6AF9E00BE3351 /* introBlock@2x.png in Resources */,
+				E7457A1619F6C03800EFF7AC /* main_menu_button_04@2x.png in Resources */,
+				E7457A1919F6C03800EFF7AC /* main_menu_button_01@2x.png in Resources */,
 				E7EC06D219F6A52800BE3351 /* Main.storyboard in Resources */,
+				E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */,
+				E7457A1719F6C03800EFF7AC /* main_menu_button_03@2x.png in Resources */,
+				E7457A1819F6C03800EFF7AC /* main_menu_button_02@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,8 +337,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7EC06CF19F6A52800BE3351 /* GameViewController.m in Sources */,
+				E7EC06F519F6AAB100BE3351 /* SKButtonNodeJRTB.m in Sources */,
+				E7EC070619F6B49F00BE3351 /* iphoneMenuScene.m in Sources */,
+				E7EC06EF19F6AA7B00BE3351 /* iphoneIntroScene.m in Sources */,
 				E7EC06C719F6A52800BE3351 /* AppDelegate.m in Sources */,
-				E7EC06CA19F6A52800BE3351 /* GameScene.m in Sources */,
+				E7EC06F919F6AABC00BE3351 /* SoundManager.m in Sources */,
+				E7EC06F619F6AAB100BE3351 /* NSMutableArray+Shuffling.m in Sources */,
 				E7EC06C419F6A52800BE3351 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +534,7 @@
 				E7EC06E819F6A52900BE3351 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7EC06E919F6A52900BE3351 /* Build configuration list for PBXNativeTarget "foodsafetyappTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +543,7 @@
 				E7EC06EB19F6A52900BE3351 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
