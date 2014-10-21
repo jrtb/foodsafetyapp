@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>60AC2BBB-8730-430A-992F-39FD49D65A24</string>
+	<key>IDESourceControlProjectName</key>
+	<string>foodsafetyapp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>95B7F298015BDD3D4AF92EA92A205D336CB7C13C</key>
+		<string>github.com:jrtb/foodsafetyapp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>foodsafetyapp/foodsafetyapp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>95B7F298015BDD3D4AF92EA92A205D336CB7C13C</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:jrtb/foodsafetyapp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>95B7F298015BDD3D4AF92EA92A205D336CB7C13C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>95B7F298015BDD3D4AF92EA92A205D336CB7C13C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>foodsafetyapp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
