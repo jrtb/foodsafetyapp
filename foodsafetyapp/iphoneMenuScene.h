@@ -10,7 +10,9 @@
 
 #import "SKButtonNodeJRTB.h"
 
-@interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate> {
+#import "YTPlayerView.h"
+
+@interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate> {
     
     float                   iphoneAddY;
     
@@ -19,7 +21,16 @@
     SKSpriteNode            *back;
     
     BOOL                    touched;
+    
+    BOOL                    videoReady;
 
+    float                   videoLength;
+    
+    SKButtonNodeJRTB        *playButton;
+    
+    YTPlayerView            *youTubePlayerView;
+    
+    BOOL                    youTubeVideoReady;
 }
 
 @end

@@ -14,6 +14,11 @@
 		E7457A1719F6C03800EFF7AC /* main_menu_button_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1319F6C03800EFF7AC /* main_menu_button_03@2x.png */; };
 		E7457A1819F6C03800EFF7AC /* main_menu_button_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1419F6C03800EFF7AC /* main_menu_button_02@2x.png */; };
 		E7457A1919F6C03800EFF7AC /* main_menu_button_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1519F6C03800EFF7AC /* main_menu_button_01@2x.png */; };
+		E7457AB319F7E54100EFF7AC /* fs350_01.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E7457AB219F7E54100EFF7AC /* fs350_01.mp4 */; };
+		E7457AB519F7E5F000EFF7AC /* fs350_01_firstframe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457AB419F7E5F000EFF7AC /* fs350_01_firstframe@2x.png */; };
+		E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457AB619F7EFA900EFF7AC /* play_button@2x.png */; };
+		E7457ABA19F8013100EFF7AC /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7457AB919F8013100EFF7AC /* YTPlayerView.m */; };
+		E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */; };
 		E7EC06C419F6A52800BE3351 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06C319F6A52800BE3351 /* main.m */; };
 		E7EC06C719F6A52800BE3351 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06C619F6A52800BE3351 /* AppDelegate.m */; };
 		E7EC06CF19F6A52800BE3351 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06CE19F6A52800BE3351 /* GameViewController.m */; };
@@ -48,6 +53,12 @@
 		E7457A1319F6C03800EFF7AC /* main_menu_button_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main_menu_button_03@2x.png"; path = "images/main_menu_button_03@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7457A1419F6C03800EFF7AC /* main_menu_button_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main_menu_button_02@2x.png"; path = "images/main_menu_button_02@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7457A1519F6C03800EFF7AC /* main_menu_button_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main_menu_button_01@2x.png"; path = "images/main_menu_button_01@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7457AB219F7E54100EFF7AC /* fs350_01.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = fs350_01.mp4; path = movies/fs350_01.mp4; sourceTree = SOURCE_ROOT; };
+		E7457AB419F7E5F000EFF7AC /* fs350_01_firstframe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fs350_01_firstframe@2x.png"; path = "images/fs350_01_firstframe@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7457AB619F7EFA900EFF7AC /* play_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play_button@2x.png"; path = "images/play_button@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7457AB819F8013100EFF7AC /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
+		E7457AB919F8013100EFF7AC /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
+		E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 		E7EC06BE19F6A52800BE3351 /* foodsafetyapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foodsafetyapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EC06C219F6A52800BE3351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7EC06C319F6A52800BE3351 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,8 +123,27 @@
 		E7457A1A19F6CC0500EFF7AC /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				E7457AB219F7E54100EFF7AC /* fs350_01.mp4 */,
 			);
 			name = Movies;
+			sourceTree = "<group>";
+		};
+		E7457ABB19F8017C00EFF7AC /* YouTube player */ = {
+			isa = PBXGroup;
+			children = (
+				E7457ABC19F8018B00EFF7AC /* Assets */,
+				E7457AB819F8013100EFF7AC /* YTPlayerView.h */,
+				E7457AB919F8013100EFF7AC /* YTPlayerView.m */,
+			);
+			name = "YouTube player";
+			sourceTree = "<group>";
+		};
+		E7457ABC19F8018B00EFF7AC /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		E7EC06B519F6A52800BE3351 = {
@@ -192,6 +222,7 @@
 		E7EC06F019F6AA9E00BE3351 /* Support classes */ = {
 			isa = PBXGroup;
 			children = (
+				E7457ABB19F8017C00EFF7AC /* YouTube player */,
 				E7EC06F719F6AABC00BE3351 /* SoundManager.h */,
 				E7EC06F819F6AABC00BE3351 /* SoundManager.m */,
 				E7EC06F119F6AAB100BE3351 /* SKButtonNodeJRTB.h */,
@@ -216,6 +247,8 @@
 		E7EC06FB19F6AEBD00BE3351 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E7457AB619F7EFA900EFF7AC /* play_button@2x.png */,
+				E7457AB419F7E5F000EFF7AC /* fs350_01_firstframe@2x.png */,
 				E7457A1219F6C03800EFF7AC /* main_menu_button_04@2x.png */,
 				E7457A1319F6C03800EFF7AC /* main_menu_button_03@2x.png */,
 				E7457A1419F6C03800EFF7AC /* main_menu_button_02@2x.png */,
@@ -307,16 +340,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */,
 				E7EC06D719F6A52800BE3351 /* LaunchScreen.xib in Resources */,
+				E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */,
 				E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */,
 				E7EC06FD19F6AECB00BE3351 /* intro@2x.png in Resources */,
 				E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */,
+				E7457AB519F7E5F000EFF7AC /* fs350_01_firstframe@2x.png in Resources */,
 				E7EC06D419F6A52800BE3351 /* Images.xcassets in Resources */,
 				E7EC06FF19F6AF9E00BE3351 /* introBlock@2x.png in Resources */,
 				E7457A1619F6C03800EFF7AC /* main_menu_button_04@2x.png in Resources */,
 				E7457A1919F6C03800EFF7AC /* main_menu_button_01@2x.png in Resources */,
 				E7EC06D219F6A52800BE3351 /* Main.storyboard in Resources */,
 				E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */,
+				E7457AB319F7E54100EFF7AC /* fs350_01.mp4 in Resources */,
 				E7457A1719F6C03800EFF7AC /* main_menu_button_03@2x.png in Resources */,
 				E7457A1819F6C03800EFF7AC /* main_menu_button_02@2x.png in Resources */,
 			);
@@ -338,6 +375,7 @@
 			files = (
 				E7EC06CF19F6A52800BE3351 /* GameViewController.m in Sources */,
 				E7EC06F519F6AAB100BE3351 /* SKButtonNodeJRTB.m in Sources */,
+				E7457ABA19F8013100EFF7AC /* YTPlayerView.m in Sources */,
 				E7EC070619F6B49F00BE3351 /* iphoneMenuScene.m in Sources */,
 				E7EC06EF19F6AA7B00BE3351 /* iphoneIntroScene.m in Sources */,
 				E7EC06C719F6A52800BE3351 /* AppDelegate.m in Sources */,

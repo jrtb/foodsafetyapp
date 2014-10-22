@@ -157,6 +157,9 @@
     // Present the scene.
     [skView presentScene:scene];
     
+    player = [[AVQueuePlayer alloc] initWithPlayerItem:[AVPlayerItem playerItemWithAsset:nil]];
+    video = [SKVideoNode videoNodeWithAVPlayer:player];
+    
 }
 
 - (BOOL)shouldAutorotate
@@ -166,11 +169,7 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
-        return UIInterfaceOrientationMaskAll;
-    }
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)didReceiveMemoryWarning
