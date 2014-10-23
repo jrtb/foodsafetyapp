@@ -31,6 +31,11 @@
     YTPlayerView            *youTubePlayerView;
     
     BOOL                    youTubeVideoReady;
+    
+    SKSpriteNode            *overlay;
+    
+    SKEffectNode            *solarSystem;
+
 }
 
 @end

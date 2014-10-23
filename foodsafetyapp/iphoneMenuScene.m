@@ -48,6 +48,10 @@
         
         printf("iphoneAddY: %f\n",iphoneAddY);
         
+        solarSystem = [[SKEffectNode alloc] init];
+        solarSystem.position = CGPointMake(0.0,0.0);
+        [self addChild:solarSystem];
+
         SKButtonNodeJRTB *button_01 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"menu_button"];
         [button_01 initButton];
         button_01.name = @"menu";
@@ -55,7 +59,7 @@
         button_01.scale = primaryScale;
         button_01.position = CGPointMake(22.0,self.size.height-22.0);
         button_01.zPosition = 3;
-        [self addChild:button_01];
+        [solarSystem addChild:button_01];
 
         float spacing = 5.0;
         
@@ -64,28 +68,28 @@
         button_02.name = @"01";
         button_02.delegate = self;
         button_02.position = CGPointMake(self.size.width/2.0-button_02.size.width/2.0-spacing/2.0,button_02.size.height/2.0+button_02.size.height*1.0+spacing*2.0+iphoneAddY/2.0);
-        [self addChild:button_02];
+        [solarSystem addChild:button_02];
 
         SKButtonNodeJRTB *button_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_02"];
         [button_03 initButton];
         button_03.name = @"02";
         button_03.delegate = self;
         button_03.position = CGPointMake(self.size.width/2.0+button_02.size.width/2.0+spacing/2.0,button_02.size.height/2.0+button_02.size.height*1.0+spacing*2.0+iphoneAddY/2.0);
-        [self addChild:button_03];
+        [solarSystem addChild:button_03];
 
         SKButtonNodeJRTB *button_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_03"];
         [button_04 initButton];
         button_04.name = @"03";
         button_04.delegate = self;
         button_04.position = CGPointMake(self.size.width/2.0-button_02.size.width/2.0-spacing/2.0,button_02.size.height/2.0+button_02.size.height*0.0+spacing*1.0+iphoneAddY/2.0);
-        [self addChild:button_04];
+        [solarSystem addChild:button_04];
 
         SKButtonNodeJRTB *button_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_04"];
         [button_05 initButton];
         button_05.name = @"04";
         button_05.delegate = self;
         button_05.position = CGPointMake(self.size.width/2.0+button_02.size.width/2.0+spacing/2.0,button_02.size.height/2.0+button_02.size.height*0.0+spacing*1.0+iphoneAddY/2.0);
-        [self addChild:button_05];
+        [solarSystem addChild:button_05];
 
         SKLabelNode *aLetter = [SKLabelNode labelNodeWithFontNamed:@"Univers LT Std 57 Condensed"];
         aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY+32.0);
@@ -96,13 +100,13 @@
         aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         aLetter.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
         aLetter.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-        [self addChild:aLetter];
+        [solarSystem addChild:aLetter];
 
         SKSpriteNode *video1 = [SKSpriteNode spriteNodeWithImageNamed:@"fs350_01_firstframe"];
         video1.size = CGSizeMake(self.size.width, self.size.width/2.0);
         video1.anchorPoint = CGPointMake(0.5, 1.0);
         video1.position = CGPointMake(self.size.width*.5,self.size.height - iphoneAddY/2.0);
-        [self addChild: video1];
+        [solarSystem addChild: video1];
 
         playButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"play_button"];
         [playButton initButton];
@@ -111,7 +115,7 @@
         playButton.scale = primaryScale*.75;
         playButton.position = CGPointMake(self.size.width - playButton.size.width - spacing * 4,self.size.height + playButton.size.height - video1.size.height+spacing * 4);
         playButton.zPosition = 3;
-        [self addChild:playButton];
+        [solarSystem addChild:playButton];
 
         videoReady = NO;
         youTubeVideoReady = NO;
@@ -145,10 +149,23 @@
         youTubePlayerView.delegate = self;
         [youTubePlayerView loadWithVideoId:@"99FcrWNqNWY" playerVars:playerVars];
         
+        overlay = [SKSpriteNode spriteNodeWithImageNamed:@"menu_overlay"];
+        overlay.position = CGPointMake(self.size.width/2-self.size.width, self.size.height/2);
+        overlay.zPosition = 10;
+        [self addChild:overlay];
+        
         self.userInteractionEnabled = YES;
         
     }
     return self;
+}
+
+-(void)blurWithCompletion:(void (^)())handler{
+    CGFloat duration = 0.1f;
+    [self runAction:[SKAction customActionWithDuration:duration actionBlock:^(SKNode *node, CGFloat elapsedTime){
+        NSNumber *radius = [NSNumber numberWithFloat:(elapsedTime/duration) * 2.0];
+        [[(SKEffectNode *)node filter] setValue:radius forKey:@"inputRadius"];
+    }] completion:handler];
 }
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
@@ -242,6 +259,17 @@
         
         [self removeAllActions];
         [self stopMovie];
+
+        CIFilter *blur = [CIFilter filterWithName:@"CIGaussianBlur" keysAndValues:@"inputRadius", @20.0f, nil];
+        [solarSystem setFilter:blur];
+        [solarSystem setShouldRasterize:YES];
+        [solarSystem setShouldEnableEffects:YES];
+        //[solarSystem runAction:[SKAction fadeAlphaTo:0.66 duration:0.4]];
+        solarSystem.alpha = 0.66;
+        //[self blurWithCompletion:nil];
+
+        [overlay removeAllActions];
+        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5, self.size.height*.5) duration:1.0]];
         
     }
     
