@@ -15,6 +15,7 @@
 @interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate> {
     
     float                   iphoneAddY;
+    float                   iphoneAddX;
     
     float                   primaryScale;
     

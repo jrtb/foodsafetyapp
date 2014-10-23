@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "GameViewController.h"
 
+#import "UIImage+ImageEffects.h"
+
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
 @implementation iphoneMenuScene
@@ -37,15 +39,23 @@
          IS_IPHONE_6_PLUS 736
          */
         
-        if (IS_IPHONE_4)
+        if (IS_IPHONE_4) {
             iphoneAddY = (480.0-568.0)/2.0;
-        if (IS_IPHONE_5)
+            iphoneAddX = (320.0-320.0)/2.0;
+        }
+        if (IS_IPHONE_5) {
             iphoneAddY = (568-568.0)/2.0;
-        if (IS_IPHONE_6)
+            iphoneAddX = (320.0-320.0)/2.0;
+        }
+        if (IS_IPHONE_6) {
             iphoneAddY = (667-568.0)/2.0;
-        if (IS_IPHONE_6_PLUS)
+            iphoneAddX = (375.0-320.0)/2.0;
+        }
+        if (IS_IPHONE_6_PLUS) {
             iphoneAddY = (736-568.0)/2.0;
-        
+            iphoneAddX = (414.0-320.0)/2.0;
+        }
+
         printf("iphoneAddY: %f\n",iphoneAddY);
         
         solarSystem = [[SKEffectNode alloc] init];
@@ -92,7 +102,7 @@
         [solarSystem addChild:button_05];
 
         SKLabelNode *aLetter = [SKLabelNode labelNodeWithFontNamed:@"Univers LT Std 57 Condensed"];
-        aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY+32.0);
+        aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+32.0);
         aLetter.text = @"Food Safety and HACCP";
         aLetter.fontSize = 52.0;
         aLetter.scale = primaryScale;
@@ -105,7 +115,7 @@
         SKSpriteNode *video1 = [SKSpriteNode spriteNodeWithImageNamed:@"fs350_01_firstframe"];
         video1.size = CGSizeMake(self.size.width, self.size.width/2.0);
         video1.anchorPoint = CGPointMake(0.5, 1.0);
-        video1.position = CGPointMake(self.size.width*.5,self.size.height - iphoneAddY/2.0);
+        video1.position = CGPointMake(self.size.width*.5,self.size.height);
         [solarSystem addChild: video1];
 
         playButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"play_button"];
@@ -123,6 +133,14 @@
         SKAction *waitC = [SKAction waitForDuration:0.2];
         SKAction *goC = [SKAction runBlock:^{
             [self setupVideo];
+            
+            /*
+            CIFilter *blur = [CIFilter filterWithName:@"CIGaussianBlur" keysAndValues:@"inputRadius", @20.0f, nil];
+            [solarSystem setFilter:blur];
+            [solarSystem setShouldRasterize:YES];
+            [solarSystem setShouldEnableEffects:NO];
+             */
+
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
 
@@ -160,12 +178,45 @@
     return self;
 }
 
--(void)blurWithCompletion:(void (^)())handler{
-    CGFloat duration = 0.1f;
-    [self runAction:[SKAction customActionWithDuration:duration actionBlock:^(SKNode *node, CGFloat elapsedTime){
-        NSNumber *radius = [NSNumber numberWithFloat:(elapsedTime/duration) * 2.0];
-        [[(SKEffectNode *)node filter] setValue:radius forKey:@"inputRadius"];
-    }] completion:handler];
++ (UIImage *)screenshot
+{
+    CGSize imageSize = CGSizeZero;
+    
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIInterfaceOrientationIsPortrait(orientation)) {
+        imageSize = [UIScreen mainScreen].bounds.size;
+    } else {
+        imageSize = CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, window.center.x, window.center.y);
+        CGContextConcatCTM(context, window.transform);
+        CGContextTranslateCTM(context, -window.bounds.size.width * window.layer.anchorPoint.x, -window.bounds.size.height * window.layer.anchorPoint.y);
+        if (orientation == UIInterfaceOrientationLandscapeLeft) {
+            CGContextRotateCTM(context, M_PI_2);
+            CGContextTranslateCTM(context, 0, -imageSize.width);
+        } else if (orientation == UIInterfaceOrientationLandscapeRight) {
+            CGContextRotateCTM(context, -M_PI_2);
+            CGContextTranslateCTM(context, -imageSize.height, 0);
+        } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+            CGContextRotateCTM(context, M_PI);
+            CGContextTranslateCTM(context, -imageSize.width, -imageSize.height);
+        }
+        if ([window respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+            [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
+        } else {
+            [window.layer renderInContext:context];
+        }
+        CGContextRestoreGState(context);
+    }
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
@@ -246,8 +297,8 @@
     
     if ([sender.name isEqualToString:@"menu"]) {
         
-        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
         //[vc setScreenToggle:GAME_03];
         
@@ -260,17 +311,34 @@
         [self removeAllActions];
         [self stopMovie];
 
-        CIFilter *blur = [CIFilter filterWithName:@"CIGaussianBlur" keysAndValues:@"inputRadius", @20.0f, nil];
-        [solarSystem setFilter:blur];
-        [solarSystem setShouldRasterize:YES];
-        [solarSystem setShouldEnableEffects:YES];
-        //[solarSystem runAction:[SKAction fadeAlphaTo:0.66 duration:0.4]];
-        solarSystem.alpha = 0.66;
-        //[self blurWithCompletion:nil];
-
         [overlay removeAllActions];
-        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5, self.size.height*.5) duration:1.0]];
+        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:1.0]];
+
+        //[solarSystem setShouldEnableEffects:YES];
+        //[solarSystem runAction:[SKAction fadeAlphaTo:0.66 duration:0.4]];
+        //solarSystem.alpha = 0.66;
+
+        // Create the image context
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width), NO, 0);
         
+        // There he is! The new API method
+        [delegate.window drawViewHierarchyInRect:[UIScreen mainScreen].bounds afterScreenUpdates:NO];
+        
+        // Get the snapshot
+        UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+        
+        // Now apply the blur effect using Apple's UIImageEffect category
+        UIImage *blurredSnapshotImage = [snapshotImage applyLightEffect];
+        
+        // Or apply any other effects available in "UIImage+ImageEffects.h"
+        // UIImage *blurredSnapshotImage = [snapshotImage applyDarkEffect];
+        // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
+        
+        // Be nice and clean your mess up
+        UIGraphicsEndImageContext();
+
+        [vc.view addSubview:[[UIImageView alloc] initWithImage:blurredSnapshotImage]];
+
     }
     
     if ([sender.name isEqualToString:@"play"]) {

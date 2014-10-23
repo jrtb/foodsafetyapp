@@ -21,6 +21,7 @@
 		E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */; };
 		E7DACB4D19F9340600437D40 /* menu_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7DACB4B19F9340600437D40 /* menu_overlay@2x.png */; };
 		E7DACB4E19F9340600437D40 /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7DACB4C19F9340600437D40 /* back_button@2x.png */; };
+		E7E8417019F99BB300F13C9C /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E8416F19F99BB300F13C9C /* UIImage+ImageEffects.m */; };
 		E7EC06C419F6A52800BE3351 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06C319F6A52800BE3351 /* main.m */; };
 		E7EC06C719F6A52800BE3351 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06C619F6A52800BE3351 /* AppDelegate.m */; };
 		E7EC06CF19F6A52800BE3351 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EC06CE19F6A52800BE3351 /* GameViewController.m */; };
@@ -63,6 +64,8 @@
 		E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 		E7DACB4B19F9340600437D40 /* menu_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu_overlay@2x.png"; path = "images/menu_overlay@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7DACB4C19F9340600437D40 /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_button@2x.png"; path = "images/back_button@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7E8416E19F99BB300F13C9C /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		E7E8416F19F99BB300F13C9C /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		E7EC06BE19F6A52800BE3351 /* foodsafetyapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foodsafetyapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EC06C219F6A52800BE3351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7EC06C319F6A52800BE3351 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 		E7EC06F019F6AA9E00BE3351 /* Support classes */ = {
 			isa = PBXGroup;
 			children = (
+				E7E8416E19F99BB300F13C9C /* UIImage+ImageEffects.h */,
+				E7E8416F19F99BB300F13C9C /* UIImage+ImageEffects.m */,
 				E7457ABB19F8017C00EFF7AC /* YouTube player */,
 				E7EC06F719F6AABC00BE3351 /* SoundManager.h */,
 				E7EC06F819F6AABC00BE3351 /* SoundManager.m */,
@@ -388,6 +393,7 @@
 				E7EC070619F6B49F00BE3351 /* iphoneMenuScene.m in Sources */,
 				E7EC06EF19F6AA7B00BE3351 /* iphoneIntroScene.m in Sources */,
 				E7EC06C719F6A52800BE3351 /* AppDelegate.m in Sources */,
+				E7E8417019F99BB300F13C9C /* UIImage+ImageEffects.m in Sources */,
 				E7EC06F919F6AABC00BE3351 /* SoundManager.m in Sources */,
 				E7EC06F619F6AAB100BE3351 /* NSMutableArray+Shuffling.m in Sources */,
 				E7EC06C419F6A52800BE3351 /* main.m in Sources */,
