@@ -21,6 +21,8 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
+        menuOut = NO;
+        
         touched = NO;
         
         self.backgroundColor = [SKColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
@@ -197,10 +199,90 @@
         overlay.zPosition = 10;
         [self addChild:overlay];
         
+        UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc]
+                                                      initWithTarget:self action:@selector(handleSwipeGestureLeft:)];
+        [vc.view addGestureRecognizer:swipeGestureLeft];
+        swipeGestureLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+        
+        [swipeGestureLeft setDelegate:self];
+        
+        UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc]
+                                                       initWithTarget:self action:@selector(handleSwipeGestureRight:)];
+        swipeGestureRight.direction = UISwipeGestureRecognizerDirectionRight;
+        [vc.view addGestureRecognizer:swipeGestureRight];
+        
+        [swipeGestureRight setDelegate:self];
+
         self.userInteractionEnabled = YES;
         
     }
     return self;
+}
+
+- (void) handleSwipeGestureLeft: (id) sender
+{
+    printf("swipe left\n");
+    
+    if (menuOut) {
+        
+        menuOut = NO;
+        
+        [menuButton removeAllActions];
+        menuButton.enabled = YES;
+        [menuButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+        
+        [overlay removeAllActions];
+        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX-self.size.width, self.size.height*.5) duration:0.4]];
+        
+        [screenshotView runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+        
+        [backButton removeAllActions];
+        backButton.enabled = NO;
+        [backButton runAction:[SKAction moveTo:CGPointMake(22.0-self.size.width,self.size.height-22.0) duration:0.4]];
+        
+        SKAction *waitC = [SKAction waitForDuration:0.4];
+        SKAction *goC = [SKAction runBlock:^{
+            screenshotView.zPosition = -1;
+            backButton.zPosition = -1;
+        }];
+        [self runAction:[SKAction sequence:@[waitC,goC]]];
+        
+        //screenshotView.alpha = 1.0;
+        
+    }
+    
+}
+
+- (void) handleSwipeGestureRight: (id) sender
+{
+    printf("swipe right\n");
+    
+    if (!menuOut) {
+        
+        menuOut = YES;
+        
+        menuButton.enabled = NO;
+        [menuButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+        
+        [self removeAllActions];
+        [self stopMovie];
+        
+        [overlay removeAllActions];
+        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
+        
+        screenshotView.zPosition = 5;
+        [screenshotView runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+        
+        [backButton removeAllActions];
+        backButton.zPosition = 41;
+        backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+        backButton.enabled = YES;
+        [backButton runAction:[SKAction moveTo:CGPointMake(22.0,self.size.height-22.0) duration:0.4]];
+        
+        //screenshotView.alpha = 1.0;
+        
+    }
+    
 }
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
@@ -220,11 +302,25 @@
             NSLog(@"Paused playback");
             youTubePlayerView.delegate = nil;
             [youTubePlayerView removeFromSuperview];
+            if (showingSpinner) {
+                showingSpinner = NO;
+                [spinner stopAnimating];
+                [spinner removeFromSuperview];
+            }
+            [playButton setEnabled:YES];
+            [playButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
             break;
         case kYTPlayerStateEnded:
             NSLog(@"Ended playback");
             youTubePlayerView.delegate = nil;
             [youTubePlayerView removeFromSuperview];
+            if (showingSpinner) {
+                showingSpinner = NO;
+                [spinner stopAnimating];
+                [spinner removeFromSuperview];
+            }
+            [playButton setEnabled:YES];
+            [playButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
             break;
         default:
             break;
@@ -401,6 +497,8 @@
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
+        [self clean];
+        
         [vc setScreenToggle:PREREQ];
         [vc replaceTheScene];
         
@@ -413,25 +511,31 @@
         
         printf("menu button pressed\n");
         
-        menuButton.enabled = NO;
-        [menuButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
-        
-        [self removeAllActions];
-        [self stopMovie];
+        if (!menuOut) {
+            
+            menuOut = YES;
+            
+            menuButton.enabled = NO;
+            [menuButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+            
+            [self removeAllActions];
+            [self stopMovie];
+            
+            [overlay removeAllActions];
+            [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
+            
+            screenshotView.zPosition = 5;
+            [screenshotView runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+            
+            [backButton removeAllActions];
+            backButton.zPosition = 41;
+            backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+            backButton.enabled = YES;
+            [backButton runAction:[SKAction moveTo:CGPointMake(22.0,self.size.height-22.0) duration:0.4]];
+            
+            //screenshotView.alpha = 1.0;
 
-        [overlay removeAllActions];
-        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
-        
-        screenshotView.zPosition = 5;
-        [screenshotView runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
-        
-        [backButton removeAllActions];
-        backButton.zPosition = 41;
-        backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
-        backButton.enabled = YES;
-        [backButton runAction:[SKAction moveTo:CGPointMake(22.0,self.size.height-22.0) duration:0.4]];
-        
-        //screenshotView.alpha = 1.0;
+        }
 
     }
     
@@ -442,27 +546,33 @@
         
         printf("back button pressed\n");
         
-        [menuButton removeAllActions];
-        menuButton.enabled = YES;
-        [menuButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+        if (menuOut) {
+            
+            menuOut = NO;
+            
+            [menuButton removeAllActions];
+            menuButton.enabled = YES;
+            [menuButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+            
+            [overlay removeAllActions];
+            [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX-self.size.width, self.size.height*.5) duration:0.4]];
+            
+            [screenshotView runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+            
+            [backButton removeAllActions];
+            backButton.enabled = NO;
+            [backButton runAction:[SKAction moveTo:CGPointMake(22.0-self.size.width,self.size.height-22.0) duration:0.4]];
+            
+            SKAction *waitC = [SKAction waitForDuration:0.4];
+            SKAction *goC = [SKAction runBlock:^{
+                screenshotView.zPosition = -1;
+                backButton.zPosition = -1;
+            }];
+            [self runAction:[SKAction sequence:@[waitC,goC]]];
+            
+            //screenshotView.alpha = 1.0;
 
-        [overlay removeAllActions];
-        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX-self.size.width, self.size.height*.5) duration:0.4]];
-        
-        [screenshotView runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
-        
-        [backButton removeAllActions];
-        backButton.enabled = NO;
-        [backButton runAction:[SKAction moveTo:CGPointMake(22.0-self.size.width,self.size.height-22.0) duration:0.4]];
-        
-        SKAction *waitC = [SKAction waitForDuration:0.4];
-        SKAction *goC = [SKAction runBlock:^{
-            screenshotView.zPosition = -1;
-            backButton.zPosition = -1;
-        }];
-        [self runAction:[SKAction sequence:@[waitC,goC]]];
-
-        //screenshotView.alpha = 1.0;
+        }
         
     }
     
@@ -473,7 +583,26 @@
 
         if (youTubeVideoReady) {
 
+            [playButton setEnabled:NO];
+            [playButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+
+            if (showingSpinner) {
+                showingSpinner = NO;
+                [spinner stopAnimating];
+                [spinner removeFromSuperview];
+            }
+            showingSpinner = YES;
             
+            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            spinner.color = [UIColor grayColor];
+            spinner.hidesWhenStopped = YES;
+            [spinner startAnimating];
+            spinner.frame = CGRectMake(self.size.width - playButton.size.width - 5 * 4-30,self.size.height-(self.size.height + playButton.size.height - self.size.width/2.0+5 * 4)-30, 60, 60);
+            
+            UIViewController *vc = self.view.window.rootViewController;
+            
+            [vc.view addSubview:spinner];
+
             [[UIDevice currentDevice] setValue:
              [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
                                         forKey:@"orientation"];
@@ -523,7 +652,17 @@
 
 - (void) clean
 {
-    
+    if (youTubePlayerView != nil) {
+        youTubePlayerView.delegate = nil;
+        [youTubePlayerView removeFromSuperview];
+    }
+
+    if (showingSpinner) {
+        showingSpinner = NO;
+        [spinner stopAnimating];
+        [spinner removeFromSuperview];
+    }
+
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;
         [child removeAllActions];

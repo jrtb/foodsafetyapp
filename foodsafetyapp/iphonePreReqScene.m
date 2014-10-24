@@ -22,6 +22,7 @@
         /* Setup your scene here */
         
         touched = NO;
+        menuOut = NO;
         
         self.backgroundColor = [SKColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
         
@@ -146,7 +147,7 @@
         [solarSystem addChild:button_05];
         
         SKLabelNode *aLetter = [SKLabelNode labelNodeWithFontNamed:@"Univers LT Std 57 Condensed"];
-        if (IS_IPHONE_4)
+        if (IS_IPHONE_4 || IS_IPHONE_5)
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+16.0);
         else
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+32.0);
@@ -172,10 +173,100 @@
         overlay.zPosition = 10;
         [self addChild:overlay];
         
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
+        UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc]
+                                                      initWithTarget:self action:@selector(handleSwipeGestureLeft:)];
+        [vc.view addGestureRecognizer:swipeGestureLeft];
+        swipeGestureLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+        
+        [swipeGestureLeft setDelegate:self];
+        
+        UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc]
+                                                       initWithTarget:self action:@selector(handleSwipeGestureRight:)];
+        swipeGestureRight.direction = UISwipeGestureRecognizerDirectionRight;
+        [vc.view addGestureRecognizer:swipeGestureRight];
+        
+        [swipeGestureRight setDelegate:self];
+
         self.userInteractionEnabled = YES;
         
     }
     return self;
+}
+
+- (void) handleSwipeGestureLeft: (id) sender
+{
+    printf("swipe left\n");
+    
+    if (menuOut) {
+        
+        menuOut = NO;
+        
+        [menuButton removeAllActions];
+        menuButton.enabled = YES;
+        [menuButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+        
+        [overlay removeAllActions];
+        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX-self.size.width, self.size.height*.5) duration:0.4]];
+        
+        [screenshotView runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+        
+        [backButton removeAllActions];
+        backButton.enabled = NO;
+        [backButton runAction:[SKAction moveTo:CGPointMake(22.0-self.size.width,self.size.height-22.0) duration:0.4]];
+        
+        SKAction *waitC = [SKAction waitForDuration:0.4];
+        SKAction *goC = [SKAction runBlock:^{
+            screenshotView.zPosition = -1;
+            backButton.zPosition = -1;
+        }];
+        [self runAction:[SKAction sequence:@[waitC,goC]]];
+        
+        //screenshotView.alpha = 1.0;
+        
+    } else {
+        
+        printf("nav back button pressed\n");
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        [vc setScreenToggle:MENU];
+        [vc replaceTheScene];
+
+    }
+    
+}
+
+- (void) handleSwipeGestureRight: (id) sender
+{
+    printf("swipe right\n");
+    
+    if (!menuOut) {
+        
+        menuOut = YES;
+        
+        menuButton.enabled = NO;
+        [menuButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+        
+        [overlay removeAllActions];
+        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
+        
+        screenshotView.zPosition = 5;
+        [screenshotView runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+        
+        [backButton removeAllActions];
+        backButton.zPosition = 41;
+        backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+        backButton.enabled = YES;
+        [backButton runAction:[SKAction moveTo:CGPointMake(22.0,self.size.height-22.0) duration:0.4]];
+        
+        //screenshotView.alpha = 1.0;
+        
+    }
+    
 }
 
 - (void) getScreenshot {

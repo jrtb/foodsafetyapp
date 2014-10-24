@@ -12,7 +12,7 @@
 
 #import "YTPlayerView.h"
 
-@interface iphonePreReqScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate> {
+@interface iphonePreReqScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate, UIGestureRecognizerDelegate> {
     
     float                   iphoneAddY;
     float                   iphoneAddX;
@@ -43,6 +43,8 @@
     
     UIImage                 *screenshot;
     SKSpriteNode            *screenshotView;
+    
+    BOOL                    menuOut;
     
 }
 

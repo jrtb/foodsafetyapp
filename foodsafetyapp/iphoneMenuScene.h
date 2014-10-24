@@ -12,8 +12,12 @@
 
 #import "YTPlayerView.h"
 
-@interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate> {
+@interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate, UIGestureRecognizerDelegate> {
     
+    UIActivityIndicatorView     *spinner;
+    
+    BOOL                        showingSpinner;
+
     float                   iphoneAddY;
     float                   iphoneAddX;
     
@@ -42,6 +46,8 @@
     
     UIImage                 *screenshot;
     SKSpriteNode            *screenshotView;
+    
+    BOOL                    menuOut;
 
 }
 
