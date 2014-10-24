@@ -1,5 +1,5 @@
 //
-//  iphoneMenuScene.h
+//  iphonePreReqScene.h
 //  foodsafetyapp
 //
 //  Created by jrtb on 10/21/14.
@@ -12,7 +12,7 @@
 
 #import "YTPlayerView.h"
 
-@interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate> {
+@interface iphonePreReqScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate> {
     
     float                   iphoneAddY;
     float                   iphoneAddX;
@@ -24,14 +24,15 @@
     BOOL                    touched;
     
     BOOL                    videoReady;
-
+    
     float                   videoLength;
     
     SKButtonNodeJRTB        *playButton;
-
+    
     SKButtonNodeJRTB        *menuButton;
     SKButtonNodeJRTB        *backButton;
-
+    SKButtonNodeJRTB        *navBackButton;
+    
     YTPlayerView            *youTubePlayerView;
     
     BOOL                    youTubeVideoReady;
@@ -42,7 +43,7 @@
     
     UIImage                 *screenshot;
     SKSpriteNode            *screenshotView;
-
+    
 }
 
 @end

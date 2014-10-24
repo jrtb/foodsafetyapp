@@ -37,7 +37,11 @@
             iphoneAddX = 0.0;
             back = [SKSpriteNode spriteNodeWithImageNamed:@"intro"];
         }
-        
+
+        if (IS_IPHONE_4) {
+            back.scale = 0.8;
+        }
+
         back.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:back];
         

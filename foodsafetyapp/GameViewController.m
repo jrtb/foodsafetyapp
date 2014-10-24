@@ -15,6 +15,8 @@
 
 #import "iphoneMenuScene.h"
 
+#import "iphonePreReqScene.h"
+
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
@@ -116,6 +118,11 @@
             switch (screenToggle) {
                 case MENU: {
                     SKScene *aScene = [iphoneMenuScene sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
+                case PREREQ: {
+                    SKScene *aScene = [iphonePreReqScene sceneWithSize:skView.bounds.size];
                     [skView presentScene:aScene];
                     break;
                 }
