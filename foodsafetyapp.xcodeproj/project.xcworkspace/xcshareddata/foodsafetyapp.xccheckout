@@ -14,11 +14,11 @@
 		<string>github.com:jrtb/foodsafetyapp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>foodsafetyapp/foodsafetyapp.xcodeproj</string>
+	<string>foodsafetyapp.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>95B7F298015BDD3D4AF92EA92A205D336CB7C13C</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:jrtb/foodsafetyapp.git</string>

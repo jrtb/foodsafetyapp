@@ -504,6 +504,66 @@
         
     }
 
+    if ([sender.name isEqualToString:@"02"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("haccp button pressed\n");
+        
+        [self removeAllActions];
+        [self stopMovie];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        [self clean];
+        
+        [vc setScreenToggle:HACCP];
+        [vc replaceTheScene];
+        
+    }
+
+    if ([sender.name isEqualToString:@"03"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("careers button pressed\n");
+        
+        [self removeAllActions];
+        [self stopMovie];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        [self clean];
+        
+        [vc setScreenToggle:CAREERS];
+        [vc replaceTheScene];
+        
+    }
+
+    if ([sender.name isEqualToString:@"04"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("howling cow button pressed\n");
+        
+        [self removeAllActions];
+        [self stopMovie];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        [self clean];
+        
+        [vc setScreenToggle:HOWLINGCOW];
+        [vc replaceTheScene];
+        
+    }
+
     if ([sender.name isEqualToString:@"menu"]) {
         
         //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];

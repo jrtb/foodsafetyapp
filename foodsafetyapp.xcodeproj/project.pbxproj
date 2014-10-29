@@ -19,6 +19,21 @@
 		E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457AB619F7EFA900EFF7AC /* play_button@2x.png */; };
 		E7457ABA19F8013100EFF7AC /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7457AB919F8013100EFF7AC /* YTPlayerView.m */; };
 		E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */; };
+		E7A3CA791A0114BC0073725B /* howling_cow_button_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA741A0114BC0073725B /* howling_cow_button_04@2x.png */; };
+		E7A3CA7A1A0114BC0073725B /* howling_cow_button_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA751A0114BC0073725B /* howling_cow_button_03@2x.png */; };
+		E7A3CA7B1A0114BC0073725B /* howling_cow_button_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA761A0114BC0073725B /* howling_cow_button_02@2x.png */; };
+		E7A3CA7C1A0114BC0073725B /* howling_cow_button_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA771A0114BC0073725B /* howling_cow_button_01@2x.png */; };
+		E7A3CA7D1A0114BC0073725B /* howling_cow_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA781A0114BC0073725B /* howling_cow_top@2x.png */; };
+		E7A3CA801A0114D80073725B /* iphoneHowlingCowScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A3CA7F1A0114D80073725B /* iphoneHowlingCowScene.m */; };
+		E7A3CA861A0119540073725B /* haccp_button_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA811A0119540073725B /* haccp_button_04@2x.png */; };
+		E7A3CA871A0119540073725B /* haccp_button_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA821A0119540073725B /* haccp_button_03@2x.png */; };
+		E7A3CA881A0119540073725B /* haccp_button_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA831A0119540073725B /* haccp_button_02@2x.png */; };
+		E7A3CA891A0119540073725B /* haccp_button_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA841A0119540073725B /* haccp_button_01@2x.png */; };
+		E7A3CA8A1A0119540073725B /* haccp_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA851A0119540073725B /* haccp_top@2x.png */; };
+		E7A3CA8D1A0119650073725B /* iphoneHACCPScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A3CA8C1A0119650073725B /* iphoneHACCPScene.m */; };
+		E7BB5BF01A01208E00B9C0D7 /* iphoneCareersScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB5BEF1A01208E00B9C0D7 /* iphoneCareersScene.m */; };
+		E7BB5BF21A01210300B9C0D7 /* careers_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7BB5BF11A01210300B9C0D7 /* careers_top@2x.png */; };
+		E7BB5BF51A01243700B9C0D7 /* Careers.html in Resources */ = {isa = PBXBuildFile; fileRef = E7BB5BF41A01243700B9C0D7 /* Careers.html */; };
 		E7DACB4D19F9340600437D40 /* menu_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7DACB4B19F9340600437D40 /* menu_overlay@2x.png */; };
 		E7DACB4E19F9340600437D40 /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7DACB4C19F9340600437D40 /* back_button@2x.png */; };
 		E7E8417019F99BB300F13C9C /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E8416F19F99BB300F13C9C /* UIImage+ImageEffects.m */; };
@@ -69,6 +84,24 @@
 		E7457AB819F8013100EFF7AC /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		E7457AB919F8013100EFF7AC /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
+		E7A3CA741A0114BC0073725B /* howling_cow_button_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howling_cow_button_04@2x.png"; path = "images/howling_cow_button_04@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA751A0114BC0073725B /* howling_cow_button_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howling_cow_button_03@2x.png"; path = "images/howling_cow_button_03@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA761A0114BC0073725B /* howling_cow_button_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howling_cow_button_02@2x.png"; path = "images/howling_cow_button_02@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA771A0114BC0073725B /* howling_cow_button_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howling_cow_button_01@2x.png"; path = "images/howling_cow_button_01@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA781A0114BC0073725B /* howling_cow_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howling_cow_top@2x.png"; path = "images/howling_cow_top@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA7E1A0114D80073725B /* iphoneHowlingCowScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneHowlingCowScene.h; sourceTree = "<group>"; };
+		E7A3CA7F1A0114D80073725B /* iphoneHowlingCowScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneHowlingCowScene.m; sourceTree = "<group>"; };
+		E7A3CA811A0119540073725B /* haccp_button_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "haccp_button_04@2x.png"; path = "images/haccp_button_04@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA821A0119540073725B /* haccp_button_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "haccp_button_03@2x.png"; path = "images/haccp_button_03@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA831A0119540073725B /* haccp_button_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "haccp_button_02@2x.png"; path = "images/haccp_button_02@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA841A0119540073725B /* haccp_button_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "haccp_button_01@2x.png"; path = "images/haccp_button_01@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA851A0119540073725B /* haccp_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "haccp_top@2x.png"; path = "images/haccp_top@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7A3CA8B1A0119650073725B /* iphoneHACCPScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneHACCPScene.h; sourceTree = "<group>"; };
+		E7A3CA8C1A0119650073725B /* iphoneHACCPScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneHACCPScene.m; sourceTree = "<group>"; };
+		E7BB5BEE1A01208E00B9C0D7 /* iphoneCareersScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneCareersScene.h; sourceTree = "<group>"; };
+		E7BB5BEF1A01208E00B9C0D7 /* iphoneCareersScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneCareersScene.m; sourceTree = "<group>"; };
+		E7BB5BF11A01210300B9C0D7 /* careers_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "careers_top@2x.png"; path = "images/careers_top@2x.png"; sourceTree = SOURCE_ROOT; };
+		E7BB5BF41A01243700B9C0D7 /* Careers.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Careers.html; path = content/Careers.html; sourceTree = SOURCE_ROOT; };
 		E7DACB4B19F9340600437D40 /* menu_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu_overlay@2x.png"; path = "images/menu_overlay@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7DACB4C19F9340600437D40 /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_button@2x.png"; path = "images/back_button@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7E8416E19F99BB300F13C9C /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -168,6 +201,14 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		E7BB5BF31A01242E00B9C0D7 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				E7BB5BF41A01243700B9C0D7 /* Careers.html */,
+			);
+			name = Content;
+			sourceTree = "<group>";
+		};
 		E7EC06B519F6A52800BE3351 = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +280,12 @@
 				E7EC070519F6B49F00BE3351 /* iphoneMenuScene.m */,
 				E7E8417119FAA0B100F13C9C /* iphonePreReqScene.h */,
 				E7E8417219FAA0B100F13C9C /* iphonePreReqScene.m */,
+				E7A3CA7E1A0114D80073725B /* iphoneHowlingCowScene.h */,
+				E7A3CA7F1A0114D80073725B /* iphoneHowlingCowScene.m */,
+				E7A3CA8B1A0119650073725B /* iphoneHACCPScene.h */,
+				E7A3CA8C1A0119650073725B /* iphoneHACCPScene.m */,
+				E7BB5BEE1A01208E00B9C0D7 /* iphoneCareersScene.h */,
+				E7BB5BEF1A01208E00B9C0D7 /* iphoneCareersScene.m */,
 			);
 			name = "iPhone scenes";
 			sourceTree = "<group>";
@@ -262,6 +309,7 @@
 		E7EC06FA19F6AEB700BE3351 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E7BB5BF31A01242E00B9C0D7 /* Content */,
 				E7457A1A19F6CC0500EFF7AC /* Movies */,
 				E7457A0D19F6BBF000EFF7AC /* Sounds */,
 				E7457A0C19F6B92D00EFF7AC /* Fonts */,
@@ -273,6 +321,17 @@
 		E7EC06FB19F6AEBD00BE3351 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E7BB5BF11A01210300B9C0D7 /* careers_top@2x.png */,
+				E7A3CA811A0119540073725B /* haccp_button_04@2x.png */,
+				E7A3CA821A0119540073725B /* haccp_button_03@2x.png */,
+				E7A3CA831A0119540073725B /* haccp_button_02@2x.png */,
+				E7A3CA841A0119540073725B /* haccp_button_01@2x.png */,
+				E7A3CA851A0119540073725B /* haccp_top@2x.png */,
+				E7A3CA741A0114BC0073725B /* howling_cow_button_04@2x.png */,
+				E7A3CA751A0114BC0073725B /* howling_cow_button_03@2x.png */,
+				E7A3CA761A0114BC0073725B /* howling_cow_button_02@2x.png */,
+				E7A3CA771A0114BC0073725B /* howling_cow_button_01@2x.png */,
+				E7A3CA781A0114BC0073725B /* howling_cow_top@2x.png */,
 				E7E8417419FAA81300F13C9C /* prereq_menu_top@2x.png */,
 				E7E8417519FAA81300F13C9C /* prereq_menu_04@2x.png */,
 				E7E8417619FAA81300F13C9C /* prereq_menu_03@2x.png */,
@@ -375,26 +434,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A3CA871A0119540073725B /* haccp_button_03@2x.png in Resources */,
+				E7A3CA7C1A0114BC0073725B /* howling_cow_button_01@2x.png in Resources */,
 				E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */,
 				E7EC06D719F6A52800BE3351 /* LaunchScreen.xib in Resources */,
 				E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */,
+				E7BB5BF51A01243700B9C0D7 /* Careers.html in Resources */,
 				E7E8417A19FAA81300F13C9C /* prereq_menu_top@2x.png in Resources */,
+				E7A3CA7B1A0114BC0073725B /* howling_cow_button_02@2x.png in Resources */,
+				E7A3CA861A0119540073725B /* haccp_button_04@2x.png in Resources */,
+				E7A3CA891A0119540073725B /* haccp_button_01@2x.png in Resources */,
 				E7E8417B19FAA81300F13C9C /* prereq_menu_04@2x.png in Resources */,
 				E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */,
 				E7DACB4D19F9340600437D40 /* menu_overlay@2x.png in Resources */,
 				E7DACB4E19F9340600437D40 /* back_button@2x.png in Resources */,
 				E7E8417D19FAA81300F13C9C /* prereq_menu_02@2x.png in Resources */,
 				E7EC06FD19F6AECB00BE3351 /* intro@2x.png in Resources */,
+				E7A3CA881A0119540073725B /* haccp_button_02@2x.png in Resources */,
+				E7A3CA8A1A0119540073725B /* haccp_top@2x.png in Resources */,
 				E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */,
 				E7457AB519F7E5F000EFF7AC /* fs350_01_firstframe@2x.png in Resources */,
 				E7EC06D419F6A52800BE3351 /* Images.xcassets in Resources */,
+				E7BB5BF21A01210300B9C0D7 /* careers_top@2x.png in Resources */,
 				E7EC06FF19F6AF9E00BE3351 /* introBlock@2x.png in Resources */,
+				E7A3CA7A1A0114BC0073725B /* howling_cow_button_03@2x.png in Resources */,
 				E7457A1619F6C03800EFF7AC /* main_menu_button_04@2x.png in Resources */,
 				E7457A1919F6C03800EFF7AC /* main_menu_button_01@2x.png in Resources */,
 				E7EC06D219F6A52800BE3351 /* Main.storyboard in Resources */,
 				E7E8417F19FAA81300F13C9C /* green_back_button@2x.png in Resources */,
+				E7A3CA7D1A0114BC0073725B /* howling_cow_top@2x.png in Resources */,
 				E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */,
 				E7457AB319F7E54100EFF7AC /* fs350_01.mp4 in Resources */,
+				E7A3CA791A0114BC0073725B /* howling_cow_button_04@2x.png in Resources */,
 				E7E8417E19FAA81300F13C9C /* prereq_menu_01@2x.png in Resources */,
 				E7457A1719F6C03800EFF7AC /* main_menu_button_03@2x.png in Resources */,
 				E7457A1819F6C03800EFF7AC /* main_menu_button_02@2x.png in Resources */,
@@ -416,7 +487,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A3CA801A0114D80073725B /* iphoneHowlingCowScene.m in Sources */,
 				E7EC06CF19F6A52800BE3351 /* GameViewController.m in Sources */,
+				E7A3CA8D1A0119650073725B /* iphoneHACCPScene.m in Sources */,
+				E7BB5BF01A01208E00B9C0D7 /* iphoneCareersScene.m in Sources */,
 				E7E8417319FAA0B100F13C9C /* iphonePreReqScene.m in Sources */,
 				E7EC06F519F6AAB100BE3351 /* SKButtonNodeJRTB.m in Sources */,
 				E7457ABA19F8013100EFF7AC /* YTPlayerView.m in Sources */,
@@ -485,8 +559,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -506,7 +580,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "FAABD933-99EA-492C-9B61-1C019A4443B2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -528,8 +602,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -542,7 +616,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "FAABD933-99EA-492C-9B61-1C019A4443B2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -552,12 +626,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = foodsafetyapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "FAABD933-99EA-492C-9B61-1C019A4443B2";
 			};
 			name = Debug;
 		};
@@ -565,12 +639,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = foodsafetyapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "FAABD933-99EA-492C-9B61-1C019A4443B2";
 			};
 			name = Release;
 		};

@@ -1,12 +1,12 @@
 //
-//  iphonePreReqScene.m
+//  iphoneHACCPScene.m
 //  foodsafetyapp
 //
 //  Created by jrtb on 10/21/14.
 //  Copyright (c) 2014 NC State. All rights reserved.
 //
 
-#import "iphonePreReqScene.h"
+#import "iphoneHACCPScene.h"
 
 #import "AppDelegate.h"
 #import "GameViewController.h"
@@ -15,7 +15,7 @@
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
-@implementation iphonePreReqScene
+@implementation iphoneHACCPScene
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -92,7 +92,7 @@
         navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
         navBackButton.zPosition = 4;
         [solarSystem addChild:navBackButton];
-
+        
         float spacing = 5.0;
         
         float buttonSize = 152.5;
@@ -106,8 +106,8 @@
             iphoneAddY -= 52.0;
         }
         buttonSize = buttonSize * buttonScale;
-
-        SKSpriteNode *top = [SKSpriteNode spriteNodeWithImageNamed:@"prereq_menu_top"];
+        
+        SKSpriteNode *top = [SKSpriteNode spriteNodeWithImageNamed:@"haccp_top"];
         top.position = CGPointMake(self.size.width/2, self.size.height);
         top.anchorPoint = CGPointMake(0.5, 1.0);
         float newWidth = self.size.width;
@@ -116,8 +116,8 @@
         top.zPosition = 2;
         top.scale = buttonScale * factor;
         [solarSystem addChild:top];
-
-        SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"prereq_menu_01"];
+        
+        SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"haccp_button_01"];
         [button_02 initButton];
         button_02.name = @"01";
         button_02.delegate = self;
@@ -125,7 +125,7 @@
         button_02.scale = buttonScale;
         [solarSystem addChild:button_02];
         
-        SKButtonNodeJRTB *button_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"prereq_menu_02"];
+        SKButtonNodeJRTB *button_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"haccp_button_02"];
         [button_03 initButton];
         button_03.name = @"02";
         button_03.delegate = self;
@@ -133,7 +133,7 @@
         button_03.scale = buttonScale;
         [solarSystem addChild:button_03];
         
-        SKButtonNodeJRTB *button_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"prereq_menu_03"];
+        SKButtonNodeJRTB *button_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"haccp_button_03"];
         [button_04 initButton];
         button_04.name = @"03";
         button_04.delegate = self;
@@ -141,7 +141,7 @@
         button_04.scale = buttonScale;
         [solarSystem addChild:button_04];
         
-        SKButtonNodeJRTB *button_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"prereq_menu_04"];
+        SKButtonNodeJRTB *button_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"haccp_button_04"];
         [button_05 initButton];
         button_05.name = @"04";
         button_05.delegate = self;
@@ -154,8 +154,10 @@
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+16.0);
         else
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+32.0);
-        aLetter.text = @"Pre-Requisite Programs";
+        aLetter.text = @"HACCP";
         aLetter.fontSize = 52.0;
+        if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
+            aLetter.fontSize += 24;
         aLetter.scale = primaryScale * buttonScale;
         aLetter.zPosition = 1;
         aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
@@ -178,7 +180,7 @@
         
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-
+        
         UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc]
                                                       initWithTarget:self action:@selector(handleSwipeGestureLeft:)];
         [vc.view addGestureRecognizer:swipeGestureLeft];
@@ -192,7 +194,7 @@
         [vc.view addGestureRecognizer:swipeGestureRight];
         
         [swipeGestureRight setDelegate:self];
-
+        
         self.userInteractionEnabled = YES;
         
     }
@@ -240,7 +242,7 @@
 
         [vc setScreenToggle:MENU];
         [vc replaceTheScene];
-
+        
     }
     
 }
@@ -356,7 +358,7 @@
         [vc replaceTheScene];
         
     }
-
+    
     if ([sender.name isEqualToString:@"menu"]) {
         
         //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
@@ -378,7 +380,7 @@
         backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
         backButton.enabled = YES;
         [backButton runAction:[SKAction moveTo:CGPointMake(22.0,self.size.height-22.0) duration:0.4]];
-                
+        
     }
     
     if ([sender.name isEqualToString:@"back"]) {
@@ -442,7 +444,7 @@
 
 - (void)dealloc {
     
-    printf("prereq scene dealloc\n");
+    printf("haccp scene dealloc\n");
 }
 
 @end

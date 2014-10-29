@@ -14,6 +14,9 @@
 #define INTRO 151
 #define MENU 152
 #define PREREQ 153
+#define HOWLINGCOW 154
+#define HACCP 155
+#define CAREERS 156
 
 @interface GameViewController : UIViewController
 

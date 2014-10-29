@@ -17,6 +17,12 @@
 
 #import "iphonePreReqScene.h"
 
+#import "iphoneHowlingCowScene.h"
+
+#import "iphoneHACCPScene.h"
+
+#import "iphoneCareersScene.h"
+
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
@@ -123,6 +129,21 @@
                 }
                 case PREREQ: {
                     SKScene *aScene = [iphonePreReqScene sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
+                case HOWLINGCOW: {
+                    SKScene *aScene = [iphoneHowlingCowScene sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
+                case HACCP: {
+                    SKScene *aScene = [iphoneHACCPScene sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
+                case CAREERS: {
+                    SKScene *aScene = [iphoneCareersScene sceneWithSize:skView.bounds.size];
                     [skView presentScene:aScene];
                     break;
                 }
