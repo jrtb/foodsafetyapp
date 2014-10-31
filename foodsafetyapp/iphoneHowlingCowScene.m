@@ -110,8 +110,10 @@
         SKSpriteNode *top = [SKSpriteNode spriteNodeWithImageNamed:@"howling_cow_top"];
         top.position = CGPointMake(self.size.width/2, self.size.height);
         top.anchorPoint = CGPointMake(0.5, 1.0);
-        float newWidth = self.size.width;
+        float newWidth = self.size.width / buttonScale;
         float factor = newWidth / top.size.width;
+        if (IS_IPHONE_4)
+            factor = factor * .8;
         //printf("old width: %f, new width: %f, factor: %f\n",top.size.width,newWidth,factor);
         top.zPosition = 2;
         top.scale = buttonScale * factor;
