@@ -125,6 +125,21 @@
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
 
+        if (showingSpinner) {
+            showingSpinner = NO;
+            [spinner stopAnimating];
+            [spinner removeFromSuperview];
+        }
+        showingSpinner = YES;
+        
+        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        spinner.color = [UIColor grayColor];
+        spinner.hidesWhenStopped = YES;
+        [spinner startAnimating];
+        spinner.frame = CGRectMake(self.size.width*0.5, self.size.height*0.5, 60, 60);
+        
+        [vc.view addSubview:spinner];
+
         NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"Careers" ofType:@"html"];
         NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
 
@@ -150,10 +165,58 @@
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
-        overlay = [SKSpriteNode spriteNodeWithImageNamed:@"menu_overlay"];
+        overlay = [SKSpriteNode spriteNodeWithImageNamed:@"menu_overlay2"];
         overlay.position = CGPointMake(self.size.width/2-self.size.width, self.size.height/2);
         overlay.zPosition = 10;
         [self addChild:overlay];
+        
+        SKButtonNodeJRTB *overlayButton_01 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_01"];
+        [overlayButton_01 initButton];
+        overlayButton_01.name = @"overlay_01";
+        overlayButton_01.delegate = self;
+        overlayButton_01.position = CGPointMake(-32.0,67.0);
+        overlayButton_01.zPosition = 3;
+        [overlay addChild:overlayButton_01];
+        
+        SKButtonNodeJRTB *overlayButton_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_02"];
+        [overlayButton_02 initButton];
+        overlayButton_02.name = @"overlay_02";
+        overlayButton_02.delegate = self;
+        overlayButton_02.position = CGPointMake(-32.0,67.0-55.0);
+        overlayButton_02.zPosition = 3;
+        [overlay addChild:overlayButton_02];
+        
+        SKButtonNodeJRTB *overlayButton_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_03"];
+        [overlayButton_03 initButton];
+        overlayButton_03.name = @"overlay_03";
+        overlayButton_03.delegate = self;
+        overlayButton_03.position = CGPointMake(-32.0,67.0-55.0*2);
+        overlayButton_03.zPosition = 3;
+        [overlay addChild:overlayButton_03];
+        
+        SKButtonNodeJRTB *overlayButton_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_04"];
+        [overlayButton_04 initButton];
+        overlayButton_04.name = @"overlay_04";
+        overlayButton_04.delegate = self;
+        overlayButton_04.position = CGPointMake(-32.0,67.0-55.0*3);
+        overlayButton_04.zPosition = 3;
+        [overlay addChild:overlayButton_04];
+        
+        SKButtonNodeJRTB *overlayButton_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_05"];
+        [overlayButton_05 initButton];
+        overlayButton_05.name = @"overlay_05";
+        overlayButton_05.delegate = self;
+        overlayButton_05.position = CGPointMake(-32.0,67.0-55.0*4);
+        overlayButton_05.zPosition = 3;
+        [overlay addChild:overlayButton_05];
+        
+        SKButtonNodeJRTB *overlayButton_06 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_06"];
+        [overlayButton_06 initButton];
+        overlayButton_06.name = @"overlay_06";
+        overlayButton_06.delegate = self;
+        overlayButton_06.position = CGPointMake(-32.0,67.0-55.0*5);
+        overlayButton_06.zPosition = 3;
+        [overlay addChild:overlayButton_06];
         
         UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc]
                                                       initWithTarget:self action:@selector(handleSwipeGestureLeft:)];
@@ -173,6 +236,26 @@
         
     }
     return self;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    if (showingSpinner) {
+        showingSpinner = NO;
+        [spinner stopAnimating];
+        [spinner removeFromSuperview];
+    }
+
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    if (showingSpinner) {
+        showingSpinner = NO;
+        [spinner stopAnimating];
+        [spinner removeFromSuperview];
+    }
+
 }
 
 - (void) handleSwipeGestureLeft: (id) sender
@@ -319,6 +402,61 @@
 
 - (void) buttonPushed: (SKButtonNodeJRTB *) sender {
     
+    if ([sender.name isEqualToString:@"overlay_01"]) {
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        [vc setScreenToggle:PREREQ];
+        [vc replaceTheScene];
+    }
+    if ([sender.name isEqualToString:@"overlay_02"]) {
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        [vc setScreenToggle:HACCP];
+        [vc replaceTheScene];
+    }
+    if ([sender.name isEqualToString:@"overlay_03"]) {
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        [vc setScreenToggle:CAREERS];
+        [vc replaceTheScene];
+    }
+    if ([sender.name isEqualToString:@"overlay_04"]) {
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        [vc setScreenToggle:HOWLINGCOW];
+        [vc replaceTheScene];
+    }
+    if ([sender.name isEqualToString:@"overlay_05"]) {
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        [vc setScreenToggle:MENU];
+        [vc replaceTheScene];
+    }
+    if ([sender.name isEqualToString:@"overlay_06"]) {
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        [vc setScreenToggle:MENU];
+        [vc replaceTheScene];
+    }
+
     if ([sender.name isEqualToString:@"navback"]) {
         
         //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];

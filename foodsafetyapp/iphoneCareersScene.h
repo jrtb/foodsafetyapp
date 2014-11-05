@@ -48,6 +48,10 @@
     
     UIWebView               *webView;
     
+    UIActivityIndicatorView     *spinner;
+    
+    BOOL                        showingSpinner;
+
 }
 
 @end
