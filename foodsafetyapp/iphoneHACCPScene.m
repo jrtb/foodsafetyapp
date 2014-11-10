@@ -526,9 +526,31 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
-    if (!touched) {
+    if (menuOut) {
         
-        touched = YES;
+        menuOut = NO;
+        
+        [menuButton removeAllActions];
+        menuButton.enabled = YES;
+        [menuButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+        
+        [overlay removeAllActions];
+        [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX-self.size.width, self.size.height*.5) duration:0.4]];
+        
+        [screenshotView runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+        
+        [backButton removeAllActions];
+        backButton.enabled = NO;
+        [backButton runAction:[SKAction moveTo:CGPointMake(22.0-self.size.width,self.size.height-22.0) duration:0.4]];
+        
+        SKAction *waitC = [SKAction waitForDuration:0.4];
+        SKAction *goC = [SKAction runBlock:^{
+            screenshotView.zPosition = -1;
+            backButton.zPosition = -1;
+        }];
+        [self runAction:[SKAction sequence:@[waitC,goC]]];
+        
+        //screenshotView.alpha = 1.0;
         
     }
 }
