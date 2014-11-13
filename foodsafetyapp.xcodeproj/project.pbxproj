@@ -19,6 +19,13 @@
 		E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457AB619F7EFA900EFF7AC /* play_button@2x.png */; };
 		E7457ABA19F8013100EFF7AC /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7457AB919F8013100EFF7AC /* YTPlayerView.m */; };
 		E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */; };
+		E778F8351A13BE9600BE12F4 /* iphoneFS295Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = E778F8341A13BE9600BE12F4 /* iphoneFS295Scene.m */; };
+		E778F8381A13C61400BE12F4 /* DSMultilineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E778F8371A13C61400BE12F4 /* DSMultilineLabelNode.m */; };
+		E778F9671A13DA0600BE12F4 /* module_01 in Resources */ = {isa = PBXBuildFile; fileRef = E778F9661A13DA0600BE12F4 /* module_01 */; };
+		E778F9691A13EA1600BE12F4 /* clint_stevenson_intro.html in Resources */ = {isa = PBXBuildFile; fileRef = E778F9681A13EA1600BE12F4 /* clint_stevenson_intro.html */; };
+		E778F96C1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E778F96B1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.m */; };
+		E778F96E1A13ED4C00BE12F4 /* clint_intro_small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E778F96D1A13ED4C00BE12F4 /* clint_intro_small.mp4 */; };
+		E778F9701A13EEEB00BE12F4 /* clint_intro_firstframe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E778F96F1A13EEEB00BE12F4 /* clint_intro_firstframe@2x.png */; };
 		E7A3CA791A0114BC0073725B /* howling_cow_button_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA741A0114BC0073725B /* howling_cow_button_04@2x.png */; };
 		E7A3CA7A1A0114BC0073725B /* howling_cow_button_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA751A0114BC0073725B /* howling_cow_button_03@2x.png */; };
 		E7A3CA7B1A0114BC0073725B /* howling_cow_button_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A3CA761A0114BC0073725B /* howling_cow_button_02@2x.png */; };
@@ -91,6 +98,16 @@
 		E7457AB819F8013100EFF7AC /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		E7457AB919F8013100EFF7AC /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		E7457ABD19F8018B00EFF7AC /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
+		E778F8331A13BE9600BE12F4 /* iphoneFS295Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneFS295Scene.h; sourceTree = "<group>"; };
+		E778F8341A13BE9600BE12F4 /* iphoneFS295Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneFS295Scene.m; sourceTree = "<group>"; };
+		E778F8361A13C61400BE12F4 /* DSMultilineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMultilineLabelNode.h; sourceTree = "<group>"; };
+		E778F8371A13C61400BE12F4 /* DSMultilineLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSMultilineLabelNode.m; sourceTree = "<group>"; };
+		E778F9661A13DA0600BE12F4 /* module_01 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = module_01; path = content/module_01; sourceTree = SOURCE_ROOT; };
+		E778F9681A13EA1600BE12F4 /* clint_stevenson_intro.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = clint_stevenson_intro.html; path = content/clint_stevenson_intro.html; sourceTree = SOURCE_ROOT; };
+		E778F96A1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneClintStevensonIntroScene.h; sourceTree = "<group>"; };
+		E778F96B1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneClintStevensonIntroScene.m; sourceTree = "<group>"; };
+		E778F96D1A13ED4C00BE12F4 /* clint_intro_small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = clint_intro_small.mp4; path = movies/clint_intro_small.mp4; sourceTree = SOURCE_ROOT; };
+		E778F96F1A13EEEB00BE12F4 /* clint_intro_firstframe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clint_intro_firstframe@2x.png"; path = "images/clint_intro_firstframe@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7A3CA741A0114BC0073725B /* howling_cow_button_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howling_cow_button_04@2x.png"; path = "images/howling_cow_button_04@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7A3CA751A0114BC0073725B /* howling_cow_button_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howling_cow_button_03@2x.png"; path = "images/howling_cow_button_03@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7A3CA761A0114BC0073725B /* howling_cow_button_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howling_cow_button_02@2x.png"; path = "images/howling_cow_button_02@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -192,6 +209,7 @@
 		E7457A1A19F6CC0500EFF7AC /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				E778F96D1A13ED4C00BE12F4 /* clint_intro_small.mp4 */,
 				E7457AB219F7E54100EFF7AC /* fs350_01.mp4 */,
 			);
 			name = Movies;
@@ -218,7 +236,9 @@
 		E7BB5BF31A01242E00B9C0D7 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				E778F9661A13DA0600BE12F4 /* module_01 */,
 				E7BB5BF41A01243700B9C0D7 /* Careers.html */,
+				E778F9681A13EA1600BE12F4 /* clint_stevenson_intro.html */,
 			);
 			name = Content;
 			sourceTree = "<group>";
@@ -300,6 +320,10 @@
 				E7A3CA8C1A0119650073725B /* iphoneHACCPScene.m */,
 				E7BB5BEE1A01208E00B9C0D7 /* iphoneCareersScene.h */,
 				E7BB5BEF1A01208E00B9C0D7 /* iphoneCareersScene.m */,
+				E778F8331A13BE9600BE12F4 /* iphoneFS295Scene.h */,
+				E778F8341A13BE9600BE12F4 /* iphoneFS295Scene.m */,
+				E778F96A1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.h */,
+				E778F96B1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.m */,
 			);
 			name = "iPhone scenes";
 			sourceTree = "<group>";
@@ -314,6 +338,8 @@
 				E7EC06F819F6AABC00BE3351 /* SoundManager.m */,
 				E7EC06F119F6AAB100BE3351 /* SKButtonNodeJRTB.h */,
 				E7EC06F219F6AAB100BE3351 /* SKButtonNodeJRTB.m */,
+				E778F8361A13C61400BE12F4 /* DSMultilineLabelNode.h */,
+				E778F8371A13C61400BE12F4 /* DSMultilineLabelNode.m */,
 				E7EC06F319F6AAB100BE3351 /* NSMutableArray+Shuffling.h */,
 				E7EC06F419F6AAB100BE3351 /* NSMutableArray+Shuffling.m */,
 			);
@@ -335,6 +361,7 @@
 		E7EC06FB19F6AEBD00BE3351 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E778F96F1A13EEEB00BE12F4 /* clint_intro_firstframe@2x.png */,
 				E7FA9D921A0AABAD002ACEF4 /* menu_overlay2@2x.png */,
 				E7FA9D931A0AABAD002ACEF4 /* side_menu_button_06@2x.png */,
 				E7FA9D941A0AABAD002ACEF4 /* side_menu_button_05@2x.png */,
@@ -458,6 +485,7 @@
 				E7A3CA871A0119540073725B /* haccp_button_03@2x.png in Resources */,
 				E7FA9D9F1A0AABAD002ACEF4 /* side_menu_button_01@2x.png in Resources */,
 				E7A3CA7C1A0114BC0073725B /* howling_cow_button_01@2x.png in Resources */,
+				E778F96E1A13ED4C00BE12F4 /* clint_intro_small.mp4 in Resources */,
 				E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */,
 				E7EC06D719F6A52800BE3351 /* LaunchScreen.xib in Resources */,
 				E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */,
@@ -471,6 +499,7 @@
 				E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */,
 				E7DACB4D19F9340600437D40 /* menu_overlay@2x.png in Resources */,
 				E7DACB4E19F9340600437D40 /* back_button@2x.png in Resources */,
+				E778F9701A13EEEB00BE12F4 /* clint_intro_firstframe@2x.png in Resources */,
 				E7FA9D991A0AABAD002ACEF4 /* menu_overlay2@2x.png in Resources */,
 				E7FA9D9D1A0AABAD002ACEF4 /* side_menu_button_03@2x.png in Resources */,
 				E7E8417D19FAA81300F13C9C /* prereq_menu_02@2x.png in Resources */,
@@ -489,6 +518,7 @@
 				E7FA9D9E1A0AABAD002ACEF4 /* side_menu_button_02@2x.png in Resources */,
 				E7457A1919F6C03800EFF7AC /* main_menu_button_01@2x.png in Resources */,
 				E7EC06D219F6A52800BE3351 /* Main.storyboard in Resources */,
+				E778F9691A13EA1600BE12F4 /* clint_stevenson_intro.html in Resources */,
 				E7E8417F19FAA81300F13C9C /* green_back_button@2x.png in Resources */,
 				E7A3CA7D1A0114BC0073725B /* howling_cow_top@2x.png in Resources */,
 				E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */,
@@ -498,6 +528,7 @@
 				E7457A1719F6C03800EFF7AC /* main_menu_button_03@2x.png in Resources */,
 				E7457A1819F6C03800EFF7AC /* main_menu_button_02@2x.png in Resources */,
 				E7E8417C19FAA81300F13C9C /* prereq_menu_03@2x.png in Resources */,
+				E778F9671A13DA0600BE12F4 /* module_01 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,7 +547,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A3CA801A0114D80073725B /* iphoneHowlingCowScene.m in Sources */,
+				E778F8381A13C61400BE12F4 /* DSMultilineLabelNode.m in Sources */,
 				E7EC06CF19F6A52800BE3351 /* GameViewController.m in Sources */,
+				E778F8351A13BE9600BE12F4 /* iphoneFS295Scene.m in Sources */,
 				E7A3CA8D1A0119650073725B /* iphoneHACCPScene.m in Sources */,
 				E7BB5BF01A01208E00B9C0D7 /* iphoneCareersScene.m in Sources */,
 				E7E8417319FAA0B100F13C9C /* iphonePreReqScene.m in Sources */,
@@ -529,6 +562,7 @@
 				E7EC06F919F6AABC00BE3351 /* SoundManager.m in Sources */,
 				E7EC06F619F6AAB100BE3351 /* NSMutableArray+Shuffling.m in Sources */,
 				E7EC06C419F6A52800BE3351 /* main.m in Sources */,
+				E778F96C1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

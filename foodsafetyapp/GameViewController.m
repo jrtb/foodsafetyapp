@@ -23,6 +23,10 @@
 
 #import "iphoneCareersScene.h"
 
+#import "iphoneFS295Scene.h"
+
+#import "iphoneClintStevensonIntroScene.h"
+
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
@@ -147,7 +151,16 @@
                     [skView presentScene:aScene];
                     break;
                 }
-                
+                case FS295: {
+                    SKScene *aScene = [iphoneFS295Scene sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
+                case CLINTINTRO: {
+                    SKScene *aScene = [iphoneClintStevensonIntroScene sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
             }
             
         }

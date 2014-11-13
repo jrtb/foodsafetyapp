@@ -462,6 +462,40 @@
         
     }
 
+    if ([sender.name isEqualToString:@"01"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("fs 295 button pressed\n");
+        
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        [vc setScreenToggle:FS295];
+        [vc replaceTheScene];
+        
+    }
+
+    if ([sender.name isEqualToString:@"04"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("clint intro button pressed\n");
+        
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        [vc setScreenToggle:CLINTINTRO];
+        [vc replaceTheScene];
+        
+    }
+
     if ([sender.name isEqualToString:@"menu"]) {
         
         //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];

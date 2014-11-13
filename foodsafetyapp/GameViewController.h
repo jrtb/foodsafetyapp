@@ -17,6 +17,8 @@
 #define HOWLINGCOW 154
 #define HACCP 155
 #define CAREERS 156
+#define FS295 157
+#define CLINTINTRO 158
 
 @interface GameViewController : UIViewController
 
