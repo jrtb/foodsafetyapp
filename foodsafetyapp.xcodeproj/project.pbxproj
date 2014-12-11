@@ -41,6 +41,9 @@
 		E7BB5BF01A01208E00B9C0D7 /* iphoneCareersScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB5BEF1A01208E00B9C0D7 /* iphoneCareersScene.m */; };
 		E7BB5BF21A01210300B9C0D7 /* careers_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7BB5BF11A01210300B9C0D7 /* careers_top@2x.png */; };
 		E7BB5BF51A01243700B9C0D7 /* Careers.html in Resources */ = {isa = PBXBuildFile; fileRef = E7BB5BF41A01243700B9C0D7 /* Careers.html */; };
+		E7CB8C0C1A3A3E3000DC30A1 /* sam.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7CB8C0B1A3A3E3000DC30A1 /* sam.jpg */; };
+		E7CB8C0E1A3A403900DC30A1 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = E7CB8C0D1A3A403900DC30A1 /* 2.png */; };
+		E7CB8C101A3A407A00DC30A1 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = E7CB8C0F1A3A407A00DC30A1 /* check.png */; };
 		E7DACB4D19F9340600437D40 /* menu_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7DACB4B19F9340600437D40 /* menu_overlay@2x.png */; };
 		E7DACB4E19F9340600437D40 /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7DACB4C19F9340600437D40 /* back_button@2x.png */; };
 		E7E8417019F99BB300F13C9C /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E8416F19F99BB300F13C9C /* UIImage+ImageEffects.m */; };
@@ -126,6 +129,9 @@
 		E7BB5BEF1A01208E00B9C0D7 /* iphoneCareersScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneCareersScene.m; sourceTree = "<group>"; };
 		E7BB5BF11A01210300B9C0D7 /* careers_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "careers_top@2x.png"; path = "images/careers_top@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7BB5BF41A01243700B9C0D7 /* Careers.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Careers.html; path = content/Careers.html; sourceTree = SOURCE_ROOT; };
+		E7CB8C0B1A3A3E3000DC30A1 /* sam.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sam.jpg; path = content/sam.jpg; sourceTree = SOURCE_ROOT; };
+		E7CB8C0D1A3A403900DC30A1 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = content/2.png; sourceTree = SOURCE_ROOT; };
+		E7CB8C0F1A3A407A00DC30A1 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = content/check.png; sourceTree = SOURCE_ROOT; };
 		E7DACB4B19F9340600437D40 /* menu_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu_overlay@2x.png"; path = "images/menu_overlay@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7DACB4C19F9340600437D40 /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_button@2x.png"; path = "images/back_button@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7E8416E19F99BB300F13C9C /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -236,6 +242,9 @@
 		E7BB5BF31A01242E00B9C0D7 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				E7CB8C0F1A3A407A00DC30A1 /* check.png */,
+				E7CB8C0D1A3A403900DC30A1 /* 2.png */,
+				E7CB8C0B1A3A3E3000DC30A1 /* sam.jpg */,
 				E778F9661A13DA0600BE12F4 /* module_01 */,
 				E7BB5BF41A01243700B9C0D7 /* Careers.html */,
 				E778F9681A13EA1600BE12F4 /* clint_stevenson_intro.html */,
@@ -488,6 +497,7 @@
 				E778F96E1A13ED4C00BE12F4 /* clint_intro_small.mp4 in Resources */,
 				E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */,
 				E7EC06D719F6A52800BE3351 /* LaunchScreen.xib in Resources */,
+				E7CB8C101A3A407A00DC30A1 /* check.png in Resources */,
 				E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */,
 				E7BB5BF51A01243700B9C0D7 /* Careers.html in Resources */,
 				E7E8417A19FAA81300F13C9C /* prereq_menu_top@2x.png in Resources */,
@@ -512,6 +522,7 @@
 				E7457AB519F7E5F000EFF7AC /* fs350_01_firstframe@2x.png in Resources */,
 				E7EC06D419F6A52800BE3351 /* Images.xcassets in Resources */,
 				E7BB5BF21A01210300B9C0D7 /* careers_top@2x.png in Resources */,
+				E7CB8C0E1A3A403900DC30A1 /* 2.png in Resources */,
 				E7EC06FF19F6AF9E00BE3351 /* introBlock@2x.png in Resources */,
 				E7A3CA7A1A0114BC0073725B /* howling_cow_button_03@2x.png in Resources */,
 				E7457A1619F6C03800EFF7AC /* main_menu_button_04@2x.png in Resources */,
@@ -521,6 +532,7 @@
 				E778F9691A13EA1600BE12F4 /* clint_stevenson_intro.html in Resources */,
 				E7E8417F19FAA81300F13C9C /* green_back_button@2x.png in Resources */,
 				E7A3CA7D1A0114BC0073725B /* howling_cow_top@2x.png in Resources */,
+				E7CB8C0C1A3A3E3000DC30A1 /* sam.jpg in Resources */,
 				E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */,
 				E7457AB319F7E54100EFF7AC /* fs350_01.mp4 in Resources */,
 				E7A3CA791A0114BC0073725B /* howling_cow_button_04@2x.png in Resources */,
