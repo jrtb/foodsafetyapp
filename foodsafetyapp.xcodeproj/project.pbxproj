@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E711E5C31A3B783F00147E20 /* FS295.html in Resources */ = {isa = PBXBuildFile; fileRef = E711E5C21A3B783F00147E20 /* FS295.html */; };
+		E711E5C51A3B85F800147E20 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = E711E5C41A3B85F800147E20 /* 8.png */; };
+		E711E5C71A3B895F00147E20 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = E711E5C61A3B895F00147E20 /* 9.png */; };
+		E711E5C91A3B8A1500147E20 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = E711E5C81A3B8A1500147E20 /* 10.png */; };
 		E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */; };
 		E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */ = {isa = PBXBuildFile; fileRef = E7457A0E19F6BC1900EFF7AC /* click2.caf */; };
 		E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */; };
@@ -97,6 +101,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E711E5C21A3B783F00147E20 /* FS295.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = FS295.html; path = content/FS295.html; sourceTree = SOURCE_ROOT; };
+		E711E5C41A3B85F800147E20 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 8.png; path = content/8.png; sourceTree = SOURCE_ROOT; };
+		E711E5C61A3B895F00147E20 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 9.png; path = content/9.png; sourceTree = SOURCE_ROOT; };
+		E711E5C81A3B8A1500147E20 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 10.png; path = content/10.png; sourceTree = SOURCE_ROOT; };
 		E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Cn.otf"; sourceTree = "<group>"; };
 		E7457A0E19F6BC1900EFF7AC /* click2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = click2.caf; path = sounds/click2.caf; sourceTree = SOURCE_ROOT; };
 		E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu_button@2x.png"; path = "images/menu_button@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -260,6 +268,9 @@
 		E7BB5BF31A01242E00B9C0D7 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				E711E5C81A3B8A1500147E20 /* 10.png */,
+				E711E5C61A3B895F00147E20 /* 9.png */,
+				E711E5C41A3B85F800147E20 /* 8.png */,
 				E7A2F9B21A3B5B2300285ADE /* 7.png */,
 				E7A2F9B31A3B5B2300285ADE /* 6.png */,
 				E7A2F9B41A3B5B2300285ADE /* 5.png */,
@@ -270,6 +281,7 @@
 				E7CB8C0B1A3A3E3000DC30A1 /* sam.jpg */,
 				E778F9661A13DA0600BE12F4 /* module_01 */,
 				E7BB5BF41A01243700B9C0D7 /* Careers.html */,
+				E711E5C21A3B783F00147E20 /* FS295.html */,
 				E7A2F9AA1A3B4B3D00285ADE /* Careers_1.html */,
 				E7A2F9AE1A3B4E1400285ADE /* Careers_2.html */,
 				E7A2F9B01A3B5A2D00285ADE /* Careers_3.html */,
@@ -527,6 +539,7 @@
 				E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */,
 				E7EC06D719F6A52800BE3351 /* LaunchScreen.xib in Resources */,
 				E7CB8C101A3A407A00DC30A1 /* check.png in Resources */,
+				E711E5C71A3B895F00147E20 /* 9.png in Resources */,
 				E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */,
 				E7BB5BF51A01243700B9C0D7 /* Careers.html in Resources */,
 				E7E8417A19FAA81300F13C9C /* prereq_menu_top@2x.png in Resources */,
@@ -552,6 +565,8 @@
 				E7A3CA8A1A0119540073725B /* haccp_top@2x.png in Resources */,
 				E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */,
 				E7FA9D9C1A0AABAD002ACEF4 /* side_menu_button_04@2x.png in Resources */,
+				E711E5C31A3B783F00147E20 /* FS295.html in Resources */,
+				E711E5C51A3B85F800147E20 /* 8.png in Resources */,
 				E7457AB519F7E5F000EFF7AC /* fs350_01_firstframe@2x.png in Resources */,
 				E7EC06D419F6A52800BE3351 /* Images.xcassets in Resources */,
 				E7BB5BF21A01210300B9C0D7 /* careers_top@2x.png in Resources */,
@@ -565,6 +580,7 @@
 				E7EC06D219F6A52800BE3351 /* Main.storyboard in Resources */,
 				E778F9691A13EA1600BE12F4 /* clint_stevenson_intro.html in Resources */,
 				E7E8417F19FAA81300F13C9C /* green_back_button@2x.png in Resources */,
+				E711E5C91A3B8A1500147E20 /* 10.png in Resources */,
 				E7A3CA7D1A0114BC0073725B /* howling_cow_top@2x.png in Resources */,
 				E7CB8C0C1A3A3E3000DC30A1 /* sam.jpg in Resources */,
 				E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */,

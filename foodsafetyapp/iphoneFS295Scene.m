@@ -163,7 +163,7 @@
         //[webView loadRequest:request];
         
         NSBundle *mainBundle = [NSBundle mainBundle];
-        NSURL *homeIndexUrl = [mainBundle URLForResource:@"module_01/story_html5" withExtension:@"html"];
+        NSURL *homeIndexUrl = [mainBundle URLForResource:@"FS295" withExtension:@"html"];
         
         NSURLRequest *urlReq = [NSURLRequest requestWithURL:homeIndexUrl];
         [webView loadRequest:urlReq];
