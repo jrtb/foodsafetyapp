@@ -19,6 +19,8 @@
 #define CAREERS 156
 #define FS295 157
 #define CLINTINTRO 158
+#define CAREERS2 159
+#define HOWLINGCOW2 160
 
 @interface GameViewController : UIViewController
 
@@ -28,6 +30,9 @@
 
 @property AVQueuePlayer *player;
 @property AVPlayerItem *item;
+
+@property int careersSection;
+@property int howlingCowSection;
 
 - (void) replaceTheScene;
 

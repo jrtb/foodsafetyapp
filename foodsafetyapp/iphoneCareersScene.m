@@ -93,7 +93,7 @@
         navBackButton.zPosition = 4;
         [solarSystem addChild:navBackButton];
         
-        //float spacing = 5.0;
+        float spacing = 5.0;
         
         float buttonSize = 152.5;
         float buttonScale = 1.0;
@@ -107,6 +107,38 @@
         }
         buttonSize = buttonSize * buttonScale;
         
+        SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_01"];
+        [button_02 initButton];
+        button_02.name = @"01";
+        button_02.delegate = self;
+        button_02.position = CGPointMake(self.size.width/2.0-buttonSize/2.0-spacing/2.0,buttonSize/2.0+buttonSize*1.0+spacing*2.0+iphoneAddY/2.0);
+        button_02.scale = buttonScale;
+        [solarSystem addChild:button_02];
+        
+        SKButtonNodeJRTB *button_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_02"];
+        [button_03 initButton];
+        button_03.name = @"02";
+        button_03.delegate = self;
+        button_03.position = CGPointMake(self.size.width/2.0+buttonSize/2.0+spacing/2.0,buttonSize/2.0+buttonSize*1.0+spacing*2.0+iphoneAddY/2.0);
+        button_03.scale = buttonScale;
+        [solarSystem addChild:button_03];
+        
+        SKButtonNodeJRTB *button_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_03"];
+        [button_04 initButton];
+        button_04.name = @"03";
+        button_04.delegate = self;
+        button_04.position = CGPointMake(self.size.width/2.0-buttonSize/2.0-spacing/2.0,buttonSize/2.0+buttonSize*0.0+spacing*1.0+iphoneAddY/2.0);
+        button_04.scale = buttonScale;
+        [solarSystem addChild:button_04];
+        
+        SKButtonNodeJRTB *button_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_04"];
+        [button_05 initButton];
+        button_05.name = @"04";
+        button_05.delegate = self;
+        button_05.position = CGPointMake(self.size.width/2.0+buttonSize/2.0+spacing/2.0,buttonSize/2.0+buttonSize*0.0+spacing*1.0+iphoneAddY/2.0);
+        button_05.scale = buttonScale;
+        [solarSystem addChild:button_05];
+
         SKSpriteNode *top = [SKSpriteNode spriteNodeWithImageNamed:@"careers_top"];
         top.position = CGPointMake(self.size.width/2, self.size.height);
         top.anchorPoint = CGPointMake(0.5, 1.0);
@@ -119,43 +151,22 @@
         top.scale = buttonScale * factor;
         [solarSystem addChild:top];
         
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        NSURL *baseURL = [NSURL fileURLWithPath:path];
+        SKLabelNode *aLetter = [SKLabelNode labelNodeWithFontNamed:@"Univers LT Std 57 Condensed"];
+        if (IS_IPHONE_4 || IS_IPHONE_5)
+            aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+16.0);
+        else
+            aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+32.0);
+        aLetter.text = @"Food Safety Careers";
+        aLetter.fontSize = 52.0;
+        aLetter.scale = primaryScale * buttonScale;
+        aLetter.zPosition = 1;
+        aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
+        aLetter.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+        aLetter.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+        [solarSystem addChild:aLetter];
         
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-
-        if (showingSpinner) {
-            showingSpinner = NO;
-            [spinner stopAnimating];
-            [spinner removeFromSuperview];
-        }
-        showingSpinner = YES;
-        
-        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        spinner.color = [UIColor grayColor];
-        spinner.hidesWhenStopped = YES;
-        [spinner startAnimating];
-        spinner.frame = CGRectMake(self.size.width*0.5, self.size.height*0.5, 60, 60);
-        
-        [vc.view addSubview:spinner];
-
-        NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"Careers" ofType:@"html"];
-        NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20)];
-        webView.delegate = self;
-        webView.userInteractionEnabled = YES;
-        webView.backgroundColor = [UIColor clearColor];
-        webView.scalesPageToFit = YES;
-
-        //NSURL *url = [NSURL URLWithString:@"http://www.ibm.com"];
-        //NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60.0];
-        //[webView loadRequest:request];
-        
-        [webView loadHTMLString:htmlString baseURL:baseURL];
-        
-        [vc.view addSubview:webView];
         
         SKAction *waitC = [SKAction waitForDuration:0.2];
         SKAction *goC = [SKAction runBlock:^{
@@ -238,25 +249,6 @@
     return self;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-
-}
 
 - (void) handleSwipeGestureLeft: (id) sender
 {
@@ -283,7 +275,6 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1.0;
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -311,8 +302,6 @@
     
     if (!menuOut) {
         
-        webView.alpha = 0.0;
-
         menuOut = YES;
         
         menuButton.enabled = NO;
@@ -457,6 +446,86 @@
         [vc replaceTheScene];
     }
 
+    if ([sender.name isEqualToString:@"01"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("careers 1 button pressed\n");
+        
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        
+        [vc setCareersSection:1];
+        
+        [vc setScreenToggle:CAREERS2];
+        [vc replaceTheScene];
+        
+    }
+    
+    if ([sender.name isEqualToString:@"02"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("careers 2 button pressed\n");
+        
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        
+        [vc setCareersSection:2];
+        
+        [vc setScreenToggle:CAREERS2];
+        [vc replaceTheScene];
+        
+    }
+
+    if ([sender.name isEqualToString:@"03"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("careers 3 button pressed\n");
+        
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        
+        [vc setCareersSection:3];
+        
+        [vc setScreenToggle:CAREERS2];
+        [vc replaceTheScene];
+        
+    }
+
+    if ([sender.name isEqualToString:@"04"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("careers 4 button pressed\n");
+        
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        
+        [vc setCareersSection:4];
+        
+        [vc setScreenToggle:CAREERS2];
+        [vc replaceTheScene];
+        
+    }
+
     if ([sender.name isEqualToString:@"navback"]) {
         
         //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
@@ -567,8 +636,6 @@
 
 - (void) clean
 {
-    webView.delegate = nil;
-    [webView removeFromSuperview];
     
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;

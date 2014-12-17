@@ -27,6 +27,10 @@
 
 #import "iphoneClintStevensonIntroScene.h"
 
+#import "iphoneCareersScene2.h"
+
+#import "iphoneHowlingCowScene2.h"
+
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
@@ -48,7 +52,7 @@
 
 @implementation GameViewController
 
-@synthesize screenToggle, video, player, item;
+@synthesize screenToggle, video, player, item, careersSection, howlingCowSection;
 
 - (void) killVideo
 {
@@ -161,6 +165,16 @@
                     [skView presentScene:aScene];
                     break;
                 }
+                case CAREERS2: {
+                    SKScene *aScene = [iphoneCareersScene2 sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
+                case HOWLINGCOW2: {
+                    SKScene *aScene = [iphoneHowlingCowScene2 sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
             }
             
         }
@@ -173,6 +187,9 @@
 {
     [super viewDidLoad];
 
+    careersSection = 1;
+    howlingCowSection = 1;
+    
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     //skView.showsFPS = YES;

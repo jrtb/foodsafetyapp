@@ -1,5 +1,5 @@
 //
-//  iphoneHowlingCowScene.h
+//  iphoneHowlingCowScene2.h
 //  foodsafetyapp
 //
 //  Created by jrtb on 10/21/14.
@@ -12,7 +12,7 @@
 
 #import "YTPlayerView.h"
 
-@interface iphoneHowlingCowScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate, UIGestureRecognizerDelegate> {
+@interface iphoneHowlingCowScene2 : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate, UIGestureRecognizerDelegate, UIWebViewDelegate> {
     
     float                   iphoneAddY;
     float                   iphoneAddX;
@@ -45,6 +45,8 @@
     SKSpriteNode            *screenshotView;
     
     BOOL                    menuOut;
+    
+    UIWebView               *webView;
     
     UIActivityIndicatorView     *spinner;
     
