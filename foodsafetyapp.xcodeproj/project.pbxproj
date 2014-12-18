@@ -11,6 +11,23 @@
 		E711E5C51A3B85F800147E20 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = E711E5C41A3B85F800147E20 /* 8.png */; };
 		E711E5C71A3B895F00147E20 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = E711E5C61A3B895F00147E20 /* 9.png */; };
 		E711E5C91A3B8A1500147E20 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = E711E5C81A3B8A1500147E20 /* 10.png */; };
+		E7407E141A43209900409989 /* HowlingCow4.html in Resources */ = {isa = PBXBuildFile; fileRef = E7407E131A43209900409989 /* HowlingCow4.html */; };
+		E7407E161A43216F00409989 /* Cleaning-Out-of-Place.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E151A43216F00409989 /* Cleaning-Out-of-Place.jpg */; };
+		E7407E261A43245800409989 /* Workwear-and-LockerRoom-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E171A43245800409989 /* Workwear-and-LockerRoom-thumbnail-20140806.jpg */; };
+		E7407E271A43245800409989 /* Walk-In-Cooler-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E181A43245800409989 /* Walk-In-Cooler-thumbnail-20140806.jpg */; };
+		E7407E281A43245800409989 /* TheIceCreamMakers-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E191A43245800409989 /* TheIceCreamMakers-thumbnail-20140806.jpg */; };
+		E7407E291A43245800409989 /* The-Ice-Cream-Makers---thumbnail-comp-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E1A1A43245800409989 /* The-Ice-Cream-Makers---thumbnail-comp-1.jpg */; };
+		E7407E2A1A43245800409989 /* Sanitation-Chemicals-Storage-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E1B1A43245800409989 /* Sanitation-Chemicals-Storage-thumbnail-20140806.jpg */; };
+		E7407E2B1A43245800409989 /* Pumps-Parts-Labels-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E1C1A43245800409989 /* Pumps-Parts-Labels-thumbnail-20140806.jpg */; };
+		E7407E2C1A43245800409989 /* Processing-Tour-Howling-Cow-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E1D1A43245800409989 /* Processing-Tour-Howling-Cow-thumbnail-20140806.jpg */; };
+		E7407E2D1A43245800409989 /* Personnel-Hygiene-Facilities-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E1E1A43245800409989 /* Personnel-Hygiene-Facilities-thumbnail-20140806.jpg */; };
+		E7407E2E1A43245800409989 /* Pasteurized-Milk-Ordinance-and-HAACP-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E1F1A43245800409989 /* Pasteurized-Milk-Ordinance-and-HAACP-thumbnail-20140806.jpg */; };
+		E7407E2F1A43245800409989 /* Main-Entrance-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E201A43245800409989 /* Main-Entrance-thumbnail-20140806.jpg */; };
+		E7407E301A43245800409989 /* Loading-Dock-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E211A43245800409989 /* Loading-Dock-thumbnail-20140806.jpg */; };
+		E7407E311A43245800409989 /* Ingredients-and-Packaging-Warehousing-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E221A43245800409989 /* Ingredients-and-Packaging-Warehousing-thumbnail-20140806.jpg */; };
+		E7407E321A43245800409989 /* HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E231A43245800409989 /* HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg */; };
+		E7407E331A43245800409989 /* Exterior-Grounds-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E241A43245800409989 /* Exterior-Grounds-thumbnail-20140806.jpg */; };
+		E7407E341A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E251A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg */; };
 		E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */; };
 		E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */ = {isa = PBXBuildFile; fileRef = E7457A0E19F6BC1900EFF7AC /* click2.caf */; };
 		E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */; };
@@ -125,6 +142,23 @@
 		E711E5C41A3B85F800147E20 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 8.png; path = content/8.png; sourceTree = SOURCE_ROOT; };
 		E711E5C61A3B895F00147E20 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 9.png; path = content/9.png; sourceTree = SOURCE_ROOT; };
 		E711E5C81A3B8A1500147E20 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 10.png; path = content/10.png; sourceTree = SOURCE_ROOT; };
+		E7407E131A43209900409989 /* HowlingCow4.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = HowlingCow4.html; path = content/HowlingCow4.html; sourceTree = SOURCE_ROOT; };
+		E7407E151A43216F00409989 /* Cleaning-Out-of-Place.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Cleaning-Out-of-Place.jpg"; path = "content/Cleaning-Out-of-Place.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E171A43245800409989 /* Workwear-and-LockerRoom-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Workwear-and-LockerRoom-thumbnail-20140806.jpg"; path = "content/Workwear-and-LockerRoom-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E181A43245800409989 /* Walk-In-Cooler-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Walk-In-Cooler-thumbnail-20140806.jpg"; path = "content/Walk-In-Cooler-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E191A43245800409989 /* TheIceCreamMakers-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "TheIceCreamMakers-thumbnail-20140806.jpg"; path = "content/TheIceCreamMakers-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E1A1A43245800409989 /* The-Ice-Cream-Makers---thumbnail-comp-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "The-Ice-Cream-Makers---thumbnail-comp-1.jpg"; path = "content/The-Ice-Cream-Makers---thumbnail-comp-1.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E1B1A43245800409989 /* Sanitation-Chemicals-Storage-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Sanitation-Chemicals-Storage-thumbnail-20140806.jpg"; path = "content/Sanitation-Chemicals-Storage-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E1C1A43245800409989 /* Pumps-Parts-Labels-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Pumps-Parts-Labels-thumbnail-20140806.jpg"; path = "content/Pumps-Parts-Labels-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E1D1A43245800409989 /* Processing-Tour-Howling-Cow-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Processing-Tour-Howling-Cow-thumbnail-20140806.jpg"; path = "content/Processing-Tour-Howling-Cow-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E1E1A43245800409989 /* Personnel-Hygiene-Facilities-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Personnel-Hygiene-Facilities-thumbnail-20140806.jpg"; path = "content/Personnel-Hygiene-Facilities-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E1F1A43245800409989 /* Pasteurized-Milk-Ordinance-and-HAACP-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Pasteurized-Milk-Ordinance-and-HAACP-thumbnail-20140806.jpg"; path = "content/Pasteurized-Milk-Ordinance-and-HAACP-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E201A43245800409989 /* Main-Entrance-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Main-Entrance-thumbnail-20140806.jpg"; path = "content/Main-Entrance-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E211A43245800409989 /* Loading-Dock-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Loading-Dock-thumbnail-20140806.jpg"; path = "content/Loading-Dock-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E221A43245800409989 /* Ingredients-and-Packaging-Warehousing-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Ingredients-and-Packaging-Warehousing-thumbnail-20140806.jpg"; path = "content/Ingredients-and-Packaging-Warehousing-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E231A43245800409989 /* HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg"; path = "content/HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E241A43245800409989 /* Exterior-Grounds-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Exterior-Grounds-thumbnail-20140806.jpg"; path = "content/Exterior-Grounds-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E7407E251A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg"; path = "content/Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
 		E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Cn.otf"; sourceTree = "<group>"; };
 		E7457A0E19F6BC1900EFF7AC /* click2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = click2.caf; path = sounds/click2.caf; sourceTree = SOURCE_ROOT; };
 		E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu_button@2x.png"; path = "images/menu_button@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -310,6 +344,22 @@
 		E7BB5BF31A01242E00B9C0D7 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				E7407E171A43245800409989 /* Workwear-and-LockerRoom-thumbnail-20140806.jpg */,
+				E7407E181A43245800409989 /* Walk-In-Cooler-thumbnail-20140806.jpg */,
+				E7407E191A43245800409989 /* TheIceCreamMakers-thumbnail-20140806.jpg */,
+				E7407E1A1A43245800409989 /* The-Ice-Cream-Makers---thumbnail-comp-1.jpg */,
+				E7407E1B1A43245800409989 /* Sanitation-Chemicals-Storage-thumbnail-20140806.jpg */,
+				E7407E1C1A43245800409989 /* Pumps-Parts-Labels-thumbnail-20140806.jpg */,
+				E7407E1D1A43245800409989 /* Processing-Tour-Howling-Cow-thumbnail-20140806.jpg */,
+				E7407E1E1A43245800409989 /* Personnel-Hygiene-Facilities-thumbnail-20140806.jpg */,
+				E7407E1F1A43245800409989 /* Pasteurized-Milk-Ordinance-and-HAACP-thumbnail-20140806.jpg */,
+				E7407E201A43245800409989 /* Main-Entrance-thumbnail-20140806.jpg */,
+				E7407E211A43245800409989 /* Loading-Dock-thumbnail-20140806.jpg */,
+				E7407E221A43245800409989 /* Ingredients-and-Packaging-Warehousing-thumbnail-20140806.jpg */,
+				E7407E231A43245800409989 /* HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg */,
+				E7407E241A43245800409989 /* Exterior-Grounds-thumbnail-20140806.jpg */,
+				E7407E251A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg */,
+				E7407E151A43216F00409989 /* Cleaning-Out-of-Place.jpg */,
 				E75AB9141A42210000BB786A /* hc7.gif */,
 				E75AB9101A4215C300BB786A /* hc6.jpg */,
 				E75AB9061A42156A00BB786A /* hc5.jpg */,
@@ -342,6 +392,7 @@
 				E778F9681A13EA1600BE12F4 /* clint_stevenson_intro.html */,
 				E75AB8FF1A42038800BB786A /* HowlingCow2.html */,
 				E75AB9121A4220B400BB786A /* HowlingCow3.html */,
+				E7407E131A43209900409989 /* HowlingCow4.html */,
 				E75AB9041A42150500BB786A /* HowlingCow1.html */,
 			);
 			name = Content;
@@ -599,10 +650,12 @@
 				E7A2F9B11A3B5A2D00285ADE /* Careers_3.html in Resources */,
 				E7FA9D9F1A0AABAD002ACEF4 /* side_menu_button_01@2x.png in Resources */,
 				E7A3CA7C1A0114BC0073725B /* howling_cow_button_01@2x.png in Resources */,
+				E7407E311A43245800409989 /* Ingredients-and-Packaging-Warehousing-thumbnail-20140806.jpg in Resources */,
 				E778F96E1A13ED4C00BE12F4 /* clint_intro_small.mp4 in Resources */,
 				E7457AB719F7EFA900EFF7AC /* play_button@2x.png in Resources */,
 				E7EC06D719F6A52800BE3351 /* LaunchScreen.xib in Resources */,
 				E7CB8C101A3A407A00DC30A1 /* check.png in Resources */,
+				E7407E2E1A43245800409989 /* Pasteurized-Milk-Ordinance-and-HAACP-thumbnail-20140806.jpg in Resources */,
 				E711E5C71A3B895F00147E20 /* 9.png in Resources */,
 				E7457ABE19F8018B00EFF7AC /* YTPlayerView-iframe-player.html in Resources */,
 				E75AB8FE1A41DA4C00BB786A /* Careers4.html in Resources */,
@@ -618,23 +671,29 @@
 				E7E8417B19FAA81300F13C9C /* prereq_menu_04@2x.png in Resources */,
 				E7FA9D9B1A0AABAD002ACEF4 /* side_menu_button_05@2x.png in Resources */,
 				E75AB90B1A42156A00BB786A /* hc5.jpg in Resources */,
+				E7407E2D1A43245800409989 /* Personnel-Hygiene-Facilities-thumbnail-20140806.jpg in Resources */,
 				E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */,
+				E7407E2C1A43245800409989 /* Processing-Tour-Howling-Cow-thumbnail-20140806.jpg in Resources */,
 				E7DACB4D19F9340600437D40 /* menu_overlay@2x.png in Resources */,
 				E7A2F9B91A3B5B2300285ADE /* 4.png in Resources */,
 				E7DACB4E19F9340600437D40 /* back_button@2x.png in Resources */,
 				E7A2F9B81A3B5B2300285ADE /* 5.png in Resources */,
 				E75AB8F31A41D2A800BB786A /* careers_menu_01@2x.png in Resources */,
 				E778F9701A13EEEB00BE12F4 /* clint_intro_firstframe@2x.png in Resources */,
+				E7407E281A43245800409989 /* TheIceCreamMakers-thumbnail-20140806.jpg in Resources */,
 				E7FA9D991A0AABAD002ACEF4 /* menu_overlay2@2x.png in Resources */,
 				E75AB9001A42038800BB786A /* HowlingCow2.html in Resources */,
 				E7A2F9B61A3B5B2300285ADE /* 7.png in Resources */,
+				E7407E271A43245800409989 /* Walk-In-Cooler-thumbnail-20140806.jpg in Resources */,
 				E7FA9D9D1A0AABAD002ACEF4 /* side_menu_button_03@2x.png in Resources */,
 				E75AB90E1A42156A00BB786A /* hc2.jpg in Resources */,
 				E7E8417D19FAA81300F13C9C /* prereq_menu_02@2x.png in Resources */,
 				E7EC06FD19F6AECB00BE3351 /* intro@2x.png in Resources */,
 				E7A3CA881A0119540073725B /* haccp_button_02@2x.png in Resources */,
 				E7FA9D9A1A0AABAD002ACEF4 /* side_menu_button_06@2x.png in Resources */,
+				E7407E141A43209900409989 /* HowlingCow4.html in Resources */,
 				E7A3CA8A1A0119540073725B /* haccp_top@2x.png in Resources */,
+				E7407E301A43245800409989 /* Loading-Dock-thumbnail-20140806.jpg in Resources */,
 				E75AB8F01A41D2A800BB786A /* careers_menu_04@2x.png in Resources */,
 				E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */,
 				E7FA9D9C1A0AABAD002ACEF4 /* side_menu_button_04@2x.png in Resources */,
@@ -646,29 +705,38 @@
 				E7EC06D419F6A52800BE3351 /* Images.xcassets in Resources */,
 				E7BB5BF21A01210300B9C0D7 /* careers_top@2x.png in Resources */,
 				E7CB8C0E1A3A403900DC30A1 /* 2.png in Resources */,
+				E7407E2A1A43245800409989 /* Sanitation-Chemicals-Storage-thumbnail-20140806.jpg in Resources */,
 				E7EC06FF19F6AF9E00BE3351 /* introBlock@2x.png in Resources */,
 				E7A3CA7A1A0114BC0073725B /* howling_cow_button_03@2x.png in Resources */,
 				E7457A1619F6C03800EFF7AC /* main_menu_button_04@2x.png in Resources */,
 				E7A2F9AB1A3B4B3E00285ADE /* Careers_1.html in Resources */,
+				E7407E321A43245800409989 /* HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg in Resources */,
 				E75AB9131A4220B400BB786A /* HowlingCow3.html in Resources */,
 				E75AB8FC1A41DA4500BB786A /* Careers3.html in Resources */,
 				E7FA9D9E1A0AABAD002ACEF4 /* side_menu_button_02@2x.png in Resources */,
 				E7457A1919F6C03800EFF7AC /* main_menu_button_01@2x.png in Resources */,
 				E75AB90D1A42156A00BB786A /* hc3.jpg in Resources */,
 				E7EC06D219F6A52800BE3351 /* Main.storyboard in Resources */,
+				E7407E291A43245800409989 /* The-Ice-Cream-Makers---thumbnail-comp-1.jpg in Resources */,
 				E75AB8FA1A41DA3C00BB786A /* Careers2.html in Resources */,
+				E7407E161A43216F00409989 /* Cleaning-Out-of-Place.jpg in Resources */,
 				E778F9691A13EA1600BE12F4 /* clint_stevenson_intro.html in Resources */,
 				E75AB8F21A41D2A800BB786A /* careers_menu_02@2x.png in Resources */,
 				E7E8417F19FAA81300F13C9C /* green_back_button@2x.png in Resources */,
 				E75AB8F81A41D9F900BB786A /* Careers1.html in Resources */,
 				E711E5C91A3B8A1500147E20 /* 10.png in Resources */,
 				E7A3CA7D1A0114BC0073725B /* howling_cow_top@2x.png in Resources */,
+				E7407E2F1A43245800409989 /* Main-Entrance-thumbnail-20140806.jpg in Resources */,
 				E75AB90F1A42156A00BB786A /* hc1.jpg in Resources */,
+				E7407E261A43245800409989 /* Workwear-and-LockerRoom-thumbnail-20140806.jpg in Resources */,
+				E7407E2B1A43245800409989 /* Pumps-Parts-Labels-thumbnail-20140806.jpg in Resources */,
 				E7CB8C0C1A3A3E3000DC30A1 /* sam.jpg in Resources */,
 				E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */,
+				E7407E331A43245800409989 /* Exterior-Grounds-thumbnail-20140806.jpg in Resources */,
 				E7457AB319F7E54100EFF7AC /* fs350_01.mp4 in Resources */,
 				E7A3CA791A0114BC0073725B /* howling_cow_button_04@2x.png in Resources */,
 				E7A2F9BB1A3B5C3A00285ADE /* Careers_4.html in Resources */,
+				E7407E341A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg in Resources */,
 				E7E8417E19FAA81300F13C9C /* prereq_menu_01@2x.png in Resources */,
 				E7A2F9AD1A3B4BEF00285ADE /* 3.png in Resources */,
 				E7457A1719F6C03800EFF7AC /* main_menu_button_03@2x.png in Resources */,

@@ -121,7 +121,7 @@
         
         SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"howling_cow_button_01"];
         [button_02 initButton];
-        button_02.name = @"00";
+        button_02.name = @"04";
         button_02.delegate = self;
         button_02.position = CGPointMake(self.size.width/2.0-buttonSize/2.0-spacing/2.0,buttonSize/2.0+buttonSize*1.0+spacing*2.0+iphoneAddY/2.0);
         button_02.scale = buttonScale;
@@ -522,6 +522,26 @@
         [self clean];
         
         [vc setCareersSection:3];
+        
+        [vc setScreenToggle:HOWLINGCOW2];
+        [vc replaceTheScene];
+        
+    }
+
+    if ([sender.name isEqualToString:@"04"]) {
+        
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        printf("howling cow 4 button pressed\n");
+        
+        [self removeAllActions];
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        [self clean];
+        
+        [vc setCareersSection:4];
         
         [vc setScreenToggle:HOWLINGCOW2];
         [vc replaceTheScene];
