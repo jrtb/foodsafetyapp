@@ -83,15 +83,6 @@
         backButton.enabled = NO;
         [self addChild:backButton];
         
-        navBackButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"green_back_button"];
-        [navBackButton initButton];
-        navBackButton.name = @"navback";
-        navBackButton.delegate = self;
-        navBackButton.scale = primaryScale;
-        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
-        navBackButton.zPosition = 4;
-        [solarSystem addChild:navBackButton];
-
         float spacing = 5.0;
         
         float buttonSize = 152.5;
@@ -110,8 +101,18 @@
         video1.size = CGSizeMake(self.size.width, self.size.width/2.0);
         video1.anchorPoint = CGPointMake(0.5, 1.0);
         video1.position = CGPointMake(self.size.width*.5,self.size.height);
+        video1.zPosition = 4;
         [solarSystem addChild: video1];
         
+        navBackButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"gray_back_button"];
+        [navBackButton initButton];
+        navBackButton.name = @"navback";
+        navBackButton.delegate = self;
+        navBackButton.scale = primaryScale;
+        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        navBackButton.zPosition = 40;
+        [solarSystem addChild:navBackButton];
+
         NSString *path = [[NSBundle mainBundle] bundlePath];
         NSURL *baseURL = [NSURL fileURLWithPath:path];
         
@@ -150,13 +151,13 @@
         
         [vc.view addSubview:webView];
 
-        playButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"play_button"];
+        playButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"play_button_red"];
         [playButton initButton];
         playButton.name = @"play";
         playButton.delegate = self;
         playButton.scale = primaryScale*.75;
         playButton.position = CGPointMake(self.size.width - playButton.size.width - spacing * 4,self.size.height + playButton.size.height - video1.size.height+spacing * 4);
-        playButton.zPosition = 3;
+        playButton.zPosition = 40;
         [solarSystem addChild:playButton];
         
         videoReady = NO;
@@ -228,7 +229,7 @@
         overlayButton_04.position = CGPointMake(-32.0,67.0-55.0*3);
         overlayButton_04.zPosition = 3;
         [overlay addChild:overlayButton_04];
-        
+        /*
         SKButtonNodeJRTB *overlayButton_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_05"];
         [overlayButton_05 initButton];
         overlayButton_05.name = @"overlay_05";
@@ -244,7 +245,7 @@
         overlayButton_06.position = CGPointMake(-32.0,67.0-55.0*5);
         overlayButton_06.zPosition = 3;
         [overlay addChild:overlayButton_06];
-        
+        */
         UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc]
                                                       initWithTarget:self action:@selector(handleSwipeGestureLeft:)];
         [vc.view addGestureRecognizer:swipeGestureLeft];
@@ -426,7 +427,7 @@
     [[vc video] setAnchorPoint:CGPointMake(0.5, 1.0)];
     [[vc video] setSize:CGSizeMake(self.size.width, self.size.width/2.0)];
     //[[vc video] setScale:primaryScale];
-    [[vc video] setZPosition:2];
+    [[vc video] setZPosition:-1];
     [[vc video] setAlpha:0.0];
     [self addChild:[vc video]];
     
@@ -456,16 +457,16 @@
     
 }
 
-- (void) getScreenshot2 {
+- (void) getScreenshot {
     
     AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
     
     // Create the image context
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.size.height, self.size.width), NO, 0);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.size.width, self.size.height), NO, 0);
     
     // There he is! The new API method
-    [delegate.window drawViewHierarchyInRect:CGRectMake(0,0,self.size.height, self.size.width) afterScreenUpdates:YES];
+    [delegate.window drawViewHierarchyInRect:CGRectMake(0,0,self.size.width,self.size.height) afterScreenUpdates:YES];
     
     // Get the snapshot
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -484,83 +485,20 @@
     // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
     
     screenshotView = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:blurredSnapshotImage]];
-    screenshotView.scale = 1.0 / blurredSnapshotImage.scale;
-    screenshotView.position = CGPointMake(self.size.width, self.size.height);
+    //screenshotView.scale = 1.0 / blurredSnapshotImage.scale;
+    screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
     //screenshotView.anchorPoint = CGPointMake(1.0, 1.0);
-    screenshotView.zPosition = 5;
+    screenshotView.zPosition = -1;
+    //screenshotView.zRotation = SK_DEGREES_TO_RADIANS(90);
     screenshotView.alpha = 0.0;
     [self addChild:screenshotView];
     
-    NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
-    NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
+//    NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
+//    NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
     
     // Be nice and clean your mess up
     UIGraphicsEndImageContext();
     
-    
-}
-
-- (void) getScreenshot {
-    
-    //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-    //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-    
-    CGSize imageSize = CGSizeZero;
-    
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsPortrait(orientation)) {
-        imageSize = [UIScreen mainScreen].bounds.size;
-    } else {
-        imageSize = CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-    }
-    
-    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
-        CGContextSaveGState(context);
-        CGContextTranslateCTM(context, window.center.x, window.center.y);
-        CGContextConcatCTM(context, window.transform);
-        CGContextTranslateCTM(context, -window.bounds.size.width * window.layer.anchorPoint.x, -window.bounds.size.height * window.layer.anchorPoint.y);
-        if (orientation == UIInterfaceOrientationLandscapeLeft) {
-            CGContextRotateCTM(context, M_PI_2);
-            CGContextTranslateCTM(context, 0, -imageSize.width);
-        } else if (orientation == UIInterfaceOrientationLandscapeRight) {
-            CGContextRotateCTM(context, -M_PI_2);
-            CGContextTranslateCTM(context, -imageSize.height, 0);
-        } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
-            CGContextRotateCTM(context, M_PI);
-            CGContextTranslateCTM(context, -imageSize.width, -imageSize.height);
-        }
-        if ([window respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
-            [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
-        } else {
-            [window.layer renderInContext:context];
-        }
-        CGContextRestoreGState(context);
-    }
-    
-    screenshot = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // Now apply the blur effect using Apple's UIImageEffect category
-    UIImage *blurredSnapshotImage = [screenshot applyLightEffect];
-    
-    // Or apply any other effects available in "UIImage+ImageEffects.h"
-    // UIImage *blurredSnapshotImage = [snapshotImage applyDarkEffect];
-    // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
-    
-    screenshotView = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:blurredSnapshotImage]];
-    //screenshotView.scale = blurredSnapshotImage.scale / 3.0;
-    screenshotView.position = CGPointMake(self.size.width*.5, self.size.height*.5);
-    screenshotView.zPosition = -1;
-    screenshotView.alpha = 0.0;
-    [self addChild:screenshotView];
-    
-    //NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
-    //NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
-    
-    UIGraphicsEndImageContext();
-    
-    printf("screenshot ready\n");
     
 }
 
@@ -583,7 +521,7 @@
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
-        [vc setScreenToggle:HACCP];
+        [vc setScreenToggle:HACCP2];
         [vc replaceTheScene];
     }
     if ([sender.name isEqualToString:@"overlay_03"]) {
@@ -678,7 +616,7 @@
         
         [self clean];
         
-        [vc setScreenToggle:HACCP];
+        [vc setScreenToggle:HACCP2];
         [vc replaceTheScene];
         
     }
@@ -733,6 +671,7 @@
         if (!menuOut) {
             
             menuOut = YES;
+            webView.alpha = 0.0;
             
             menuButton.enabled = NO;
             [menuButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
@@ -786,6 +725,7 @@
             SKAction *goC = [SKAction runBlock:^{
                 screenshotView.zPosition = -1;
                 backButton.zPosition = -1;
+                webView.alpha = 1;
             }];
             [self runAction:[SKAction sequence:@[waitC,goC]]];
             
@@ -836,6 +776,7 @@
             SKAction *waitC = [SKAction waitForDuration:0.4];
             SKAction *goC = [SKAction runBlock:^{
                 //printf("attempting to play\n");
+                [[vc video] setZPosition:4];
                 [[vc video] setSize:CGSizeMake(self.size.width, self.size.width/2.0)];
                 [[vc video] setAlpha:1.0];
                 [[vc video] play];

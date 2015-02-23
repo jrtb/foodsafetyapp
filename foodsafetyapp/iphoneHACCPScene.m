@@ -84,15 +84,6 @@
         backButton.enabled = NO;
         [self addChild:backButton];
         
-        navBackButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"green_back_button"];
-        [navBackButton initButton];
-        navBackButton.name = @"navback";
-        navBackButton.delegate = self;
-        navBackButton.scale = primaryScale;
-        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
-        navBackButton.zPosition = 4;
-        [solarSystem addChild:navBackButton];
-        
         float spacing = 5.0;
         
         float buttonSize = 152.5;
@@ -119,6 +110,15 @@
         top.scale = buttonScale * factor;
         [solarSystem addChild:top];
         
+        navBackButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"red_back_button"];
+        [navBackButton initButton];
+        navBackButton.name = @"navback";
+        navBackButton.delegate = self;
+        navBackButton.scale = primaryScale;
+        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        navBackButton.zPosition = 4;
+        [solarSystem addChild:navBackButton];
+
         SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"haccp_button_01"];
         [button_02 initButton];
         button_02.name = @"01";
@@ -211,7 +211,7 @@
         overlayButton_04.position = CGPointMake(-32.0,67.0-55.0*3);
         overlayButton_04.zPosition = 3;
         [overlay addChild:overlayButton_04];
-        
+        /*
         SKButtonNodeJRTB *overlayButton_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_05"];
         [overlayButton_05 initButton];
         overlayButton_05.name = @"overlay_05";
@@ -227,7 +227,7 @@
         overlayButton_06.position = CGPointMake(-32.0,67.0-55.0*5);
         overlayButton_06.zPosition = 3;
         [overlay addChild:overlayButton_06];
-        
+        */
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
@@ -328,44 +328,23 @@
 
 - (void) getScreenshot {
     
-    //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
     
-    CGSize imageSize = CGSizeZero;
+    // Create the image context
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.size.width, self.size.height), NO, 0);
     
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsPortrait(orientation)) {
-        imageSize = [UIScreen mainScreen].bounds.size;
-    } else {
-        imageSize = CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-    }
+    // There he is! The new API method
+    [delegate.window drawViewHierarchyInRect:CGRectMake(0,0,self.size.width,self.size.height) afterScreenUpdates:YES];
     
-    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
-        CGContextSaveGState(context);
-        CGContextTranslateCTM(context, window.center.x, window.center.y);
-        CGContextConcatCTM(context, window.transform);
-        CGContextTranslateCTM(context, -window.bounds.size.width * window.layer.anchorPoint.x, -window.bounds.size.height * window.layer.anchorPoint.y);
-        if (orientation == UIInterfaceOrientationLandscapeLeft) {
-            CGContextRotateCTM(context, M_PI_2);
-            CGContextTranslateCTM(context, 0, -imageSize.width);
-        } else if (orientation == UIInterfaceOrientationLandscapeRight) {
-            CGContextRotateCTM(context, -M_PI_2);
-            CGContextTranslateCTM(context, -imageSize.height, 0);
-        } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
-            CGContextRotateCTM(context, M_PI);
-            CGContextTranslateCTM(context, -imageSize.width, -imageSize.height);
-        }
-        if ([window respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
-            [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
-        } else {
-            [window.layer renderInContext:context];
-        }
-        CGContextRestoreGState(context);
-    }
+    // Get the snapshot
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
     
-    screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    // Or apply any other effects available in "UIImage+ImageEffects.h"
+    // UIImage *blurredSnapshotImage = [snapshotImage applyDarkEffect];
+    // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
+    
+    screenshot = snapshotImage;
     
     // Now apply the blur effect using Apple's UIImageEffect category
     UIImage *blurredSnapshotImage = [screenshot applyLightEffect];
@@ -375,18 +354,20 @@
     // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
     
     screenshotView = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:blurredSnapshotImage]];
-    //screenshotView.scale = blurredSnapshotImage.scale / 3.0;
-    screenshotView.position = CGPointMake(self.size.width*.5, self.size.height*.5);
+    //screenshotView.scale = 1.0 / blurredSnapshotImage.scale;
+    screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
+    //screenshotView.anchorPoint = CGPointMake(1.0, 1.0);
     screenshotView.zPosition = -1;
+    //screenshotView.zRotation = SK_DEGREES_TO_RADIANS(90);
     screenshotView.alpha = 0.0;
     [self addChild:screenshotView];
     
-    //NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
-    //NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
+//    NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
+//    NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
     
+    // Be nice and clean your mess up
     UIGraphicsEndImageContext();
     
-    printf("screenshot ready\n");
     
 }
 
@@ -407,7 +388,7 @@
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
-        [vc setScreenToggle:HACCP];
+        [vc setScreenToggle:HACCP2];
         [vc replaceTheScene];
     }
     if ([sender.name isEqualToString:@"overlay_03"]) {

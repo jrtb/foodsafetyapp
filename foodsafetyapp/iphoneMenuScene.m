@@ -58,7 +58,7 @@
             iphoneAddX = (414.0-320.0)/2.0;
         }
 
-        printf("iphoneAddY: %f\n",iphoneAddY);
+        //printf("iphoneAddY: %f\n",iphoneAddY);
         
         solarSystem = [[SKEffectNode alloc] init];
         solarSystem.position = CGPointMake(0.0,0.0);
@@ -97,7 +97,7 @@
         }
         buttonSize = buttonSize * buttonScale;
         
-        SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_01"];
+        SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_01_02"];
         [button_02 initButton];
         button_02.name = @"01";
         button_02.delegate = self;
@@ -105,7 +105,7 @@
         button_02.scale = buttonScale;
         [solarSystem addChild:button_02];
 
-        SKButtonNodeJRTB *button_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_02"];
+        SKButtonNodeJRTB *button_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_02_02"];
         [button_03 initButton];
         button_03.name = @"02";
         button_03.delegate = self;
@@ -113,7 +113,7 @@
         button_03.scale = buttonScale;
         [solarSystem addChild:button_03];
 
-        SKButtonNodeJRTB *button_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_03"];
+        SKButtonNodeJRTB *button_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_03_02"];
         [button_04 initButton];
         button_04.name = @"03";
         button_04.delegate = self;
@@ -121,7 +121,7 @@
         button_04.scale = buttonScale;
         [solarSystem addChild:button_04];
 
-        SKButtonNodeJRTB *button_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_04"];
+        SKButtonNodeJRTB *button_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"main_menu_button_04_02"];
         [button_05 initButton];
         button_05.name = @"04";
         button_05.delegate = self;
@@ -149,7 +149,7 @@
         video1.position = CGPointMake(self.size.width*.5,self.size.height);
         [solarSystem addChild: video1];
 
-        playButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"play_button"];
+        playButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"play_button_red"];
         [playButton initButton];
         playButton.name = @"play";
         playButton.delegate = self;
@@ -230,7 +230,7 @@
         overlayButton_04.position = CGPointMake(-32.0,67.0-55.0*3);
         overlayButton_04.zPosition = 3;
         [overlay addChild:overlayButton_04];
-
+        /*
         SKButtonNodeJRTB *overlayButton_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_05"];
         [overlayButton_05 initButton];
         overlayButton_05.name = @"overlay_05";
@@ -246,7 +246,7 @@
         overlayButton_06.position = CGPointMake(-32.0,67.0-55.0*5);
         overlayButton_06.zPosition = 3;
         [overlay addChild:overlayButton_06];
-
+         */
         UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc]
                                                       initWithTarget:self action:@selector(handleSwipeGestureLeft:)];
         [vc.view addGestureRecognizer:swipeGestureLeft];
@@ -396,6 +396,8 @@
     [[vc video] setAlpha:0.0];
     [self addChild:[vc video]];
     
+    [[vc video] setZPosition:-1];
+
     videoReady = YES;
     
 }
@@ -422,16 +424,16 @@
     
 }
 
-- (void) getScreenshot2 {
+- (void) getScreenshot {
     
     AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
     
     // Create the image context
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.size.height, self.size.width), NO, 0);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.size.width, self.size.height), NO, 0);
     
     // There he is! The new API method
-    [delegate.window drawViewHierarchyInRect:CGRectMake(0,0,self.size.height, self.size.width) afterScreenUpdates:YES];
+    [delegate.window drawViewHierarchyInRect:CGRectMake(0,0,self.size.width,self.size.height) afterScreenUpdates:YES];
     
     // Get the snapshot
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -450,22 +452,24 @@
     // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
     
     screenshotView = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:blurredSnapshotImage]];
-    screenshotView.scale = 1.0 / blurredSnapshotImage.scale;
-    screenshotView.position = CGPointMake(self.size.width, self.size.height);
+    //screenshotView.scale = 1.0 / blurredSnapshotImage.scale;
+    screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
     //screenshotView.anchorPoint = CGPointMake(1.0, 1.0);
-    screenshotView.zPosition = 5;
+    screenshotView.zPosition = -1;
+    //screenshotView.zRotation = SK_DEGREES_TO_RADIANS(90);
     screenshotView.alpha = 0.0;
     [self addChild:screenshotView];
     
-    NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
-    NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
+//    NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
+//    NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
     
     // Be nice and clean your mess up
     UIGraphicsEndImageContext();
-
-
+    
+    
 }
 
+/*
 - (void) getScreenshot {
 
     //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
@@ -529,6 +533,7 @@
     printf("screenshot ready\n");
 
 }
+*/
 
 - (void) buttonPushed: (SKButtonNodeJRTB *) sender {
     
@@ -549,7 +554,7 @@
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
-        [vc setScreenToggle:HACCP];
+        [vc setScreenToggle:HACCP2];
         [vc replaceTheScene];
     }
     if ([sender.name isEqualToString:@"overlay_03"]) {
@@ -628,7 +633,7 @@
         
         [self clean];
         
-        [vc setScreenToggle:HACCP];
+        [vc setScreenToggle:HACCP2];
         [vc replaceTheScene];
         
     }
@@ -786,6 +791,7 @@
             SKAction *waitC = [SKAction waitForDuration:0.4];
             SKAction *goC = [SKAction runBlock:^{
                 //printf("attempting to play\n");
+                [[vc video] setZPosition:4];
                 [[vc video] setSize:CGSizeMake(self.size.width, self.size.width/2.0)];
                 [[vc video] setAlpha:1.0];
                 [[vc video] play];
@@ -853,10 +859,18 @@
 
 - (void) clean
 {
-    if (youTubePlayerView != nil) {
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
+    [vc killVideo];
+    
+    [[vc player] removeAllItems];
+    [[vc video] removeFromParent];
+
+    //if (youTubePlayerView != nil) {
         youTubePlayerView.delegate = nil;
         [youTubePlayerView removeFromSuperview];
-    }
+    //}
 
     if (showingSpinner) {
         showingSpinner = NO;

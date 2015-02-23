@@ -31,6 +31,8 @@
 
 #import "iphoneHowlingCowScene2.h"
 
+#import "iphoneHACCPScene2.h"
+
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
@@ -52,7 +54,7 @@
 
 @implementation GameViewController
 
-@synthesize screenToggle, video, player, item, careersSection, howlingCowSection;
+@synthesize screenToggle, video, player, item, careersSection, howlingCowSection, fs295ContentNum;
 
 - (void) killVideo
 {
@@ -150,6 +152,11 @@
                     [skView presentScene:aScene];
                     break;
                 }
+                case HACCP2: {
+                    SKScene *aScene = [iphoneHACCPScene2 sceneWithSize:skView.bounds.size];
+                    [skView presentScene:aScene];
+                    break;
+                }
                 case CAREERS: {
                     SKScene *aScene = [iphoneCareersScene sceneWithSize:skView.bounds.size];
                     [skView presentScene:aScene];
@@ -189,6 +196,8 @@
 
     careersSection = 1;
     howlingCowSection = 1;
+    
+    fs295ContentNum = 1;
     
     // Configure the view.
     SKView * skView = (SKView *)self.view;

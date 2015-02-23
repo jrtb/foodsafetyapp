@@ -63,6 +63,73 @@
         solarSystem.position = CGPointMake(0.0,0.0);
         [self addChild:solarSystem];
         
+        float spacing = 5.0;
+        
+        float buttonSize = 152.5;
+        float buttonScale = 1.0;
+        if (IS_IPHONE_4) {
+            buttonScale = 0.8;
+            iphoneAddY += 64.0;
+        }
+        if (IS_IPHONE_6_PLUS) {
+            buttonScale = 1.2;
+            iphoneAddY -= 52.0;
+        }
+        buttonSize = buttonSize * buttonScale;
+        
+        SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_01_2"];
+        [button_02 initButton];
+        button_02.name = @"01";
+        button_02.delegate = self;
+        button_02.position = CGPointMake(self.size.width/2.0-buttonSize/2.0-spacing/2.0,buttonSize/2.0+buttonSize*1.0+spacing*2.0+iphoneAddY/2.0);
+        button_02.scale = buttonScale;
+        [solarSystem addChild:button_02];
+        
+        SKButtonNodeJRTB *button_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_02_2"];
+        [button_03 initButton];
+        button_03.name = @"02";
+        button_03.delegate = self;
+        button_03.position = CGPointMake(self.size.width/2.0+buttonSize/2.0+spacing/2.0,buttonSize/2.0+buttonSize*1.0+spacing*2.0+iphoneAddY/2.0);
+        button_03.scale = buttonScale;
+        [solarSystem addChild:button_03];
+        
+        SKButtonNodeJRTB *button_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_03_2"];
+        [button_04 initButton];
+        button_04.name = @"03";
+        button_04.delegate = self;
+        button_04.position = CGPointMake(self.size.width/2.0-buttonSize/2.0-spacing/2.0,buttonSize/2.0+buttonSize*0.0+spacing*1.0+iphoneAddY/2.0);
+        button_04.scale = buttonScale;
+        [solarSystem addChild:button_04];
+        
+        SKButtonNodeJRTB *button_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_04_2"];
+        [button_05 initButton];
+        button_05.name = @"04";
+        button_05.delegate = self;
+        button_05.position = CGPointMake(self.size.width/2.0+buttonSize/2.0+spacing/2.0,buttonSize/2.0+buttonSize*0.0+spacing*1.0+iphoneAddY/2.0);
+        button_05.scale = buttonScale;
+        [solarSystem addChild:button_05];
+
+        SKSpriteNode *top = [SKSpriteNode spriteNodeWithImageNamed:@"careers_top"];
+        top.position = CGPointMake(self.size.width/2, self.size.height);
+        top.anchorPoint = CGPointMake(0.5, 1.0);
+        float newWidth = self.size.width / buttonScale;
+        float factor = newWidth / top.size.width;
+        if (IS_IPHONE_4)
+            factor = factor * .8;
+        //printf("old width: %f, new width: %f, factor: %f\n",top.size.width,newWidth,factor);
+        top.zPosition = 2;
+        top.scale = buttonScale * factor;
+        [solarSystem addChild:top];
+        
+        navBackButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"red_back_button"];
+        [navBackButton initButton];
+        navBackButton.name = @"navback";
+        navBackButton.delegate = self;
+        navBackButton.scale = primaryScale;
+        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        navBackButton.zPosition = 4;
+        [solarSystem addChild:navBackButton];
+
         menuButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"menu_button"];
         [menuButton initButton];
         menuButton.name = @"menu";
@@ -83,74 +150,7 @@
         backButton.zPosition = -1;
         backButton.enabled = NO;
         [self addChild:backButton];
-        
-        navBackButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"green_back_button"];
-        [navBackButton initButton];
-        navBackButton.name = @"navback";
-        navBackButton.delegate = self;
-        navBackButton.scale = primaryScale;
-        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
-        navBackButton.zPosition = 4;
-        [solarSystem addChild:navBackButton];
-        
-        float spacing = 5.0;
-        
-        float buttonSize = 152.5;
-        float buttonScale = 1.0;
-        if (IS_IPHONE_4) {
-            buttonScale = 0.8;
-            iphoneAddY += 64.0;
-        }
-        if (IS_IPHONE_6_PLUS) {
-            buttonScale = 1.2;
-            iphoneAddY -= 52.0;
-        }
-        buttonSize = buttonSize * buttonScale;
-        
-        SKButtonNodeJRTB *button_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_01"];
-        [button_02 initButton];
-        button_02.name = @"01";
-        button_02.delegate = self;
-        button_02.position = CGPointMake(self.size.width/2.0-buttonSize/2.0-spacing/2.0,buttonSize/2.0+buttonSize*1.0+spacing*2.0+iphoneAddY/2.0);
-        button_02.scale = buttonScale;
-        [solarSystem addChild:button_02];
-        
-        SKButtonNodeJRTB *button_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_02"];
-        [button_03 initButton];
-        button_03.name = @"02";
-        button_03.delegate = self;
-        button_03.position = CGPointMake(self.size.width/2.0+buttonSize/2.0+spacing/2.0,buttonSize/2.0+buttonSize*1.0+spacing*2.0+iphoneAddY/2.0);
-        button_03.scale = buttonScale;
-        [solarSystem addChild:button_03];
-        
-        SKButtonNodeJRTB *button_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_03"];
-        [button_04 initButton];
-        button_04.name = @"03";
-        button_04.delegate = self;
-        button_04.position = CGPointMake(self.size.width/2.0-buttonSize/2.0-spacing/2.0,buttonSize/2.0+buttonSize*0.0+spacing*1.0+iphoneAddY/2.0);
-        button_04.scale = buttonScale;
-        [solarSystem addChild:button_04];
-        
-        SKButtonNodeJRTB *button_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"careers_menu_04"];
-        [button_05 initButton];
-        button_05.name = @"04";
-        button_05.delegate = self;
-        button_05.position = CGPointMake(self.size.width/2.0+buttonSize/2.0+spacing/2.0,buttonSize/2.0+buttonSize*0.0+spacing*1.0+iphoneAddY/2.0);
-        button_05.scale = buttonScale;
-        [solarSystem addChild:button_05];
 
-        SKSpriteNode *top = [SKSpriteNode spriteNodeWithImageNamed:@"careers_top"];
-        top.position = CGPointMake(self.size.width/2, self.size.height);
-        top.anchorPoint = CGPointMake(0.5, 1.0);
-        float newWidth = self.size.width / buttonScale;
-        float factor = newWidth / top.size.width;
-        if (IS_IPHONE_4)
-            factor = factor * .8;
-        //printf("old width: %f, new width: %f, factor: %f\n",top.size.width,newWidth,factor);
-        top.zPosition = 2;
-        top.scale = buttonScale * factor;
-        [solarSystem addChild:top];
-        
         SKLabelNode *aLetter = [SKLabelNode labelNodeWithFontNamed:@"Univers LT Std 57 Condensed"];
         if (IS_IPHONE_4 || IS_IPHONE_5)
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+16.0);
@@ -212,7 +212,7 @@
         overlayButton_04.position = CGPointMake(-32.0,67.0-55.0*3);
         overlayButton_04.zPosition = 3;
         [overlay addChild:overlayButton_04];
-        
+        /*
         SKButtonNodeJRTB *overlayButton_05 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_05"];
         [overlayButton_05 initButton];
         overlayButton_05.name = @"overlay_05";
@@ -228,7 +228,7 @@
         overlayButton_06.position = CGPointMake(-32.0,67.0-55.0*5);
         overlayButton_06.zPosition = 3;
         [overlay addChild:overlayButton_06];
-        
+        */
         UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc]
                                                       initWithTarget:self action:@selector(handleSwipeGestureLeft:)];
         [vc.view addGestureRecognizer:swipeGestureLeft];
@@ -327,44 +327,23 @@
 
 - (void) getScreenshot {
     
-    //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
     
-    CGSize imageSize = CGSizeZero;
+    // Create the image context
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.size.width, self.size.height), NO, 0);
     
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsPortrait(orientation)) {
-        imageSize = [UIScreen mainScreen].bounds.size;
-    } else {
-        imageSize = CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-    }
+    // There he is! The new API method
+    [delegate.window drawViewHierarchyInRect:CGRectMake(0,0,self.size.width,self.size.height) afterScreenUpdates:YES];
     
-    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
-        CGContextSaveGState(context);
-        CGContextTranslateCTM(context, window.center.x, window.center.y);
-        CGContextConcatCTM(context, window.transform);
-        CGContextTranslateCTM(context, -window.bounds.size.width * window.layer.anchorPoint.x, -window.bounds.size.height * window.layer.anchorPoint.y);
-        if (orientation == UIInterfaceOrientationLandscapeLeft) {
-            CGContextRotateCTM(context, M_PI_2);
-            CGContextTranslateCTM(context, 0, -imageSize.width);
-        } else if (orientation == UIInterfaceOrientationLandscapeRight) {
-            CGContextRotateCTM(context, -M_PI_2);
-            CGContextTranslateCTM(context, -imageSize.height, 0);
-        } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
-            CGContextRotateCTM(context, M_PI);
-            CGContextTranslateCTM(context, -imageSize.width, -imageSize.height);
-        }
-        if ([window respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
-            [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
-        } else {
-            [window.layer renderInContext:context];
-        }
-        CGContextRestoreGState(context);
-    }
+    // Get the snapshot
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
     
-    screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    // Or apply any other effects available in "UIImage+ImageEffects.h"
+    // UIImage *blurredSnapshotImage = [snapshotImage applyDarkEffect];
+    // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
+    
+    screenshot = snapshotImage;
     
     // Now apply the blur effect using Apple's UIImageEffect category
     UIImage *blurredSnapshotImage = [screenshot applyLightEffect];
@@ -374,18 +353,20 @@
     // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
     
     screenshotView = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:blurredSnapshotImage]];
-    //screenshotView.scale = blurredSnapshotImage.scale / 3.0;
-    screenshotView.position = CGPointMake(self.size.width*.5, self.size.height*.5);
+    //screenshotView.scale = 1.0 / blurredSnapshotImage.scale;
+    screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
+    //screenshotView.anchorPoint = CGPointMake(1.0, 1.0);
     screenshotView.zPosition = -1;
+    //screenshotView.zRotation = SK_DEGREES_TO_RADIANS(90);
     screenshotView.alpha = 0.0;
     [self addChild:screenshotView];
     
-    //NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
-    //NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
+//    NSLog(@"image size %@, scale %f", NSStringFromCGSize(blurredSnapshotImage.size), blurredSnapshotImage.scale);
+//    NSLog(@"texture from image, size %@", NSStringFromCGSize(screenshotView.size));
     
+    // Be nice and clean your mess up
     UIGraphicsEndImageContext();
     
-    printf("screenshot ready\n");
     
 }
 
@@ -406,7 +387,7 @@
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
-        [vc setScreenToggle:HACCP];
+        [vc setScreenToggle:HACCP2];
         [vc replaceTheScene];
     }
     if ([sender.name isEqualToString:@"overlay_03"]) {
@@ -550,6 +531,9 @@
         
         printf("menu button pressed\n");
         
+        menuOut = YES;
+        webView.alpha = 0.0;
+        
         menuButton.enabled = NO;
         [menuButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
         
@@ -593,6 +577,7 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
+            webView.alpha = 1;
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         

@@ -21,6 +21,7 @@
 #define CLINTINTRO 158
 #define CAREERS2 159
 #define HOWLINGCOW2 160
+#define HACCP2 161
 
 @interface GameViewController : UIViewController
 
@@ -33,6 +34,8 @@
 
 @property int careersSection;
 @property int howlingCowSection;
+
+@property int fs295ContentNum;
 
 - (void) replaceTheScene;
 
