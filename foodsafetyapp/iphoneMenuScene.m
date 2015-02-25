@@ -164,8 +164,6 @@
         SKAction *waitC = [SKAction waitForDuration:0.2];
         SKAction *goC = [SKAction runBlock:^{
             
-            [self getScreenshot];
-            
             [self setupVideo];
 
         }];
@@ -199,7 +197,7 @@
         overlay.zPosition = 10;
         [self addChild:overlay];
         
-        SKButtonNodeJRTB *overlayButton_01 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_01"];
+        SKButtonNodeJRTB *overlayButton_01 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_01_2"];
         [overlayButton_01 initButton];
         overlayButton_01.name = @"overlay_01";
         overlayButton_01.delegate = self;
@@ -207,7 +205,7 @@
         overlayButton_01.zPosition = 3;
         [overlay addChild:overlayButton_01];
 
-        SKButtonNodeJRTB *overlayButton_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_02"];
+        SKButtonNodeJRTB *overlayButton_02 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_02_2"];
         [overlayButton_02 initButton];
         overlayButton_02.name = @"overlay_02";
         overlayButton_02.delegate = self;
@@ -215,7 +213,7 @@
         overlayButton_02.zPosition = 3;
         [overlay addChild:overlayButton_02];
 
-        SKButtonNodeJRTB *overlayButton_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_03"];
+        SKButtonNodeJRTB *overlayButton_03 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_03_2"];
         [overlayButton_03 initButton];
         overlayButton_03.name = @"overlay_03";
         overlayButton_03.delegate = self;
@@ -223,7 +221,7 @@
         overlayButton_03.zPosition = 3;
         [overlay addChild:overlayButton_03];
 
-        SKButtonNodeJRTB *overlayButton_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_04"];
+        SKButtonNodeJRTB *overlayButton_04 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_04_2"];
         [overlayButton_04 initButton];
         overlayButton_04.name = @"overlay_04";
         overlayButton_04.delegate = self;
@@ -262,6 +260,14 @@
         [swipeGestureRight setDelegate:self];
 
         self.userInteractionEnabled = YES;
+        
+        SKAction *waitC1 = [SKAction waitForDuration:1.0];
+        SKAction *goC1 = [SKAction runBlock:^{
+            
+            [self getScreenshot];
+            
+        }];
+        [self runAction:[SKAction sequence:@[waitC1,goC1]]];
         
     }
     return self;
@@ -317,6 +323,15 @@
         
         [overlay removeAllActions];
         [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
+        
+        if (!screenshotView) {
+            
+            screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
+            screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
+            screenshotView.alpha = 0.0;
+            [self addChild:screenshotView];
+            
+        }
         
         screenshotView.zPosition = 5;
         [screenshotView runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
@@ -392,11 +407,10 @@
     [[vc video] setAnchorPoint:CGPointMake(0.5, 1.0)];
     [[vc video] setSize:CGSizeMake(self.size.width, self.size.width/2.0)];
     //[[vc video] setScale:primaryScale];
-    [[vc video] setZPosition:2];
+    [[vc video] setZPosition:-1];
     [[vc video] setAlpha:0.0];
     [self addChild:[vc video]];
     
-    [[vc video] setZPosition:-1];
 
     videoReady = YES;
     
@@ -450,6 +464,9 @@
     // Or apply any other effects available in "UIImage+ImageEffects.h"
     // UIImage *blurredSnapshotImage = [snapshotImage applyDarkEffect];
     // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
+    
+    if (screenshotView)
+        [screenshotView removeFromParent];
     
     screenshotView = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:blurredSnapshotImage]];
     //screenshotView.scale = 1.0 / blurredSnapshotImage.scale;
