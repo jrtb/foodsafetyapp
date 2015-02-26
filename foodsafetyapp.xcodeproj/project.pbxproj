@@ -28,6 +28,7 @@
 		E7407E321A43245800409989 /* HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E231A43245800409989 /* HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg */; };
 		E7407E331A43245800409989 /* Exterior-Grounds-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E241A43245800409989 /* Exterior-Grounds-thumbnail-20140806.jpg */; };
 		E7407E341A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7407E251A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg */; };
+		E74178BA1A9FC1D700945A23 /* howlingcow.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E74178B91A9FC1D700945A23 /* howlingcow.mp4 */; };
 		E7457A0B19F6B92800EFF7AC /* UniversLTStd-Cn.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */; };
 		E7457A0F19F6BC1900EFF7AC /* click2.caf in Resources */ = {isa = PBXBuildFile; fileRef = E7457A0E19F6BC1900EFF7AC /* click2.caf */; };
 		E7457A1119F6BC8300EFF7AC /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */; };
@@ -164,6 +165,7 @@
 		E7407E231A43245800409989 /* HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg"; path = "content/HandWashing-Floors-and-Ceilings-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
 		E7407E241A43245800409989 /* Exterior-Grounds-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Exterior-Grounds-thumbnail-20140806.jpg"; path = "content/Exterior-Grounds-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
 		E7407E251A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg"; path = "content/Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg"; sourceTree = SOURCE_ROOT; };
+		E74178B91A9FC1D700945A23 /* howlingcow.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = howlingcow.mp4; path = movies/howlingcow.mp4; sourceTree = SOURCE_ROOT; };
 		E7457A0A19F6B92800EFF7AC /* UniversLTStd-Cn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Cn.otf"; sourceTree = "<group>"; };
 		E7457A0E19F6BC1900EFF7AC /* click2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = click2.caf; path = sounds/click2.caf; sourceTree = SOURCE_ROOT; };
 		E7457A1019F6BC8300EFF7AC /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu_button@2x.png"; path = "images/menu_button@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -328,6 +330,7 @@
 		E7457A1A19F6CC0500EFF7AC /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				E74178B91A9FC1D700945A23 /* howlingcow.mp4 */,
 				E778F96D1A13ED4C00BE12F4 /* clint_intro_small.mp4 */,
 				E7457AB219F7E54100EFF7AC /* fs350_01.mp4 */,
 			);
@@ -704,6 +707,7 @@
 				E778F9701A13EEEB00BE12F4 /* clint_intro_firstframe@2x.png in Resources */,
 				E7407E281A43245800409989 /* TheIceCreamMakers-thumbnail-20140806.jpg in Resources */,
 				E7D3CABC1A9BBD5D0071A7B7 /* careers_menu_01_2@2x.png in Resources */,
+				E74178BA1A9FC1D700945A23 /* howlingcow.mp4 in Resources */,
 				E7FA9D991A0AABAD002ACEF4 /* menu_overlay2@2x.png in Resources */,
 				E75AB9001A42038800BB786A /* HowlingCow2.html in Resources */,
 				E7A2F9B61A3B5B2300285ADE /* 7.png in Resources */,
@@ -877,10 +881,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "bc4c2621-c820-40e4-a7ee-3c79af88a21a";
+				PROVISIONING_PROFILE = "ac1bd327-618a-4447-a4cc-b5b6722b8c05";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -914,9 +918,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "bc4c2621-c820-40e4-a7ee-3c79af88a21a";
+				PROVISIONING_PROFILE = "ac1bd327-618a-4447-a4cc-b5b6722b8c05";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -925,7 +929,7 @@
 		E7EC06E719F6A52900BE3351 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
@@ -933,14 +937,15 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bc4c2621-c820-40e4-a7ee-3c79af88a21a";
+				PROVISIONING_PROFILE = "ac1bd327-618a-4447-a4cc-b5b6722b8c05";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		E7EC06E819F6A52900BE3351 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
@@ -948,7 +953,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bc4c2621-c820-40e4-a7ee-3c79af88a21a";
+				PROVISIONING_PROFILE = "ac1bd327-618a-4447-a4cc-b5b6722b8c05";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

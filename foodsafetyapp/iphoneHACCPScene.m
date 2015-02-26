@@ -30,7 +30,10 @@
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             primaryScale = 0.5;
         } else {
-            primaryScale = 0.25;
+            if (IS_RETINA)
+                primaryScale = 1.0;
+            else
+                primaryScale = 1.0;
         }
         
         /*
@@ -56,7 +59,11 @@
             iphoneAddY = (736-568.0)/2.0;
             iphoneAddX = (414.0-320.0)/2.0;
         }
-        
+        if (IS_IPAD) {
+            iphoneAddY = (1024-568.0)/2.0;
+            iphoneAddX = (580.0-320.0)/2.0;
+        }
+
         printf("iphoneAddY: %f\n",iphoneAddY);
         
         solarSystem = [[SKEffectNode alloc] init];
@@ -68,7 +75,13 @@
         menuButton.name = @"menu";
         menuButton.delegate = self;
         menuButton.scale = primaryScale;
-        menuButton.position = CGPointMake(22.0,self.size.height-22.0);
+        if (IS_IPAD) {
+            menuButton.position = CGPointMake(22.0*2,self.size.height-22.0*2);
+            menuButton.colorBlendFactor = 1.0;
+            menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
+        } else {
+            menuButton.position = CGPointMake(22.0,self.size.height-22.0);
+        }
         menuButton.zPosition = 4;
         menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         menuButton.colorBlendFactor = 1.0;
@@ -79,7 +92,11 @@
         backButton.name = @"back";
         backButton.delegate = self;
         backButton.scale = primaryScale;
-        backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+        if (IS_IPAD) {
+            backButton.position = CGPointMake(22.0*2-self.size.width,self.size.height-22.0*2);
+        } else {
+            backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+        }
         backButton.zPosition = -1;
         backButton.enabled = NO;
         [self addChild:backButton];
@@ -96,6 +113,11 @@
             buttonScale = 1.2;
             iphoneAddY -= 52.0;
         }
+        if (IS_IPAD) {
+            spacing = 10.0;
+            buttonScale = 1.7;
+            iphoneAddY -= 220.0;
+        }
         buttonSize = buttonSize * buttonScale;
         
         SKSpriteNode *top = [SKSpriteNode spriteNodeWithImageNamed:@"haccp_top"];
@@ -105,6 +127,8 @@
         float factor = newWidth / top.size.width;
         if (IS_IPHONE_4)
             factor = factor * .8;
+        if (IS_IPAD)
+            factor = factor * .75;
         //printf("old width: %f, new width: %f, factor: %f\n",top.size.width,newWidth,factor);
         top.zPosition = 2;
         top.scale = buttonScale * factor;
@@ -115,7 +139,11 @@
         navBackButton.name = @"navback";
         navBackButton.delegate = self;
         navBackButton.scale = primaryScale;
-        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        if (IS_IPAD) {
+            navBackButton.position = CGPointMake(self.size.width-26.0*2,self.size.height-26.0*2);
+        } else {
+            navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        }
         navBackButton.zPosition = 4;
         [solarSystem addChild:navBackButton];
 
@@ -154,30 +182,38 @@
         SKLabelNode *aLetter = [SKLabelNode labelNodeWithFontNamed:@"Univers LT Std 57 Condensed"];
         if (IS_IPHONE_4 || IS_IPHONE_5)
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+16.0);
+        else if (IS_IPAD)
+            aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+42.0);
         else
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+32.0);
         aLetter.text = @"HACCP";
-        aLetter.fontSize = 52.0;
+        if (IS_IPAD)
+            aLetter.fontSize = 36.0;
+        else
+            aLetter.fontSize = 52.0;
         if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
             aLetter.fontSize += 24;
-        aLetter.scale = primaryScale * buttonScale;
+        //aLetter.scale = primaryScale * buttonScale;
         aLetter.zPosition = 1;
         aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         aLetter.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
         aLetter.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
         [solarSystem addChild:aLetter];
         
-        SKAction *waitC1 = [SKAction waitForDuration:1.0];
-        SKAction *goC1 = [SKAction runBlock:^{
-            
-            [self getScreenshot];
-            
-        }];
-        [self runAction:[SKAction sequence:@[waitC1,goC1]]];
+        screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
+        screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
+        screenshotView.alpha = 0.0;
+        screenshotView.zPosition = -1;
+        [self addChild:screenshotView];
         
         overlay = [SKSpriteNode spriteNodeWithImageNamed:@"menu_overlay2"];
-        overlay.position = CGPointMake(self.size.width/2-self.size.width, self.size.height/2);
         overlay.zPosition = 10;
+        if (IS_IPAD) {
+            overlay.position = CGPointMake(self.size.width/2-self.size.width*1.2, self.size.height/2);
+            overlay.scale = 1.6;
+        } else {
+            overlay.position = CGPointMake(self.size.width/2-self.size.width, self.size.height/2);
+        }
         [self addChild:overlay];
         
         SKButtonNodeJRTB *overlayButton_01 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_01_2"];
@@ -311,15 +347,6 @@
         [overlay removeAllActions];
         [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
         
-        if (!screenshotView) {
-            
-            screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
-            screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
-            screenshotView.alpha = 0.0;
-            [self addChild:screenshotView];
-            
-        }
-
         screenshotView.zPosition = 5;
         [screenshotView runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
         

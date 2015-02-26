@@ -28,11 +28,17 @@
         
         self.backgroundColor = [SKColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
         
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
         // primary scale is used to scale assets such that only one 4x iPad Retina asset needs to be included in the binary
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             primaryScale = 0.5;
         } else {
-            primaryScale = 0.25;
+            if (IS_RETINA)
+                primaryScale = 1.0;
+            else
+                primaryScale = 1.0;
         }
         
         /*
@@ -58,7 +64,11 @@
             iphoneAddY = (736-568.0)/2.0;
             iphoneAddX = (414.0-320.0)/2.0;
         }
-        
+        if (IS_IPAD) {
+            iphoneAddY = (1024-568.0)/2.0;
+            iphoneAddX = (580.0-320.0)/2.0;
+        }
+
         printf("iphoneAddY: %f\n",iphoneAddY);
         
         solarSystem = [[SKEffectNode alloc] init];
@@ -77,20 +87,36 @@
             buttonScale = 1.2;
             iphoneAddY -= 52.0;
         }
+        if (IS_IPAD) {
+            //spacing = 10.0;
+            buttonScale = 1.7;
+            iphoneAddY -= 220.0;
+        }
         buttonSize = buttonSize * buttonScale;
         
-        SKSpriteNode *top = [[SKSpriteNode alloc] initWithColor:[SKColor colorWithRed:204/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0] size:CGSizeMake(self.size.width, 51.0)];
+        float height = 51.0;
+        if (IS_IPAD)
+            height = 110.0;
+
+        SKSpriteNode *top = [[SKSpriteNode alloc] initWithColor:[SKColor colorWithRed:204/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0] size:CGSizeMake(self.size.width, height)];
         top.position = CGPointMake(self.size.width/2, self.size.height);
         top.anchorPoint = CGPointMake(0.5, 1.0);
         top.zPosition = 2;
         [solarSystem addChild:top];
         
+        vc.haccp_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+        vc.haccp_webView.alpha = 1;
+
         navBackButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"gray_back_button"];
         [navBackButton initButton];
         navBackButton.name = @"navback";
         navBackButton.delegate = self;
         navBackButton.scale = primaryScale;
-        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        if (IS_IPAD) {
+            navBackButton.position = CGPointMake(self.size.width-26.0*2,self.size.height-26.0*2);
+        } else {
+            navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        }
         navBackButton.zPosition = 4;
         [solarSystem addChild:navBackButton];
         
@@ -99,7 +125,13 @@
         menuButton.name = @"menu";
         menuButton.delegate = self;
         menuButton.scale = primaryScale;
-        menuButton.position = CGPointMake(22.0,self.size.height-22.0);
+        if (IS_IPAD) {
+            menuButton.position = CGPointMake(22.0*2,self.size.height-22.0*2);
+            menuButton.colorBlendFactor = 1.0;
+            menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
+        } else {
+            menuButton.position = CGPointMake(22.0,self.size.height-22.0);
+        }
         menuButton.zPosition = 4;
         //menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         //menuButton.colorBlendFactor = 1.0;
@@ -110,17 +142,27 @@
         backButton.name = @"back";
         backButton.delegate = self;
         backButton.scale = primaryScale;
-        backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+        if (IS_IPAD) {
+            backButton.position = CGPointMake(22.0*2-self.size.width,self.size.height-22.0*2);
+        } else {
+            backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+        }
         backButton.zPosition = -1;
         backButton.enabled = NO;
         [self addChild:backButton];
         
+        float height2 = 28.0;
+        if (IS_IPAD)
+            height2 = 60.0;
+        
         DSMultilineLabelNode *aLetter = [DSMultilineLabelNode labelNodeWithFontNamed:@"UniversLTStd-Cn"];
-        aLetter.position = CGPointMake(self.size.width*.5, self.size.height-28.0);
+        aLetter.position = CGPointMake(self.size.width*.5, self.size.height-height2);
         aLetter.text = @"HACCP Certification";
         aLetter.fontSize = 18.0;
         if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
             aLetter.fontSize += 6;
+        if (IS_IPAD)
+            aLetter.fontSize = 36.0;
         //aLetter.scale = primaryScale * buttonScale;
         aLetter.zPosition = 3;
         aLetter.fontColor = [SKColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
@@ -131,60 +173,20 @@
         //NSString *path = [[NSBundle mainBundle] bundlePath];
         //NSURL *baseURL = [NSURL fileURLWithPath:path];
         
-        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-        
-        if (showingSpinner) {
-            showingSpinner = NO;
-            [spinner stopAnimating];
-            [spinner removeFromSuperview];
-        }
-        showingSpinner = YES;
-        
-        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        spinner.color = [UIColor grayColor];
-        spinner.hidesWhenStopped = YES;
-        [spinner startAnimating];
-        spinner.frame = CGRectMake(self.size.width*0.5, self.size.height*0.5, 60, 60);
-        
-        [vc.view addSubview:spinner];
-        
-        //NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"story_html5" ofType:@"html"];
-        //NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-        
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20)];
-        webView.delegate = self;
-        webView.userInteractionEnabled = YES;
-        webView.backgroundColor = [UIColor clearColor];
-        webView.scalesPageToFit = YES;
-        
-        //NSURL *url = [NSURL URLWithString:@"http://fairladymedia.com/module_01/story_html5.html"];
-        //NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60.0];
-        //[webView loadRequest:request];
-        
-        NSBundle *mainBundle = [NSBundle mainBundle];
-        
-        NSURL *homeIndexUrl;
-        
-        homeIndexUrl = [mainBundle URLForResource:@"HACCP" withExtension:@"html"];
-        NSURLRequest *urlReq = [NSURLRequest requestWithURL:homeIndexUrl];
-        [webView loadRequest:urlReq];
-        
-        //[webView loadHTMLString:htmlString baseURL:baseURL];
-        
-        [vc.view addSubview:webView];
-        
-        SKAction *waitC1 = [SKAction waitForDuration:1.0];
-        SKAction *goC1 = [SKAction runBlock:^{
-            
-            [self getScreenshot];
-            
-        }];
-        [self runAction:[SKAction sequence:@[waitC1,goC1]]];
-        
+        screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
+        screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
+        screenshotView.alpha = 0.0;
+        screenshotView.zPosition = -1;
+        [self addChild:screenshotView];
+
         overlay = [SKSpriteNode spriteNodeWithImageNamed:@"menu_overlay2"];
-        overlay.position = CGPointMake(self.size.width/2-self.size.width, self.size.height/2);
         overlay.zPosition = 10;
+        if (IS_IPAD) {
+            overlay.position = CGPointMake(self.size.width/2-self.size.width*1.2, self.size.height/2);
+            overlay.scale = 1.6;
+        } else {
+            overlay.position = CGPointMake(self.size.width/2-self.size.width, self.size.height/2);
+        }
         [self addChild:overlay];
         
         SKButtonNodeJRTB *overlayButton_01 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_01_2"];
@@ -255,35 +257,21 @@
     return self;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
-
 - (void) handleSwipeGestureLeft: (id) sender
 {
     printf("swipe left\n");
     
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
     if (menuOut) {
         
         menuOut = NO;
         
-        webView.alpha = 1.0;
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
+        vc.haccp_webView.alpha = 1.0;
         
         [menuButton removeAllActions];
         menuButton.enabled = YES;
@@ -302,7 +290,7 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1.0;
+            vc.haccp_webView.alpha = 1.0;
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -312,9 +300,8 @@
         
         printf("nav back button pressed\n");
         
-        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-        
+        vc.haccp_webView.alpha = 0.0;
+
         [self clean];
         
         [vc setScreenToggle:MENU];
@@ -328,9 +315,12 @@
 {
     printf("swipe right\n");
     
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
     if (!menuOut) {
         
-        webView.alpha = 0.0;
+        vc.haccp_webView.alpha = 0.0;
         
         menuOut = YES;
         
@@ -340,15 +330,6 @@
         [overlay removeAllActions];
         [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
         
-        if (!screenshotView) {
-            
-            screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
-            screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
-            screenshotView.alpha = 0.0;
-            [self addChild:screenshotView];
-            
-        }
-
         screenshotView.zPosition = 5;
         [screenshotView runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
         
@@ -411,6 +392,9 @@
 
 - (void) buttonPushed: (SKButtonNodeJRTB *) sender {
     
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
     if ([sender.name isEqualToString:@"overlay_01"]) {
         [self removeAllActions];
         
@@ -468,13 +452,7 @@
     
     if ([sender.name isEqualToString:@"navback"]) {
         
-        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-        
         printf("nav back button pressed\n");
-        
-        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
         [self clean];
         
@@ -485,12 +463,9 @@
     
     if ([sender.name isEqualToString:@"menu"]) {
         
-        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-        
         printf("menu button pressed\n");
         
-        webView.alpha = 0.0;
+        vc.haccp_webView.alpha = 0.0;
         
         menuOut = YES;
         
@@ -512,9 +487,6 @@
     }
     
     if ([sender.name isEqualToString:@"back"]) {
-        
-        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
         printf("back button pressed\n");
         
@@ -539,7 +511,7 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1.0;
+            vc.haccp_webView.alpha = 1.0;
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -551,7 +523,9 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
     if (menuOut) {
         
         menuOut = NO;
@@ -573,7 +547,7 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1;
+            vc.haccp_webView.alpha = 1;
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -584,9 +558,11 @@
 
 - (void) clean
 {
-    webView.delegate = nil;
-    [webView removeFromSuperview];
-    
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
+    vc.haccp_webView.alpha = 0;
+
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;
         [child removeAllActions];

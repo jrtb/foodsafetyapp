@@ -41,6 +41,10 @@
         if (IS_IPHONE_4) {
             back.scale = 0.8;
         }
+        
+        if (IS_IPAD) {
+            back.scale = 1.6;
+        }
 
         back.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:back];

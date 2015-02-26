@@ -37,6 +37,14 @@
 
 @property int fs295ContentNum;
 
+@property BOOL networkAvailable;
+
+@property NSData *haccp_data;
+@property UIWebView *haccp_webView;
+
+@property NSData *instructor_data;
+@property UIWebView *instructor_webView;
+
 - (void) replaceTheScene;
 
 - (void) resetVideo: (NSString*) aName;

@@ -10,9 +10,7 @@
 
 #import "SKButtonNodeJRTB.h"
 
-#import "YTPlayerView.h"
-
-@interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate, UIGestureRecognizerDelegate> {
+@interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate, UIGestureRecognizerDelegate, UIWebViewDelegate> {
     
     UIActivityIndicatorView     *spinner;
     
@@ -35,10 +33,6 @@
 
     SKButtonNodeJRTB        *menuButton;
     SKButtonNodeJRTB        *backButton;
-
-    YTPlayerView            *youTubePlayerView;
-    
-    BOOL                    youTubeVideoReady;
     
     SKSpriteNode            *overlay;
     
@@ -49,6 +43,7 @@
     
     BOOL                    menuOut;
 
+    SKSpriteNode            *video1;
 }
 
 @end

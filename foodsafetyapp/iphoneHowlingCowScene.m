@@ -30,7 +30,10 @@
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             primaryScale = 0.5;
         } else {
-            primaryScale = 0.25;
+            if (IS_RETINA)
+                primaryScale = 1.0;
+            else
+                primaryScale = 1.0;
         }
         
         /*
@@ -56,7 +59,11 @@
             iphoneAddY = (736-568.0)/2.0;
             iphoneAddX = (414.0-320.0)/2.0;
         }
-        
+        if (IS_IPAD) {
+            iphoneAddY = (1024-568.0)/2.0;
+            iphoneAddX = (580.0-320.0)/2.0;
+        }
+
         printf("iphoneAddY: %f\n",iphoneAddY);
         
         solarSystem = [[SKEffectNode alloc] init];
@@ -75,15 +82,22 @@
             buttonScale = 1.2;
             iphoneAddY -= 52.0;
         }
+        if (IS_IPAD) {
+            spacing = 10.0;
+            buttonScale = 1.7;
+            iphoneAddY -= 220.0;
+        }
         buttonSize = buttonSize * buttonScale;
         
-        SKSpriteNode *top = [SKSpriteNode spriteNodeWithImageNamed:@"howling_cow_top"];
+        top = [SKSpriteNode spriteNodeWithImageNamed:@"howling_cow_top"];
         top.position = CGPointMake(self.size.width/2, self.size.height);
         top.anchorPoint = CGPointMake(0.5, 1.0);
         float newWidth = self.size.width / buttonScale;
         float factor = newWidth / top.size.width;
         if (IS_IPHONE_4)
             factor = factor * .8;
+        if (IS_IPAD)
+            factor = factor * .75;
         //printf("old width: %f, new width: %f, factor: %f\n",top.size.width,newWidth,factor);
         top.zPosition = 2;
         top.scale = buttonScale * factor;
@@ -94,7 +108,11 @@
         navBackButton.name = @"navback";
         navBackButton.delegate = self;
         navBackButton.scale = primaryScale;
-        navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        if (IS_IPAD) {
+            navBackButton.position = CGPointMake(self.size.width-26.0*2,self.size.height-26.0*2);
+        } else {
+            navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
+        }
         navBackButton.zPosition = 4;
         [solarSystem addChild:navBackButton];
 
@@ -103,7 +121,13 @@
         menuButton.name = @"menu";
         menuButton.delegate = self;
         menuButton.scale = primaryScale;
-        menuButton.position = CGPointMake(22.0,self.size.height-22.0);
+        if (IS_IPAD) {
+            menuButton.position = CGPointMake(22.0*2,self.size.height-22.0*2);
+            menuButton.colorBlendFactor = 1.0;
+            menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
+        } else {
+            menuButton.position = CGPointMake(22.0,self.size.height-22.0);
+        }
         menuButton.zPosition = 4;
         //menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         //menuButton.colorBlendFactor = 1.0;
@@ -114,7 +138,11 @@
         backButton.name = @"back";
         backButton.delegate = self;
         backButton.scale = primaryScale;
-        backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+        if (IS_IPAD) {
+            backButton.position = CGPointMake(22.0*2-self.size.width,self.size.height-22.0*2);
+        } else {
+            backButton.position = CGPointMake(22.0-self.size.width,self.size.height-22.0);
+        }
         backButton.zPosition = -1;
         backButton.enabled = NO;
         [self addChild:backButton];
@@ -154,13 +182,15 @@
         SKLabelNode *aLetter = [SKLabelNode labelNodeWithFontNamed:@"Univers LT Std 57 Condensed"];
         if (IS_IPHONE_4 || IS_IPHONE_5)
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+16.0);
+        else if (IS_IPAD)
+            aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+42.0);
         else
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+32.0);
         aLetter.text = @"Howling Cow";
         aLetter.fontSize = 52.0;
+        //aLetter.scale = primaryScale * buttonScale;
         if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
             aLetter.fontSize += 24;
-        aLetter.scale = primaryScale * buttonScale;
         aLetter.zPosition = 1;
         aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         aLetter.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
@@ -175,46 +205,35 @@
         playButton.name = @"play";
         playButton.delegate = self;
         playButton.scale = primaryScale*.75;
-        playButton.position = CGPointMake(self.size.width - playButton.size.width - spacing * 4,self.size.height + playButton.size.height - top.size.height+spacing * 4);
+        if (IS_IPAD)
+            playButton.position = CGPointMake(self.size.width - playButton.size.width - spacing * 4-60,self.size.height + playButton.size.height - top.size.height+spacing * 4);
+        else
+            playButton.position = CGPointMake(self.size.width - playButton.size.width - spacing * 4,self.size.height + playButton.size.height - top.size.height+spacing * 4);
+
         playButton.zPosition = 3;
         [solarSystem addChild:playButton];
         
         videoReady = NO;
-        youTubeVideoReady = NO;
         
         // https://www.youtube.com/watch?v=AfYkLW7b1FY
 
-        youTubePlayerView = [[YTPlayerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.size.width, self.size.height)];
+        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
-        //youTubePlayerView.backgroundColor = [UIColor clearColor];
-        
-        youTubePlayerView.alpha = 0.0;
-        
-        [vc.view addSubview:youTubePlayerView];
-        
-        NSDictionary *playerVars = @{
-                                     @"controls" : @2,
-                                     @"playsinline" : @0,
-                                     @"autohide" : @1,
-                                     @"autoplay" : @1,
-                                     @"fs" : @1,
-                                     @"showinfo" : @0,
-                                     @"modestbranding" : @1
-                                     };
-        youTubePlayerView.delegate = self;
-        [youTubePlayerView loadWithVideoId:@"AfYkLW7b1FY" playerVars:playerVars];
-
-        SKAction *waitC1 = [SKAction waitForDuration:1.0];
-        SKAction *goC1 = [SKAction runBlock:^{
-            
-            [self getScreenshot];
-            
-        }];
-        [self runAction:[SKAction sequence:@[waitC1,goC1]]];
+        screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
+        screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
+        screenshotView.alpha = 0.0;
+        screenshotView.zPosition = -1;
+        [self addChild:screenshotView];
         
         overlay = [SKSpriteNode spriteNodeWithImageNamed:@"menu_overlay2"];
-        overlay.position = CGPointMake(self.size.width/2-self.size.width, self.size.height/2);
         overlay.zPosition = 10;
+        if (IS_IPAD) {
+            overlay.position = CGPointMake(self.size.width/2-self.size.width*1.2, self.size.height/2);
+            overlay.scale = 1.6;
+        } else {
+            overlay.position = CGPointMake(self.size.width/2-self.size.width, self.size.height/2);
+        }
         [self addChild:overlay];
         
         SKButtonNodeJRTB *overlayButton_01 = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"side_menu_button_01_2"];
@@ -281,10 +300,40 @@
         
         self.userInteractionEnabled = YES;
         
+        SKAction *waitC = [SKAction waitForDuration:0.01];
+        SKAction *goC = [SKAction runBlock:^{
+            [self setupVideo];
+        }];
+        [self runAction:[SKAction sequence:@[waitC,goC]]];
+
     }
     return self;
 }
 
+- (void) setupVideo
+{
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+    
+    videoLength = 131.0+2.0;
+    
+    //int actualMovieNum = 0;
+    
+    [vc resetVideo:@"howlingcow"];
+    
+    [[vc video] pause];
+    
+    [[vc video] setPosition:CGPointMake(self.size.width*.5,self.size.height)];
+    [[vc video] setAnchorPoint:CGPointMake(0.5, 1.0)];
+    [[vc video] setSize:CGSizeMake(self.size.width, self.size.width/2.0)];
+    //[[vc video] setScale:primaryScale];
+    [[vc video] setZPosition:-1];
+    [[vc video] setAlpha:0.0];
+    [self addChild:[vc video]];
+    
+    videoReady = YES;
+    
+}
 - (void) handleSwipeGestureLeft: (id) sender
 {
     printf("swipe left\n");
@@ -345,15 +394,6 @@
         [overlay removeAllActions];
         [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
         
-        if (!screenshotView) {
-            
-            screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
-            screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
-            screenshotView.alpha = 0.0;
-            [self addChild:screenshotView];
-            
-        }
-
         screenshotView.zPosition = 5;
         [screenshotView runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
         
@@ -414,46 +454,26 @@
     
 }
 
-- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
+- (void) stopMovie
+{
     
-    youTubeVideoReady = YES;
-    printf("youtube video ready\n");
-    
-}
-
-- (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
-    switch (state) {
-        case kYTPlayerStatePlaying:
-            NSLog(@"Started playback");
-            youTubePlayerView.alpha = 1.0;
-            break;
-        case kYTPlayerStatePaused:
-            NSLog(@"Paused playback");
-            youTubePlayerView.delegate = nil;
-            [youTubePlayerView removeFromSuperview];
-            if (showingSpinner) {
-                showingSpinner = NO;
-                [spinner stopAnimating];
-                [spinner removeFromSuperview];
-            }
-            [playButton setEnabled:YES];
-            [playButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
-            break;
-        case kYTPlayerStateEnded:
-            NSLog(@"Ended playback");
-            youTubePlayerView.delegate = nil;
-            [youTubePlayerView removeFromSuperview];
-            if (showingSpinner) {
-                showingSpinner = NO;
-                [spinner stopAnimating];
-                [spinner removeFromSuperview];
-            }
-            [playButton setEnabled:YES];
-            [playButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
-            break;
-        default:
-            break;
+    if (videoReady) {
+        
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        [vc killVideo];
+        
+        [[vc player] removeAllItems];
+        [[vc video] removeFromParent];
+        
+        [playButton setEnabled:YES];
+        [playButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
+        
+        videoReady = NO;
+        
     }
+    
 }
 
 - (void) buttonPushed: (SKButtonNodeJRTB *) sender {
@@ -540,43 +560,35 @@
 
     if ([sender.name isEqualToString:@"play"]) {
         
-        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
-        if (youTubeVideoReady) {
-            
-            [playButton setEnabled:NO];
-            [playButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
-            
-            if (showingSpinner) {
-                showingSpinner = NO;
-                [spinner stopAnimating];
-                [spinner removeFromSuperview];
-            }
-            showingSpinner = YES;
-            
-            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-            spinner.color = [UIColor grayColor];
-            spinner.hidesWhenStopped = YES;
-            [spinner startAnimating];
-            spinner.frame = CGRectMake(self.size.width - playButton.size.width - 5 * 4-30,self.size.height-(playButton.position.y)-30, 60, 60);
-            
-            UIViewController *vc = self.view.window.rootViewController;
-            
-            [vc.view addSubview:spinner];
-            
-            [[UIDevice currentDevice] setValue:
-             [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
-                                        forKey:@"orientation"];
-            
-            [youTubePlayerView playVideo];
-            
-        }
+        [playButton setEnabled:NO];
+        [playButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.1]];
+        
+        SKAction *waitC = [SKAction waitForDuration:0.1];
+        SKAction *goC = [SKAction runBlock:^{
+            //printf("attempting to play\n");
+            [[vc video] setZPosition:40];
+            [[vc video] setSize:top.size];
+            [[vc video] setPosition:top.position];
+            [[vc video] setAlpha:1.0];
+            [[vc video] play];
+        }];
+        [self runAction:[SKAction sequence:@[waitC,goC]]];
+        
+        SKAction *waitD = [SKAction waitForDuration:videoLength];
+        SKAction *goD = [SKAction runBlock:^{
+            [self stopMovie];
+        }];
+        [self runAction:[SKAction sequence:@[waitD,goD]]];
+        
     }
     
     if ([sender.name isEqualToString:@"overlay_01"]) {
         [self removeAllActions];
-        
+        [self stopMovie];
+
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
@@ -585,7 +597,8 @@
     }
     if ([sender.name isEqualToString:@"overlay_02"]) {
         [self removeAllActions];
-        
+        [self stopMovie];
+
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
@@ -594,7 +607,8 @@
     }
     if ([sender.name isEqualToString:@"overlay_03"]) {
         [self removeAllActions];
-        
+        [self stopMovie];
+
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
@@ -603,7 +617,8 @@
     }
     if ([sender.name isEqualToString:@"overlay_04"]) {
         [self removeAllActions];
-        
+        [self stopMovie];
+
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
@@ -612,7 +627,8 @@
     }
     if ([sender.name isEqualToString:@"overlay_05"]) {
         [self removeAllActions];
-        
+        [self stopMovie];
+
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
@@ -621,7 +637,8 @@
     }
     if ([sender.name isEqualToString:@"overlay_06"]) {
         [self removeAllActions];
-        
+        [self stopMovie];
+
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
@@ -741,15 +758,18 @@
 
 - (void) clean
 {
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
+    [vc killVideo];
+    
+    [[vc player] removeAllItems];
+    [[vc video] removeFromParent];
+
     if (showingSpinner) {
         showingSpinner = NO;
         [spinner stopAnimating];
         [spinner removeFromSuperview];
-    }
-
-    if (youTubePlayerView != nil) {
-        youTubePlayerView.delegate = nil;
-        [youTubePlayerView removeFromSuperview];
     }
 
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

@@ -10,9 +10,7 @@
 
 #import "SKButtonNodeJRTB.h"
 
-#import "YTPlayerView.h"
-
-@interface iphoneHowlingCowScene : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate, UIGestureRecognizerDelegate> {
+@interface iphoneHowlingCowScene : SKScene <SKButtonNodeJRTBDelegate,  UIGestureRecognizerDelegate> {
     
     float                   iphoneAddY;
     float                   iphoneAddX;
@@ -33,10 +31,6 @@
     SKButtonNodeJRTB        *backButton;
     SKButtonNodeJRTB        *navBackButton;
     
-    YTPlayerView            *youTubePlayerView;
-    
-    BOOL                    youTubeVideoReady;
-    
     SKSpriteNode            *overlay;
     
     SKEffectNode            *solarSystem;
@@ -50,6 +44,7 @@
     
     BOOL                        showingSpinner;
     
+    SKSpriteNode            *top;
 }
 
 @end

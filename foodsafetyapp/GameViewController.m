@@ -33,6 +33,9 @@
 
 #import "iphoneHACCPScene2.h"
 
+#include<unistd.h>
+#include<netdb.h>
+
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
@@ -54,7 +57,7 @@
 
 @implementation GameViewController
 
-@synthesize screenToggle, video, player, item, careersSection, howlingCowSection, fs295ContentNum;
+@synthesize screenToggle, video, player, item, careersSection, howlingCowSection, fs295ContentNum, networkAvailable, haccp_data, haccp_webView, instructor_data, instructor_webView;
 
 - (void) killVideo
 {
@@ -123,69 +126,58 @@
     SKView * skView = (SKView *)self.view;
     if (skView.scene) {
         
-        if (IS_IPAD) {
-            
-            switch (screenToggle) {
-                
+        switch (screenToggle) {
+            case MENU: {
+                SKScene *aScene = [iphoneMenuScene sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
             }
-            
-        } else {
-            
-            switch (screenToggle) {
-                case MENU: {
-                    SKScene *aScene = [iphoneMenuScene sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case PREREQ: {
-                    SKScene *aScene = [iphonePreReqScene sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case HOWLINGCOW: {
-                    SKScene *aScene = [iphoneHowlingCowScene sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case HACCP: {
-                    SKScene *aScene = [iphoneHACCPScene sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case HACCP2: {
-                    SKScene *aScene = [iphoneHACCPScene2 sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case CAREERS: {
-                    SKScene *aScene = [iphoneCareersScene sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case FS295: {
-                    SKScene *aScene = [iphoneFS295Scene sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case CLINTINTRO: {
-                    SKScene *aScene = [iphoneClintStevensonIntroScene sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case CAREERS2: {
-                    SKScene *aScene = [iphoneCareersScene2 sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
-                case HOWLINGCOW2: {
-                    SKScene *aScene = [iphoneHowlingCowScene2 sceneWithSize:skView.bounds.size];
-                    [skView presentScene:aScene];
-                    break;
-                }
+            case PREREQ: {
+                SKScene *aScene = [iphonePreReqScene sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
             }
-            
+            case HOWLINGCOW: {
+                SKScene *aScene = [iphoneHowlingCowScene sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
+            }
+            case HACCP: {
+                SKScene *aScene = [iphoneHACCPScene sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
+            }
+            case HACCP2: {
+                SKScene *aScene = [iphoneHACCPScene2 sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
+            }
+            case CAREERS: {
+                SKScene *aScene = [iphoneCareersScene sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
+            }
+            case FS295: {
+                SKScene *aScene = [iphoneFS295Scene sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
+            }
+            case CLINTINTRO: {
+                SKScene *aScene = [iphoneClintStevensonIntroScene sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
+            }
+            case CAREERS2: {
+                SKScene *aScene = [iphoneCareersScene2 sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
+            }
+            case HOWLINGCOW2: {
+                SKScene *aScene = [iphoneHowlingCowScene2 sceneWithSize:skView.bounds.size];
+                [skView presentScene:aScene];
+                break;
+            }
         }
-        
     }
     
 }
@@ -227,6 +219,44 @@
     player = [[AVQueuePlayer alloc] initWithPlayerItem:[AVPlayerItem playerItemWithAsset:nil]];
     video = [SKVideoNode videoNodeWithAVPlayer:player];
     
+    char *hostname;
+    struct hostent *hostinfo;
+    hostname = "google.com";
+    hostinfo = gethostbyname (hostname);
+    if (hostinfo == NULL){
+        NSLog(@"-> no connection!\n");
+        networkAvailable = NO;
+    }
+    else{
+        NSLog(@"-> connection established!\n");
+        networkAvailable = YES;
+    }
+    
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+
+    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"HACCP" ofType:@"html"];
+    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    haccp_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    haccp_webView = [[UIWebView alloc] init];
+    haccp_webView.userInteractionEnabled = YES;
+    haccp_webView.backgroundColor = [UIColor clearColor];
+    haccp_webView.scalesPageToFit = YES;
+    haccp_webView.alpha = 0;
+    [haccp_webView loadData:haccp_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:haccp_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"clint_stevenson_intro" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    instructor_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    instructor_webView = [[UIWebView alloc] init];
+    instructor_webView.userInteractionEnabled = YES;
+    instructor_webView.backgroundColor = [UIColor clearColor];
+    instructor_webView.scalesPageToFit = YES;
+    instructor_webView.alpha = 0;
+    [instructor_webView loadData:haccp_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:instructor_webView];
+
 }
 
 - (BOOL)shouldAutorotate
