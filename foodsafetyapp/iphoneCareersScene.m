@@ -187,7 +187,12 @@
         else
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+32.0);
         aLetter.text = @"Food Safety Careers";
-        aLetter.fontSize = 52.0;
+        if (IS_IPAD)
+            aLetter.fontSize = 52.0;
+        else
+            aLetter.fontSize = 26.0;
+        if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
+            aLetter.fontSize += 8;
         //aLetter.scale = primaryScale * buttonScale;
         aLetter.zPosition = 1;
         aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];

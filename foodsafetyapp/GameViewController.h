@@ -23,7 +23,7 @@
 #define HOWLINGCOW2 160
 #define HACCP2 161
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <UIWebViewDelegate>
 
 @property int screenToggle;
 
@@ -65,6 +65,18 @@
 
 @property NSData *fs2953_data;
 @property UIWebView *fs2953_webView;
+
+@property NSData *howlingcow1_data;
+@property UIWebView *howlingcow1_webView;
+
+@property NSData *howlingcow2_data;
+@property UIWebView *howlingcow2_webView;
+
+@property NSData *howlingcow3_data;
+@property UIWebView *howlingcow3_webView;
+
+@property NSData *howlingcow4_data;
+@property UIWebView *howlingcow4_webView;
 
 - (void) replaceTheScene;
 

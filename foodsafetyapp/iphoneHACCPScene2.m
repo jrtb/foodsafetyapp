@@ -160,7 +160,7 @@
         aLetter.text = @"HACCP Certification";
         aLetter.fontSize = 18.0;
         if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
-            aLetter.fontSize += 6;
+            aLetter.fontSize += 0;
         if (IS_IPAD)
             aLetter.fontSize = 36.0;
         //aLetter.scale = primaryScale * buttonScale;

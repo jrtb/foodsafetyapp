@@ -190,9 +190,9 @@
         if (IS_IPAD)
             aLetter.fontSize = 36.0;
         else
-            aLetter.fontSize = 52.0;
+            aLetter.fontSize = 26.0;
         if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
-            aLetter.fontSize += 24;
+            aLetter.fontSize += 8;
         //aLetter.scale = primaryScale * buttonScale;
         aLetter.zPosition = 1;
         aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];

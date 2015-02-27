@@ -163,8 +163,9 @@
         if (IS_IPAD)
             aLetter.fontSize = 52.0;
         else
-            aLetter.fontSize = 52.0;
-        //aLetter.scale = primaryScale * buttonScale;
+            aLetter.fontSize = 26.0;
+        if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
+            aLetter.fontSize += 8;
         aLetter.zPosition = 1;
         aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         aLetter.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
@@ -786,7 +787,7 @@
         SKAction *waitC = [SKAction waitForDuration:0.1];
         SKAction *goC = [SKAction runBlock:^{
             //printf("attempting to play\n");
-            [[vc video] setZPosition:40];
+            [[vc video] setZPosition:4];
             [[vc video] setSize:video1.size];
             [[vc video] setPosition:video1.position];
             [[vc video] setAlpha:1.0];

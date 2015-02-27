@@ -122,7 +122,7 @@
         if (IS_IPAD) {
             menuButton.position = CGPointMake(22.0*2,self.size.height-22.0*2);
             menuButton.colorBlendFactor = 1.0;
-            menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
+            //menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         } else {
             menuButton.position = CGPointMake(22.0,self.size.height-22.0);
         }
@@ -154,7 +154,7 @@
         aLetter.text = @"Howling Cow";
         aLetter.fontSize = 18.0;
         if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
-            aLetter.fontSize += 6;
+            aLetter.fontSize += 0;
         if (IS_IPAD)
             aLetter.fontSize = 36.0;
         //aLetter.scale = primaryScale * buttonScale;
@@ -164,31 +164,27 @@
         aLetter.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
         [solarSystem addChild:aLetter];
         
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        NSURL *baseURL = [NSURL fileURLWithPath:path];
-        
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
                 
-        NSString *htmlFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"HowlingCow%i",vc.careersSection] ofType:@"html"];
-        NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-        
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20)];
-        webView.delegate = self;
-        webView.userInteractionEnabled = YES;
-        webView.backgroundColor = [UIColor clearColor];
-        webView.scalesPageToFit = YES;
-        
-        //NSURL *url = [NSURL URLWithString:@"http://www.ibm.com"];
-        //NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60.0];
-        //[webView loadRequest:request];
-        
-        NSData *data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
-        [webView loadData:data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
-
-        //[webView loadHTMLString:htmlString baseURL:baseURL];
-        
-        [vc.view addSubview:webView];
+        switch (vc.howlingCowSection) {
+            case 1:
+                vc.howlingcow1_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.howlingcow1_webView.alpha = 1;
+                break;
+            case 2:
+                vc.howlingcow2_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.howlingcow2_webView.alpha = 1;
+                break;
+            case 3:
+                vc.howlingcow3_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.howlingcow3_webView.alpha = 1;
+                break;
+            case 4:
+                vc.howlingcow4_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.howlingcow4_webView.alpha = 1;
+                break;
+        }
         
         screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
         screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
@@ -300,7 +296,23 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1.0;
+            AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+            GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+            
+            switch (vc.howlingCowSection) {
+                case 1:
+                    vc.howlingcow1_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.howlingcow2_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.howlingcow3_webView.alpha = 1;
+                    break;
+                case 4:
+                    vc.howlingcow4_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -313,7 +325,20 @@
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
-        webView.alpha = 0;
+        switch (vc.howlingCowSection) {
+            case 1:
+                vc.howlingcow1_webView.alpha = 0;
+                break;
+            case 2:
+                vc.howlingcow2_webView.alpha = 0;
+                break;
+            case 3:
+                vc.howlingcow3_webView.alpha = 0;
+                break;
+            case 4:
+                vc.howlingcow4_webView.alpha = 0;
+                break;
+        }
 
         [self clean];
         
@@ -330,7 +355,23 @@
     
     if (!menuOut) {
         
-        webView.alpha = 0.0;
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        switch (vc.howlingCowSection) {
+            case 1:
+                vc.howlingcow1_webView.alpha = 0;
+                break;
+            case 2:
+                vc.howlingcow2_webView.alpha = 0;
+                break;
+            case 3:
+                vc.howlingcow3_webView.alpha = 0;
+                break;
+            case 4:
+                vc.howlingcow4_webView.alpha = 0;
+                break;
+        }
         
         menuOut = YES;
         
@@ -482,7 +523,24 @@
         printf("menu button pressed\n");
         
         menuOut = YES;
-        webView.alpha = 0.0;
+
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        switch (vc.howlingCowSection) {
+            case 1:
+                vc.howlingcow1_webView.alpha = 0;
+                break;
+            case 2:
+                vc.howlingcow2_webView.alpha = 0;
+                break;
+            case 3:
+                vc.howlingcow3_webView.alpha = 0;
+                break;
+            case 4:
+                vc.howlingcow4_webView.alpha = 0;
+                break;
+        }
 
         menuButton.enabled = NO;
         [menuButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
@@ -529,7 +587,23 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1;
+            AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+            GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+            
+            switch (vc.howlingCowSection) {
+                case 1:
+                    vc.howlingcow1_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.howlingcow2_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.howlingcow3_webView.alpha = 1;
+                    break;
+                case 4:
+                    vc.howlingcow4_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -563,7 +637,23 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1;
+            AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+            GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+            
+            switch (vc.howlingCowSection) {
+                case 1:
+                    vc.howlingcow1_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.howlingcow2_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.howlingcow3_webView.alpha = 1;
+                    break;
+                case 4:
+                    vc.howlingcow4_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -574,10 +664,23 @@
 
 - (void) clean
 {
-    webView.alpha = 0;
-
-    webView.delegate = nil;
-    [webView removeFromSuperview];
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+    
+    switch (vc.howlingCowSection) {
+        case 1:
+            vc.howlingcow1_webView.alpha = 0;
+            break;
+        case 2:
+            vc.howlingcow2_webView.alpha = 0;
+            break;
+        case 3:
+            vc.howlingcow3_webView.alpha = 0;
+            break;
+        case 4:
+            vc.howlingcow4_webView.alpha = 0;
+            break;
+    }
     
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;

@@ -641,7 +641,7 @@
         SKAction *waitC = [SKAction waitForDuration:0.1];
         SKAction *goC = [SKAction runBlock:^{
             //printf("attempting to play\n");
-            [[vc video] setZPosition:40];
+            [[vc video] setZPosition:4];
             [[vc video] setSize:video1.size];
             [[vc video] setPosition:video1.position];
             [[vc video] setAlpha:1.0];

@@ -57,7 +57,7 @@
 
 @implementation GameViewController
 
-@synthesize screenToggle, video, player, item, careersSection, howlingCowSection, fs295ContentNum, networkAvailable, haccp_data, haccp_webView, instructor_data, instructor_webView, careers1_data, careers1_webView, careers2_data, careers2_webView, careers3_data, careers3_webView,careers4_data, careers4_webView, fs2951_data, fs2951_webView, fs2952_data, fs2952_webView, fs2953_data, fs2953_webView;
+@synthesize screenToggle, video, player, item, careersSection, howlingCowSection, fs295ContentNum, networkAvailable, haccp_data, haccp_webView, instructor_data, instructor_webView, careers1_data, careers1_webView, careers2_data, careers2_webView, careers3_data, careers3_webView,careers4_data, careers4_webView, fs2951_data, fs2951_webView, fs2952_data, fs2952_webView, fs2953_data, fs2953_webView, howlingcow1_data, howlingcow1_webView, howlingcow2_data, howlingcow2_webView, howlingcow3_data, howlingcow3_webView, howlingcow4_data, howlingcow4_webView;
 
 - (void) killVideo
 {
@@ -243,6 +243,7 @@
     haccp_webView.backgroundColor = [UIColor clearColor];
     haccp_webView.scalesPageToFit = YES;
     haccp_webView.alpha = 0;
+    haccp_webView.delegate = self;
     [haccp_webView loadData:haccp_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:haccp_webView];
 
@@ -254,6 +255,7 @@
     instructor_webView.backgroundColor = [UIColor clearColor];
     instructor_webView.scalesPageToFit = YES;
     instructor_webView.alpha = 0;
+    instructor_webView.delegate = self;
     [instructor_webView loadData:instructor_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:instructor_webView];
 
@@ -265,6 +267,7 @@
     careers1_webView.backgroundColor = [UIColor clearColor];
     careers1_webView.scalesPageToFit = YES;
     careers1_webView.alpha = 0;
+    careers1_webView.delegate = self;
     [careers1_webView loadData:careers1_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:careers1_webView];
 
@@ -276,6 +279,7 @@
     careers2_webView.backgroundColor = [UIColor clearColor];
     careers2_webView.scalesPageToFit = YES;
     careers2_webView.alpha = 0;
+    careers2_webView.delegate = self;
     [careers2_webView loadData:careers2_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:careers2_webView];
 
@@ -287,6 +291,7 @@
     careers3_webView.backgroundColor = [UIColor clearColor];
     careers3_webView.scalesPageToFit = YES;
     careers3_webView.alpha = 0;
+    careers3_webView.delegate = self;
     [careers3_webView loadData:careers3_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:careers3_webView];
 
@@ -298,6 +303,7 @@
     careers4_webView.backgroundColor = [UIColor clearColor];
     careers4_webView.scalesPageToFit = YES;
     careers4_webView.alpha = 0;
+    careers4_webView.delegate = self;
     [careers4_webView loadData:careers4_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:careers4_webView];
 
@@ -309,6 +315,7 @@
     fs2951_webView.backgroundColor = [UIColor clearColor];
     fs2951_webView.scalesPageToFit = YES;
     fs2951_webView.alpha = 0;
+    fs2951_webView.delegate = self;
     [fs2951_webView loadData:fs2951_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:fs2951_webView];
 
@@ -320,6 +327,7 @@
     fs2952_webView.backgroundColor = [UIColor clearColor];
     fs2952_webView.scalesPageToFit = YES;
     fs2952_webView.alpha = 0;
+    fs2952_webView.delegate = self;
     [fs2952_webView loadData:fs2952_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:fs2952_webView];
 
@@ -331,9 +339,72 @@
     fs2953_webView.backgroundColor = [UIColor clearColor];
     fs2953_webView.scalesPageToFit = YES;
     fs2953_webView.alpha = 0;
+    fs2953_webView.delegate = self;
     [fs2953_webView loadData:fs2953_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:fs2953_webView];
 
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"HowlingCow1" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    howlingcow1_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    howlingcow1_webView = [[UIWebView alloc] init];
+    howlingcow1_webView.userInteractionEnabled = YES;
+    howlingcow1_webView.backgroundColor = [UIColor clearColor];
+    howlingcow1_webView.scalesPageToFit = YES;
+    howlingcow1_webView.alpha = 0;
+    howlingcow1_webView.delegate = self;
+    [howlingcow1_webView loadData:howlingcow1_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:howlingcow1_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"HowlingCow2" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    howlingcow2_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    howlingcow2_webView = [[UIWebView alloc] init];
+    howlingcow2_webView.userInteractionEnabled = YES;
+    howlingcow2_webView.backgroundColor = [UIColor clearColor];
+    howlingcow2_webView.scalesPageToFit = YES;
+    howlingcow2_webView.alpha = 0;
+    howlingcow2_webView.delegate = self;
+    [howlingcow2_webView loadData:howlingcow2_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:howlingcow2_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"HowlingCow3" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    howlingcow3_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    howlingcow3_webView = [[UIWebView alloc] init];
+    howlingcow3_webView.userInteractionEnabled = YES;
+    howlingcow3_webView.backgroundColor = [UIColor clearColor];
+    howlingcow3_webView.scalesPageToFit = YES;
+    howlingcow3_webView.alpha = 0;
+    howlingcow3_webView.delegate = self;
+    [howlingcow3_webView loadData:howlingcow3_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:howlingcow3_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"HowlingCow4" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    howlingcow4_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    howlingcow4_webView = [[UIWebView alloc] init];
+    howlingcow4_webView.userInteractionEnabled = YES;
+    howlingcow4_webView.backgroundColor = [UIColor clearColor];
+    howlingcow4_webView.scalesPageToFit = YES;
+    howlingcow4_webView.alpha = 0;
+    howlingcow4_webView.delegate = self;
+    [howlingcow4_webView loadData:howlingcow4_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:howlingcow4_webView];
+
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    printf("adjusting font\n");
+    
+    NSString *fontSize=@"100";
+
+    if (IS_IPAD)
+        fontSize=@"200";
+    
+    NSString *jsString = [[NSString alloc]      initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",[fontSize intValue]];
+    [webView stringByEvaluatingJavaScriptFromString:jsString];
+    
 }
 
 - (BOOL)shouldAutorotate

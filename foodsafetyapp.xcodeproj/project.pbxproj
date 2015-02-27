@@ -55,7 +55,6 @@
 		E75AB9151A42210000BB786A /* hc7.gif in Resources */ = {isa = PBXBuildFile; fileRef = E75AB9141A42210000BB786A /* hc7.gif */; };
 		E778F8351A13BE9600BE12F4 /* iphoneFS295Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = E778F8341A13BE9600BE12F4 /* iphoneFS295Scene.m */; };
 		E778F8381A13C61400BE12F4 /* DSMultilineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E778F8371A13C61400BE12F4 /* DSMultilineLabelNode.m */; };
-		E778F9671A13DA0600BE12F4 /* module_01 in Resources */ = {isa = PBXBuildFile; fileRef = E778F9661A13DA0600BE12F4 /* module_01 */; };
 		E778F9691A13EA1600BE12F4 /* clint_stevenson_intro.html in Resources */ = {isa = PBXBuildFile; fileRef = E778F9681A13EA1600BE12F4 /* clint_stevenson_intro.html */; };
 		E778F96C1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E778F96B1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.m */; };
 		E778F96E1A13ED4C00BE12F4 /* clint_intro_small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E778F96D1A13ED4C00BE12F4 /* clint_intro_small.mp4 */; };
@@ -197,7 +196,6 @@
 		E778F8341A13BE9600BE12F4 /* iphoneFS295Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneFS295Scene.m; sourceTree = "<group>"; };
 		E778F8361A13C61400BE12F4 /* DSMultilineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMultilineLabelNode.h; sourceTree = "<group>"; };
 		E778F8371A13C61400BE12F4 /* DSMultilineLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSMultilineLabelNode.m; sourceTree = "<group>"; };
-		E778F9661A13DA0600BE12F4 /* module_01 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = module_01; path = content/module_01; sourceTree = SOURCE_ROOT; };
 		E778F9681A13EA1600BE12F4 /* clint_stevenson_intro.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = clint_stevenson_intro.html; path = content/clint_stevenson_intro.html; sourceTree = SOURCE_ROOT; };
 		E778F96A1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneClintStevensonIntroScene.h; sourceTree = "<group>"; };
 		E778F96B1A13EA5D00BE12F4 /* iphoneClintStevensonIntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneClintStevensonIntroScene.m; sourceTree = "<group>"; };
@@ -392,7 +390,6 @@
 				E7CB8C0F1A3A407A00DC30A1 /* check.png */,
 				E7CB8C0D1A3A403900DC30A1 /* 2.png */,
 				E7CB8C0B1A3A3E3000DC30A1 /* sam.jpg */,
-				E778F9661A13DA0600BE12F4 /* module_01 */,
 				E7BB5BF41A01243700B9C0D7 /* Careers.html */,
 				E75AB8FD1A41DA4C00BB786A /* Careers4.html */,
 				E75AB8FB1A41DA4500BB786A /* Careers3.html */,
@@ -767,7 +764,6 @@
 				E7407E341A43245800409989 /* Drainage-and-Backflow-Prevention-thumbnail-20140806.jpg in Resources */,
 				E7A2F9AD1A3B4BEF00285ADE /* 3.png in Resources */,
 				E7D3CAA71A9BB02D0071A7B7 /* prereq_menu_02_2@2x.png in Resources */,
-				E778F9671A13DA0600BE12F4 /* module_01 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,7 +880,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ac1bd327-618a-4447-a4cc-b5b6722b8c05";
+				PROVISIONING_PROFILE = "bc4c2621-c820-40e4-a7ee-3c79af88a21a";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -920,7 +916,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "ac1bd327-618a-4447-a4cc-b5b6722b8c05";
+				PROVISIONING_PROFILE = "bc4c2621-c820-40e4-a7ee-3c79af88a21a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -937,7 +933,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ac1bd327-618a-4447-a4cc-b5b6722b8c05";
+				PROVISIONING_PROFILE = "bc4c2621-c820-40e4-a7ee-3c79af88a21a";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -953,7 +949,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ac1bd327-618a-4447-a4cc-b5b6722b8c05";
+				PROVISIONING_PROFILE = "bc4c2621-c820-40e4-a7ee-3c79af88a21a";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -128,7 +128,7 @@
         } else {
             menuButton.position = CGPointMake(22.0,self.size.height-22.0);
         }
-        menuButton.zPosition = 4;
+        menuButton.zPosition = 5;
         //menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         //menuButton.colorBlendFactor = 1.0;
         [solarSystem addChild:menuButton];
@@ -187,10 +187,13 @@
         else
             aLetter.position = CGPointMake(self.size.width*.5, button_05.size.height*2.0+spacing*4.0+iphoneAddY*.5+32.0);
         aLetter.text = @"Howling Cow";
-        aLetter.fontSize = 52.0;
+        if (IS_IPAD)
+            aLetter.fontSize = 52.0;
+        else
+            aLetter.fontSize = 26.0;
         //aLetter.scale = primaryScale * buttonScale;
         if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
-            aLetter.fontSize += 24;
+            aLetter.fontSize += 8;
         aLetter.zPosition = 1;
         aLetter.fontColor = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         aLetter.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
@@ -491,7 +494,7 @@
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
         
-        [vc setCareersSection:1];
+        [vc setHowlingCowSection:1];
         
         [vc setScreenToggle:HOWLINGCOW2];
         [vc replaceTheScene];
@@ -511,7 +514,7 @@
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
         
-        [vc setCareersSection:2];
+        [vc setHowlingCowSection:2];
         
         [vc setScreenToggle:HOWLINGCOW2];
         [vc replaceTheScene];
@@ -531,7 +534,7 @@
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
         
-        [vc setCareersSection:3];
+        [vc setHowlingCowSection:3];
         
         [vc setScreenToggle:HOWLINGCOW2];
         [vc replaceTheScene];
@@ -551,7 +554,7 @@
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         [self clean];
         
-        [vc setCareersSection:4];
+        [vc setHowlingCowSection:4];
         
         [vc setScreenToggle:HOWLINGCOW2];
         [vc replaceTheScene];
@@ -569,7 +572,7 @@
         SKAction *waitC = [SKAction waitForDuration:0.1];
         SKAction *goC = [SKAction runBlock:^{
             //printf("attempting to play\n");
-            [[vc video] setZPosition:40];
+            [[vc video] setZPosition:4];
             [[vc video] setSize:top.size];
             [[vc video] setPosition:top.position];
             [[vc video] setAlpha:1.0];
