@@ -45,6 +45,27 @@
 @property NSData *instructor_data;
 @property UIWebView *instructor_webView;
 
+@property NSData *careers1_data;
+@property UIWebView *careers1_webView;
+
+@property NSData *careers2_data;
+@property UIWebView *careers2_webView;
+
+@property NSData *careers3_data;
+@property UIWebView *careers3_webView;
+
+@property NSData *careers4_data;
+@property UIWebView *careers4_webView;
+
+@property NSData *fs2951_data;
+@property UIWebView *fs2951_webView;
+
+@property NSData *fs2952_data;
+@property UIWebView *fs2952_webView;
+
+@property NSData *fs2953_data;
+@property UIWebView *fs2953_webView;
+
 - (void) replaceTheScene;
 
 - (void) resetVideo: (NSString*) aName;

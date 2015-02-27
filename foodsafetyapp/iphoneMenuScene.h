@@ -11,10 +11,6 @@
 #import "SKButtonNodeJRTB.h"
 
 @interface iphoneMenuScene : SKScene <SKButtonNodeJRTBDelegate, UIGestureRecognizerDelegate, UIWebViewDelegate> {
-    
-    UIActivityIndicatorView     *spinner;
-    
-    BOOL                        showingSpinner;
 
     float                   iphoneAddY;
     float                   iphoneAddX;

@@ -169,22 +169,7 @@
         
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-        
-        if (showingSpinner) {
-            showingSpinner = NO;
-            [spinner stopAnimating];
-            [spinner removeFromSuperview];
-        }
-        showingSpinner = YES;
-        
-        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        spinner.color = [UIColor grayColor];
-        spinner.hidesWhenStopped = YES;
-        [spinner startAnimating];
-        spinner.frame = CGRectMake(self.size.width*0.5, self.size.height*0.5, 60, 60);
-        
-        [vc.view addSubview:spinner];
-        
+                
         NSString *htmlFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"HowlingCow%i",vc.careersSection] ofType:@"html"];
         NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
         
@@ -289,25 +274,6 @@
     return self;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
 
 - (void) handleSwipeGestureLeft: (id) sender
 {

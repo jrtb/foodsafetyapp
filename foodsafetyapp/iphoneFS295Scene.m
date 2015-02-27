@@ -121,8 +121,8 @@
         menuButton.scale = primaryScale;
         if (IS_IPAD) {
             menuButton.position = CGPointMake(22.0*2,self.size.height-22.0*2);
-            menuButton.colorBlendFactor = 1.0;
-            menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
+            //menuButton.colorBlendFactor = 1.0;
+            //menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         } else {
             menuButton.position = CGPointMake(22.0,self.size.height-22.0);
         }
@@ -160,57 +160,23 @@
         aLetter.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
         [solarSystem addChild:aLetter];
 
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        NSURL *baseURL = [NSURL fileURLWithPath:path];
-        
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
-        if (showingSpinner) {
-            showingSpinner = NO;
-            [spinner stopAnimating];
-            [spinner removeFromSuperview];
+        switch (vc.fs295ContentNum) {
+            case 1:
+                vc.fs2951_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.fs2951_webView.alpha = 1;
+                break;
+            case 2:
+                vc.fs2952_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.fs2952_webView.alpha = 1;
+                break;
+            case 3:
+                vc.fs2953_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.fs2953_webView.alpha = 1;
+                break;
         }
-        showingSpinner = YES;
-        
-        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        spinner.color = [UIColor grayColor];
-        spinner.hidesWhenStopped = YES;
-        [spinner startAnimating];
-        spinner.frame = CGRectMake(self.size.width*0.5, self.size.height*0.5, 60, 60);
-        
-        [vc.view addSubview:spinner];
-        
-        //NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"story_html5" ofType:@"html"];
-        //NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-        
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20)];
-        webView.delegate = self;
-        webView.userInteractionEnabled = YES;
-        webView.backgroundColor = [UIColor clearColor];
-        webView.scalesPageToFit = YES;
-        
-        //NSURL *url = [NSURL URLWithString:@"http://fairladymedia.com/module_01/story_html5.html"];
-        //NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60.0];
-        //[webView loadRequest:request];
-        
-        NSString *htmlFile;
-        
-        if (vc.fs295ContentNum == 1)
-            htmlFile = [[NSBundle mainBundle] pathForResource:@"FS295-1" ofType:@"html"];
-        else if (vc.fs295ContentNum == 2)
-            htmlFile = [[NSBundle mainBundle] pathForResource:@"FS295-2" ofType:@"html"];
-        else
-            htmlFile = [[NSBundle mainBundle] pathForResource:@"FS295-3" ofType:@"html"];
-        
-        NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-
-        NSData *data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
-        [webView loadData:data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
-
-        //[webView loadHTMLString:htmlString baseURL:baseURL];
-        
-        [vc.view addSubview:webView];
         
         screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
         screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
@@ -296,26 +262,6 @@
     return self;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
-
 - (void) handleSwipeGestureLeft: (id) sender
 {
     printf("swipe left\n");
@@ -324,8 +270,6 @@
         
         menuOut = NO;
         
-        webView.alpha = 1.0;
-
         [menuButton removeAllActions];
         menuButton.enabled = YES;
         [menuButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
@@ -343,7 +287,20 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1.0;
+            AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+            GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+            
+            switch (vc.fs295ContentNum) {
+                case 1:
+                    vc.fs2951_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.fs2952_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.fs2953_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -371,7 +328,20 @@
     
     if (!menuOut) {
         
-        webView.alpha = 0.0;
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        switch (vc.fs295ContentNum) {
+            case 1:
+                vc.fs2951_webView.alpha = 0;
+                break;
+            case 2:
+                vc.fs2952_webView.alpha = 0;
+                break;
+            case 3:
+                vc.fs2953_webView.alpha = 0;
+                break;
+        }
         
         menuOut = YES;
         
@@ -522,7 +492,20 @@
         
         printf("menu button pressed\n");
         
-        webView.alpha = 0.0;
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        
+        switch (vc.fs295ContentNum) {
+            case 1:
+                vc.fs2951_webView.alpha = 0;
+                break;
+            case 2:
+                vc.fs2952_webView.alpha = 0;
+                break;
+            case 3:
+                vc.fs2953_webView.alpha = 0;
+                break;
+        }
         
         menuOut = YES;
 
@@ -571,7 +554,20 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1.0;
+            AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+            GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+            
+            switch (vc.fs295ContentNum) {
+                case 1:
+                    vc.fs2951_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.fs2952_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.fs2953_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -587,8 +583,6 @@
     if (menuOut) {
         
         menuOut = NO;
-        
-        webView.alpha = 1.0;
         
         [menuButton removeAllActions];
         menuButton.enabled = YES;
@@ -607,6 +601,20 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
+            AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+            GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+            
+            switch (vc.fs295ContentNum) {
+                case 1:
+                    vc.fs2951_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.fs2952_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.fs2953_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -617,8 +625,20 @@
 
 - (void) clean
 {
-    webView.delegate = nil;
-    [webView removeFromSuperview];
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+    
+    switch (vc.fs295ContentNum) {
+        case 1:
+            vc.fs2951_webView.alpha = 0;
+            break;
+        case 2:
+            vc.fs2952_webView.alpha = 0;
+            break;
+        case 3:
+            vc.fs2953_webView.alpha = 0;
+            break;
+    }
     
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;

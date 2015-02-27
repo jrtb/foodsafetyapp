@@ -145,22 +145,7 @@
 
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-        
-        if (showingSpinner2) {
-            showingSpinner2 = NO;
-            [spinner2 stopAnimating];
-            [spinner2 removeFromSuperview];
-        }
-        showingSpinner2 = YES;
-        
-        spinner2 = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        spinner2.color = [UIColor grayColor];
-        spinner2.hidesWhenStopped = YES;
-        [spinner2 startAnimating];
-        spinner2.frame = CGRectMake(self.size.width*0.5, self.size.height*0.5, 60, 60);
-        
-        [vc.view addSubview:spinner2];
-        
+                
         vc.instructor_webView.frame = CGRectMake(10, video1.size.height+10, self.size.width-20, self.size.height-video1.size.height-20);
         vc.instructor_webView.alpha = 1;
 
@@ -727,18 +712,6 @@
     [[vc video] removeFromParent];
 
     vc.instructor_webView.alpha = 0;
-
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-
-    if (showingSpinner2) {
-        showingSpinner2 = NO;
-        [spinner2 stopAnimating];
-        [spinner2 removeFromSuperview];
-    }
 
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;

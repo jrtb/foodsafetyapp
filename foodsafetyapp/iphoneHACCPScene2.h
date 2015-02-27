@@ -39,11 +39,7 @@
     SKSpriteNode            *screenshotView;
     
     BOOL                    menuOut;
-    
-    UIActivityIndicatorView     *spinner;
-    
-    BOOL                        showingSpinner;
-    
+        
 }
 
 @end

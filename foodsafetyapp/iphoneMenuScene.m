@@ -319,28 +319,6 @@
 }
 */
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    /*
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    */
-    
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
-
 - (void) handleSwipeGestureLeft: (id) sender
 {
     printf("swipe left\n");
@@ -878,11 +856,6 @@
     [[vc player] removeAllItems];
     [[vc video] removeFromParent];
 
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
 
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;

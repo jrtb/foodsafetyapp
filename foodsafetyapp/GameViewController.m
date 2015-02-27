@@ -57,7 +57,7 @@
 
 @implementation GameViewController
 
-@synthesize screenToggle, video, player, item, careersSection, howlingCowSection, fs295ContentNum, networkAvailable, haccp_data, haccp_webView, instructor_data, instructor_webView;
+@synthesize screenToggle, video, player, item, careersSection, howlingCowSection, fs295ContentNum, networkAvailable, haccp_data, haccp_webView, instructor_data, instructor_webView, careers1_data, careers1_webView, careers2_data, careers2_webView, careers3_data, careers3_webView,careers4_data, careers4_webView, fs2951_data, fs2951_webView, fs2952_data, fs2952_webView, fs2953_data, fs2953_webView;
 
 - (void) killVideo
 {
@@ -254,8 +254,85 @@
     instructor_webView.backgroundColor = [UIColor clearColor];
     instructor_webView.scalesPageToFit = YES;
     instructor_webView.alpha = 0;
-    [instructor_webView loadData:haccp_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [instructor_webView loadData:instructor_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
     [self.view addSubview:instructor_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"Careers1" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    careers1_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    careers1_webView = [[UIWebView alloc] init];
+    careers1_webView.userInteractionEnabled = YES;
+    careers1_webView.backgroundColor = [UIColor clearColor];
+    careers1_webView.scalesPageToFit = YES;
+    careers1_webView.alpha = 0;
+    [careers1_webView loadData:careers1_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:careers1_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"Careers2" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    careers2_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    careers2_webView = [[UIWebView alloc] init];
+    careers2_webView.userInteractionEnabled = YES;
+    careers2_webView.backgroundColor = [UIColor clearColor];
+    careers2_webView.scalesPageToFit = YES;
+    careers2_webView.alpha = 0;
+    [careers2_webView loadData:careers2_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:careers2_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"Careers3" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    careers3_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    careers3_webView = [[UIWebView alloc] init];
+    careers3_webView.userInteractionEnabled = YES;
+    careers3_webView.backgroundColor = [UIColor clearColor];
+    careers3_webView.scalesPageToFit = YES;
+    careers3_webView.alpha = 0;
+    [careers3_webView loadData:careers3_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:careers3_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"Careers4" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    careers4_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    careers4_webView = [[UIWebView alloc] init];
+    careers4_webView.userInteractionEnabled = YES;
+    careers4_webView.backgroundColor = [UIColor clearColor];
+    careers4_webView.scalesPageToFit = YES;
+    careers4_webView.alpha = 0;
+    [careers4_webView loadData:careers4_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:careers4_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"FS295-1" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    fs2951_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    fs2951_webView = [[UIWebView alloc] init];
+    fs2951_webView.userInteractionEnabled = YES;
+    fs2951_webView.backgroundColor = [UIColor clearColor];
+    fs2951_webView.scalesPageToFit = YES;
+    fs2951_webView.alpha = 0;
+    [fs2951_webView loadData:fs2951_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:fs2951_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"FS295-2" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    fs2952_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    fs2952_webView = [[UIWebView alloc] init];
+    fs2952_webView.userInteractionEnabled = YES;
+    fs2952_webView.backgroundColor = [UIColor clearColor];
+    fs2952_webView.scalesPageToFit = YES;
+    fs2952_webView.alpha = 0;
+    [fs2952_webView loadData:fs2952_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:fs2952_webView];
+
+    htmlFile = [[NSBundle mainBundle] pathForResource:@"FS295-3" ofType:@"html"];
+    htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    fs2953_data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    fs2953_webView = [[UIWebView alloc] init];
+    fs2953_webView.userInteractionEnabled = YES;
+    fs2953_webView.backgroundColor = [UIColor clearColor];
+    fs2953_webView.scalesPageToFit = YES;
+    fs2953_webView.alpha = 0;
+    [fs2953_webView loadData:fs2953_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
+    [self.view addSubview:fs2953_webView];
 
 }
 

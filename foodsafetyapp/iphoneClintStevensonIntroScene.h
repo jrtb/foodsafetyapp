@@ -12,14 +12,6 @@
 
 @interface iphoneClintStevensonIntroScene : SKScene <SKButtonNodeJRTBDelegate, UIGestureRecognizerDelegate> {
     
-    UIActivityIndicatorView     *spinner;
-    
-    BOOL                        showingSpinner;
-
-    UIActivityIndicatorView     *spinner2;
-    
-    BOOL                        showingSpinner2;
-
     float                   iphoneAddY;
     float                   iphoneAddX;
     

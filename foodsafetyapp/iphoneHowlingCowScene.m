@@ -766,12 +766,6 @@
     [[vc player] removeAllItems];
     [[vc video] removeFromParent];
 
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;
         [child removeAllActions];

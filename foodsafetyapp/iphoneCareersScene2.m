@@ -164,46 +164,27 @@
         aLetter.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
         [solarSystem addChild:aLetter];
         
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        NSURL *baseURL = [NSURL fileURLWithPath:path];
-        
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
-        
-        if (showingSpinner) {
-            showingSpinner = NO;
-            [spinner stopAnimating];
-            [spinner removeFromSuperview];
+                
+        switch (vc.careersSection) {
+            case 1:
+                vc.careers1_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.careers1_webView.alpha = 1;
+                break;
+            case 2:
+                vc.careers2_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.careers2_webView.alpha = 1;
+                break;
+            case 3:
+                vc.careers3_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.careers3_webView.alpha = 1;
+                break;
+            case 4:
+                vc.careers4_webView.frame = CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20);
+                vc.careers4_webView.alpha = 1;
+                break;
         }
-        showingSpinner = YES;
-        
-        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        spinner.color = [UIColor grayColor];
-        spinner.hidesWhenStopped = YES;
-        [spinner startAnimating];
-        spinner.frame = CGRectMake(self.size.width*0.5, self.size.height*0.5, 60, 60);
-        
-        [vc.view addSubview:spinner];
-        
-        NSString *htmlFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Careers%i",vc.careersSection] ofType:@"html"];
-        NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-        
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, top.size.height+10, self.size.width-20, self.size.height-top.size.height-20)];
-        webView.delegate = self;
-        webView.userInteractionEnabled = YES;
-        webView.backgroundColor = [UIColor clearColor];
-        webView.scalesPageToFit = YES;
-        
-        //NSURL *url = [NSURL URLWithString:@"http://www.ibm.com"];
-        //NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60.0];
-        //[webView loadRequest:request];
-        
-        NSData *data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
-        [webView loadData:data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:baseURL];
-        
-        //[webView loadHTMLString:htmlString baseURL:baseURL];
-        
-        [vc.view addSubview:webView];
         
         screenshotView = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:0.95] size:CGSizeMake(self.size.width, self.size.height)];
         screenshotView.position = CGPointMake(self.size.width*0.5, self.size.height*0.5);
@@ -289,30 +270,13 @@
     return self;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    if (showingSpinner) {
-        showingSpinner = NO;
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-    }
-    
-}
-
 - (void) handleSwipeGestureLeft: (id) sender
 {
     printf("swipe left\n");
     
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
     if (menuOut) {
         
         menuOut = NO;
@@ -334,7 +298,20 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1.0;
+            switch (vc.careersSection) {
+                case 1:
+                    vc.careers1_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.careers2_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.careers3_webView.alpha = 1;
+                    break;
+                case 4:
+                    vc.careers4_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -360,9 +337,25 @@
 {
     printf("swipe right\n");
     
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
     if (!menuOut) {
         
-        webView.alpha = 0.0;
+        switch (vc.careersSection) {
+            case 1:
+                vc.careers1_webView.alpha = 0;
+                break;
+            case 2:
+                vc.careers2_webView.alpha = 0;
+                break;
+            case 3:
+                vc.careers3_webView.alpha = 0;
+                break;
+            case 4:
+                vc.careers4_webView.alpha = 0;
+                break;
+        }
         
         menuOut = YES;
         
@@ -508,13 +501,26 @@
     
     if ([sender.name isEqualToString:@"menu"]) {
         
-        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
         printf("menu button pressed\n");
         
         menuOut = YES;
-        webView.alpha = 0.0;
+        switch (vc.careersSection) {
+            case 1:
+                vc.careers1_webView.alpha = 0;
+                break;
+            case 2:
+                vc.careers2_webView.alpha = 0;
+                break;
+            case 3:
+                vc.careers3_webView.alpha = 0;
+                break;
+            case 4:
+                vc.careers4_webView.alpha = 0;
+                break;
+        }
 
         menuButton.enabled = NO;
         [menuButton runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
@@ -535,8 +541,8 @@
     
     if ([sender.name isEqualToString:@"back"]) {
         
-        //AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        //GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+        AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+        GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
         printf("back button pressed\n");
         
@@ -561,7 +567,20 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1;
+            switch (vc.careersSection) {
+                case 1:
+                    vc.careers1_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.careers2_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.careers3_webView.alpha = 1;
+                    break;
+                case 4:
+                    vc.careers4_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -573,7 +592,9 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+
     if (menuOut) {
         
         menuOut = NO;
@@ -595,7 +616,20 @@
         SKAction *goC = [SKAction runBlock:^{
             screenshotView.zPosition = -1;
             backButton.zPosition = -1;
-            webView.alpha = 1;
+            switch (vc.careersSection) {
+                case 1:
+                    vc.careers1_webView.alpha = 1;
+                    break;
+                case 2:
+                    vc.careers2_webView.alpha = 1;
+                    break;
+                case 3:
+                    vc.careers3_webView.alpha = 1;
+                    break;
+                case 4:
+                    vc.careers4_webView.alpha = 1;
+                    break;
+            }
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -606,10 +640,23 @@
 
 - (void) clean
 {
-    webView.alpha = 0;
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
 
-    webView.delegate = nil;
-    [webView removeFromSuperview];
+    switch (vc.careersSection) {
+        case 1:
+            vc.careers1_webView.alpha = 0;
+            break;
+        case 2:
+            vc.careers2_webView.alpha = 0;
+            break;
+        case 3:
+            vc.careers3_webView.alpha = 0;
+            break;
+        case 4:
+            vc.careers4_webView.alpha = 0;
+            break;
+    }
     
     [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKNode* child = obj;

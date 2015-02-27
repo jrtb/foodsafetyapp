@@ -47,11 +47,7 @@
     BOOL                    menuOut;
     
     UIWebView               *webView;
-    
-    UIActivityIndicatorView     *spinner;
-    
-    BOOL                        showingSpinner;
-    
+        
 }
 
 @end

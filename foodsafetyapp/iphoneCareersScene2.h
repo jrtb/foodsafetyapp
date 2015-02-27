@@ -10,9 +10,7 @@
 
 #import "SKButtonNodeJRTB.h"
 
-#import "YTPlayerView.h"
-
-@interface iphoneCareersScene2 : SKScene <SKButtonNodeJRTBDelegate, YTPlayerViewDelegate, UIGestureRecognizerDelegate, UIWebViewDelegate> {
+@interface iphoneCareersScene2 : SKScene <SKButtonNodeJRTBDelegate,  UIGestureRecognizerDelegate> {
     
     float                   iphoneAddY;
     float                   iphoneAddX;
@@ -33,10 +31,6 @@
     SKButtonNodeJRTB        *backButton;
     SKButtonNodeJRTB        *navBackButton;
     
-    YTPlayerView            *youTubePlayerView;
-    
-    BOOL                    youTubeVideoReady;
-    
     SKSpriteNode            *overlay;
     
     SKEffectNode            *solarSystem;
@@ -45,13 +39,7 @@
     SKSpriteNode            *screenshotView;
     
     BOOL                    menuOut;
-    
-    UIWebView               *webView;
-    
-    UIActivityIndicatorView     *spinner;
-    
-    BOOL                        showingSpinner;
-    
+        
 }
 
 @end
