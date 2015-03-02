@@ -121,12 +121,12 @@
         menuButton.scale = primaryScale;
         if (IS_IPAD) {
             menuButton.position = CGPointMake(22.0*2,self.size.height-22.0*2);
-            menuButton.colorBlendFactor = 1.0;
+            //menuButton.colorBlendFactor = 1.0;
             //menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         } else {
             menuButton.position = CGPointMake(22.0,self.size.height-22.0);
         }
-        menuButton.zPosition = 4;
+        menuButton.zPosition = 5;
         //menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         //menuButton.colorBlendFactor = 1.0;
         [solarSystem addChild:menuButton];
@@ -570,8 +570,8 @@
 
         [menuButton removeAllActions];
         menuButton.enabled = YES;
-        menuButton.color = [SKColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
-        menuButton.colorBlendFactor = 1.0;
+        //menuButton.color = [SKColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
+        //menuButton.colorBlendFactor = 1.0;
         [menuButton runAction:[SKAction fadeAlphaTo:1.0 duration:0.4]];
         
         [overlay removeAllActions];
