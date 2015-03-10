@@ -393,6 +393,24 @@
 
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSLog(@"%@",request);
+    
+    if ([request.URL.absoluteString rangeOfString:@"http"].location == NSNotFound) {
+
+        return YES;
+
+    } else {
+
+        [[UIApplication sharedApplication] openURL:request.URL];
+        
+        return NO;
+
+    }
+    
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     printf("adjusting font\n");
