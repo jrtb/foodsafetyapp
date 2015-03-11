@@ -24,6 +24,9 @@
         touched = NO;
         menuOut = NO;
         
+        videoPlaying = NO;
+        videoPaused = NO;
+
         self.backgroundColor = [SKColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
         
         // primary scale is used to scale assets such that only one 4x iPad Retina asset needs to be included in the binary
@@ -113,8 +116,8 @@
         } else {
             navBackButton.position = CGPointMake(self.size.width-26.0,self.size.height-26.0);
         }
-        navBackButton.zPosition = 4;
-        [solarSystem addChild:navBackButton];
+        navBackButton.zPosition = 5;
+        [self addChild:navBackButton];
 
         menuButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"menu_button"];
         [menuButton initButton];
@@ -131,7 +134,7 @@
         menuButton.zPosition = 5;
         //menuButton.color = [SKColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         //menuButton.colorBlendFactor = 1.0;
-        [solarSystem addChild:menuButton];
+        [self addChild:menuButton];
         
         backButton = [SKButtonNodeJRTB spriteNodeWithImageNamed:@"back_button"];
         [backButton initButton];
@@ -465,6 +468,8 @@
         AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
         GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
         
+        videoPlaying = NO;
+
         [vc killVideo];
         
         [[vc player] removeAllItems];
@@ -577,6 +582,7 @@
             [[vc video] setPosition:top.position];
             [[vc video] setAlpha:1.0];
             [[vc video] play];
+            videoPlaying = YES;
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
@@ -729,7 +735,52 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
     
+    UITouch* touch = [touches anyObject];
+    CGPoint loc = [touch locationInNode:self];
+    
+    if (CGRectContainsPoint(vc.video.frame, loc)) {
+        
+        if (videoPlaying && !videoPaused) {
+            
+            videoPaused = YES;
+            [vc.video pause];
+            
+            SKSpriteNode *pause = [SKSpriteNode spriteNodeWithImageNamed:@"pause"];
+            pause.position = CGPointMake(self.size.width*0.5, self.size.height-80);
+            pause.zPosition = 100;
+            pause.scale = primaryScale*0.5;
+            [self addChild:pause];
+            [pause runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+            SKAction *waitD = [SKAction waitForDuration:0.4];
+            SKAction *goD = [SKAction runBlock:^{
+                [pause removeFromParent];
+            }];
+            [self runAction:[SKAction sequence:@[waitD,goD]]];
+            
+        } else if (videoPlaying && videoPaused) {
+            
+            videoPaused = NO;
+            [vc.video play];
+            
+            SKSpriteNode *pause = [SKSpriteNode spriteNodeWithImageNamed:@"play"];
+            pause.position = CGPointMake(self.size.width*0.5, self.size.height-80);
+            pause.zPosition = 100;
+            pause.scale = primaryScale*0.5;
+            [self addChild:pause];
+            [pause runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+            SKAction *waitD = [SKAction waitForDuration:0.4];
+            SKAction *goD = [SKAction runBlock:^{
+                [pause removeFromParent];
+            }];
+            [self runAction:[SKAction sequence:@[waitD,goD]]];
+            
+        }
+        
+    }
+
     if (menuOut) {
         
         menuOut = NO;

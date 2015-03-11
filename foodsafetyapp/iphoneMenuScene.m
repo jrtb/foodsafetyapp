@@ -25,6 +25,9 @@
         
         touched = NO;
         
+        videoPlaying = NO;
+        videoPaused = NO;
+        
         self.backgroundColor = [SKColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
         
         // primary scale is used to scale assets such that only one 4x iPad Retina asset needs to be included in the binary
@@ -369,6 +372,7 @@
         
         [self removeAllActions];
         [self stopMovie];
+        videoPlaying = NO;
         
         [overlay removeAllActions];
         [overlay runAction:[SKAction moveTo:CGPointMake(self.size.width*.5-iphoneAddX, self.size.height*.5) duration:0.4]];
@@ -792,12 +796,14 @@
             [[vc video] setPosition:video1.position];
             [[vc video] setAlpha:1.0];
             [[vc video] play];
+            videoPlaying = YES;
         }];
         [self runAction:[SKAction sequence:@[waitC,goC]]];
         
         SKAction *waitD = [SKAction waitForDuration:videoLength];
         SKAction *goD = [SKAction runBlock:^{
             [self stopMovie];
+            videoPlaying = NO;
         }];
         [self runAction:[SKAction sequence:@[waitD,goD]]];
         
@@ -808,13 +814,59 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 
-    printf("touched A\n");
+    AppDelegate *delegate  = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    GameViewController *vc = (GameViewController *) delegate.window.rootViewController;
+    
+    UITouch* touch = [touches anyObject];
+    CGPoint loc = [touch locationInNode:self];
+    
+    if (CGRectContainsPoint(vc.video.frame, loc)) {
+        
+        if (videoPlaying && !videoPaused) {
+            
+            videoPaused = YES;
+            [vc.video pause];
+            
+            SKSpriteNode *pause = [SKSpriteNode spriteNodeWithImageNamed:@"pause"];
+            pause.position = CGPointMake(self.size.width*0.5, self.size.height-80);
+            pause.zPosition = 100;
+            pause.scale = primaryScale*0.5;
+            [self addChild:pause];
+            [pause runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+            SKAction *waitD = [SKAction waitForDuration:0.4];
+            SKAction *goD = [SKAction runBlock:^{
+                [pause removeFromParent];
+            }];
+            [self runAction:[SKAction sequence:@[waitD,goD]]];
+
+        } else if (videoPlaying && videoPaused) {
+            
+            videoPaused = NO;
+            [vc.video play];
+            
+            SKSpriteNode *pause = [SKSpriteNode spriteNodeWithImageNamed:@"play"];
+            pause.position = CGPointMake(self.size.width*0.5, self.size.height-80);
+            pause.zPosition = 100;
+            pause.scale = primaryScale*0.5;
+            [self addChild:pause];
+            [pause runAction:[SKAction fadeAlphaTo:0.0 duration:0.4]];
+            SKAction *waitD = [SKAction waitForDuration:0.4];
+            SKAction *goD = [SKAction runBlock:^{
+                [pause removeFromParent];
+            }];
+            [self runAction:[SKAction sequence:@[waitD,goD]]];
+
+        }
+        
+    }
+    
+    //printf("touched A\n");
 
     //if (!touched) {
         
         touched = YES;
         
-        printf("touched B\n");
+        //printf("touched B\n");
         
         if (menuOut) {
             

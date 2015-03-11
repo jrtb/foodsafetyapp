@@ -41,6 +41,10 @@
     BOOL                    menuOut;
     
     SKSpriteNode *video1;
+    
+    BOOL                    videoPlaying;
+    BOOL                    videoPaused;
+
 }
 
 @end
